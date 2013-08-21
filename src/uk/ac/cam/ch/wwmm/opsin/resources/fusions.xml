@@ -1,0 +1,76 @@
+<!DOCTYPE tokenList SYSTEM "tokenList.dtd">
+<!-- See the DTD for more details -->
+<!-- Currently these are useless, as there's no way of turning these
+into structure in the codebase... -->
+<tokenList tagname="group" type="ring" subType="fusionRing" symbol="f">
+<!--From rules FR-2.1.8 through FR-2.2.1 (i.e. far from exhaustive) -->
+  <token value="aceanthrylene" valType="dbkey">aceanthryleno</token>
+  <token value="acenaphthylene" valType="dbkey">acenaphthyleno</token>
+  <token value="acenaphthylene" valType="dbkey">acenaphtho</token>
+  <token value="acephenanthrylene" valType="dbkey">acephenanthryleno</token>
+  <token value="anthracene" valType="dbkey">anthraceno</token>
+  <token value="anthracene" valType="dbkey">anthra</token>
+  <token value="azulene" valType="dbkey">azuleno</token>
+  <token value="benzene" valType="dbkey">benzeno</token>
+  <token value="benzene" valType="dbkey">benzo</token>
+  <token value="benzene" valType="dbkey">benz</token>
+  <token value="chrysene" valType="dbkey">chryseno</token>
+  <token value="coronene" valType="dbkey">coroneno</token>
+  <token value="fluoranthene" valType="dbkey">fluorantheno</token>
+  <token value="fluorene" valType="dbkey">fluoreno</token>
+  <token value="furan" valType="dbkey">furano</token>
+  <token value="furan" valType="dbkey">furo</token>
+  <token value="imidazole" valType="dbkey">imidazolo</token>
+  <token value="imidazole" valType="dbkey">imidazo</token>
+  <token value="as-indacene" valType="dbkey">as-indaceno</token>
+  <token value="s-indacene" valType="dbkey">s-indaceno</token>
+  <token value="indene" valType="dbkey">indeno</token>
+  <token value="naphthalene" valType="dbkey">naphthaleno</token>
+  <token value="naphthalene" valType="dbkey">naphtho</token>
+  <token value="ovalene" valType="dbkey">ovaleno</token>
+  <token value="perylene" valType="dbkey">peryleno</token>
+  <token value="perylene" valType="dbkey">perylo</token>
+  <token value="phenalene" valType="dbkey">phenaleno</token>
+  <token value="phenanthrene" valType="dbkey">phenanthreno</token>
+  <token value="phenanthrene" valType="dbkey">phenanthro</token>
+  <token value="picene" valType="dbkey">piceno</token>
+  <token value="pleiadene" valType="dbkey">pleiadeno</token>
+  <token value="pyran" valType="dbkey">pyrano</token>
+  <token value="pyranthrene" valType="dbkey">pyranthreno</token>
+  <token value="pyrazine" valType="dbkey">pyrazino</token>
+  <token value="pyrazole" valType="dbkey">pyrazolo</token>
+  <token value="pyridazine" valType="dbkey">pyridazino</token>
+  <token value="pyridine" valType="dbkey">pyridino</token>
+  <token value="pyridine" valType="dbkey">pyrido</token>
+  <token value="pyrimidine" valType="dbkey">pyrimidino</token>
+  <token value="pyrimidine" valType="dbkey">pyrimido</token>
+  <token value="pyrene" valType="dbkey">pyreno</token>
+  <token value="rubicene" valType="dbkey">rubiceno</token>
+  <token value="trindene" valType="dbkey">trindeno</token>
+  <token value="pyrrole" valType="dbkey">pyrrolo</token>
+  <token value="selenophene" valType="dbkey">selenopheno</token>
+  <token value="tellurophene" valType="dbkey">telluropheno</token>
+  <token value="thiophene" valType="dbkey">thiopheno</token>
+  <token value="thiophene" valType="dbkey">thieno</token>
+  <token value="thiopyran" valType="dbkey">thiopyrano</token>
+
+
+
+  <token value="pentalene" valType="dbkey">pentaleno</token>
+  <token value="heptalene" valType="dbkey">heptaleno</token>
+  <token value="biphenylene" valType="dbkey">biphenyleno</token>
+  <token value="triphenylene" valType="dbkey">triphenyleno</token>
+  <token value="naphthacene" valType="dbkey">naphthaceno</token>
+  <token value="pentapheno" valType="dbkey">pentapheno</token>
+  <token value="pentaceno" valType="dbkey">pentaceno</token>
+  <token value="tetraphenyleno" valType="dbkey">tetraphenyleno</token>
+  <token value="hexapheno" valType="dbkey">hexapheno</token>
+  <token value="hexaceno" valType="dbkey">hexaceno</token>
+  <token value="trinaphthyleno" valType="dbkey">trinaphthyleno</token>
+  <token value="heptapheno" valType="dbkey">heptapheno</token>
+  <token value="heptaceno" valType="dbkey">heptaceno</token>
+
+</tokenList>
+
+
+

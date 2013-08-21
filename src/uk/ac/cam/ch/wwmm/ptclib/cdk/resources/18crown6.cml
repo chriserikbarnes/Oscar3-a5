@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema/cml2/core">
+<atomArray>
+<atom elementType="C" id="a212" x2="6.60064" y2="-8.49072"/>
+<atom elementType="O" hydrogenCount="0" id="a214" x2="6.60064" y2="-10.0137"/>
+<atom elementType="O" hydrogenCount="0" id="a220" x2="9.23856" y2="-8.49072"/>
+<atom elementType="C" id="a222" x2="7.9196" y2="-7.72922"/>
+<atom elementType="O" hydrogenCount="0" id="a234" x2="11.8765" y2="-10.0137"/>
+<atom elementType="C" id="a236" x2="11.8765" y2="-8.49072"/>
+<atom elementType="C" id="a238" x2="10.5575" y2="-7.72922"/>
+<atom elementType="C" id="a247" x2="5.28169" y2="-10.7752"/>
+<atom elementType="C" id="a249" x2="5.28169" y2="-12.2982"/>
+<atom elementType="O" hydrogenCount="0" id="a251" x2="6.60064" y2="-13.0597"/>
+<atom elementType="C" id="a263" x2="6.60064" y2="-14.5827"/>
+<atom elementType="C" id="a265" x2="7.9196" y2="-15.3442"/>
+<atom elementType="O" hydrogenCount="0" id="a267" x2="9.23856" y2="-14.5827"/>
+<atom elementType="C" id="a295" x2="10.5575" y2="-15.3442"/>
+<atom elementType="C" id="a297" x2="11.8765" y2="-14.5827"/>
+<atom elementType="O" hydrogenCount="0" id="a299" x2="11.8765" y2="-13.0597"/>
+<atom elementType="C" id="a315" x2="13.1954" y2="-12.2982"/>
+<atom elementType="C" id="a317" x2="13.1954" y2="-10.7752"/>
+</atomArray>
+<bondArray>
+<bond atomRefs2="a212 a214" id="b224" order="1"/>
+<bond atomRefs2="a220 a222" id="b228" order="1"/>
+<bond atomRefs2="a222 a212" id="b229" order="1"/>
+<bond atomRefs2="a234 a236" id="b243" order="1"/>
+<bond atomRefs2="a236 a238" id="b244" order="1"/>
+<bond atomRefs2="a238 a220" id="b245" order="1"/>
+<bond atomRefs2="a214 a247" id="b257" order="1"/>
+<bond atomRefs2="a247 a249" id="b258" order="1"/>
+<bond atomRefs2="a249 a251" id="b259" order="1"/>
+<bond atomRefs2="a251 a263" id="b273" order="1"/>
+<bond atomRefs2="a263 a265" id="b274" order="1"/>
+<bond atomRefs2="a265 a267" id="b275" order="1"/>
+<bond atomRefs2="a267 a295" id="b305" order="1"/>
+<bond atomRefs2="a295 a297" id="b306" order="1"/>
+<bond atomRefs2="a297 a299" id="b307" order="1"/>
+<bond atomRefs2="a299 a315" id="b322" order="1"/>
+<bond atomRefs2="a315 a317" id="b323" order="1"/>
+<bond atomRefs2="a317 a234" id="b324" order="1"/>
+</bondArray>
+</molecule>

@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Oscar3 Search</title>
+</head>
+<body>
+<h2>Oscar3 Search</h2>
+<p>Please see the <a href="docs/search.html">documentation</a> for 
+instructions on how to make use of chemically-aware searching.</p>
+<form name="input" action="Search" method="GET">
+Query: <input name="query" type="text"></input><br>
+Search Type: 
+<ul>
+<li><input name="type" type="radio" value="word" checked="checked">Advanced query</li>
+<li><input name="type" type="radio" value="strictword">Text only</li>
+</ul>
+Results Type:
+<ul>
+<li><input name="resultsType" type="radio" value="snippets" checked="checked">snippets - document titles and search terms in their context</li>
+<li><input name="resultsType" type="radio" value="compoundsList">compoundsList - all compounds in the documents found</li>
+<li><input name="resultsType" type="radio" value="hitsList">hitsList - compounds found by the search only</li>
+<!-- <li><input name="resultsType" type="radio" value="assoc">associations</li> -->
+</ul>
+
+<input type="submit" value="Submit!">
+<input type="button" value="Add Term" onClick="addTerm()">
+</form>
+<a href="index.html">Back to main server page</a>
+</body>
+</html>

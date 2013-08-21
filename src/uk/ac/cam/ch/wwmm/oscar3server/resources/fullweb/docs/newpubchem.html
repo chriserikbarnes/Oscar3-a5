@@ -1,0 +1,25 @@
+<html>
+<head><title>New PubChem Mirror for Oscar3</title></head>
+<body>
+<h1>New PubChem Mirror for Oscar3</h1>
+<p>This file explains the (new as of alpha5) method of storing PubChem records,
+to assist with name resolution. Rather than using SQL bases, this new method
+uses simple on-disk data structures to store the data.</p>
+<h2>Initialisation</h2>
+<p>First, make sure you have set up a workspace for Oscar3. Next, run Oscar3
+from the command line with the <tt>FetchPubChem</tt> command. And wait for
+a few hours, while Oscar3 downloads the relevant files from PubChem (several
+gigabytes of them - it may be a good idea to inform your systems administrator
+or other users of your network connection before doing this), analyses
+them, and builds an index. And that's it! No further action is required.</p>
+<p>Alternatively, you can fetch the relevant files from PubChem yourself. You
+will need all of the <tt>.sdf.gz</tt> files in 
+<a href="ftp://ftp.ncbi.nlm.nih.gov/pubchem/Compound/CURRENT-Full/SDF">ftp://ftp.ncbi.nlm.nih.gov/pubchem/Compound/CURRENT-Full/SDF</a>, and
+also the files <tt>CID-MeSH</tt> and <tt>CID-Synonym.gz</tt> from
+<a href="ftp://ftp.ncbi.nlm.nih.gov/pubchem/Compound/Extras">ftp://ftp.ncbi.nlm.nih.gov/pubchem/Compound/Extras</a>.
+These should be placed in the directory specified by the <tt>pcdir</tt>
+property in the Oscar3 properties file. If this has not already been set,
+or has been set to <tt>none</tt>, you will need to set it yourself. Having
+fetched the relevant files, run Oscar3 with the <tt>BuildPubChem</tt>
+command.</p>
+</body></html>

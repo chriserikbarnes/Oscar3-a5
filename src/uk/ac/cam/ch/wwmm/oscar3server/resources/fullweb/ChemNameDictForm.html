@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>ChemNameDict</title>
+</head>
+<body>
+	<h2>ChemNameDict</h2>
+	<p>A dictionary of chemical names in your workspace</p>
+	<table border="1">
+	<tr>
+	<form name="query" action="ChemNameDict" method="get">
+		<input type="hidden" name="action" value="get"></input>
+		<input name="type" type="hidden" value="smiles"></input>
+		<th>Get SMILES from name</th> 
+		<td>Chemical Name:
+		<input name="name" type="text"></input>
+		</td><td></td><td></td>
+		<td>
+		<input type="submit" value="Submit!"></input> </form>
+		</td>
+	</tr>
+	<tr>
+		<form name="query" action="ChemNameDict" method="get">
+		<input type="hidden" name="action" value="get"></input>
+		<input name="type" type="hidden" value="inchi"></input>
+		<th>Get InChI from name</th> 
+		<td>Chemical Name:
+		<input name="name" type="text"></input>
+		</td><td></td><td></td>
+		<td>
+		<input type="submit" value="Submit!"></input> </form>
+		</td>
+	</tr>
+	<tr>
+	<form name="put" action="ChemNameDict" method="get">
+		<input type="hidden" name="action" value="put"></input>
+		<th>Enter Chemical</th>
+		<td>Chemical Name: <input name="name" type="text"></input></td>
+		<td>SMILES: <input name="smiles" type="text"></input></td>
+		<td>InChI: <input name="inchi" type="text"></input></td>
+		<td><input type="submit" value="Submit!"></input></td>
+	</form>
+	</tr>
+	<tr>
+	<form name="stop" action="ChemNameDict" method="get">
+		<input type="hidden" name="action" value="stop"></input>
+		<th>Enter Stopword</th>
+			<td>Stopword: <input name="word" type="text"></input></td>
+			<td></td><td></td>
+		<td><input type="submit" value="Submit!"></input></td>
+	</form>
+	</tr>
+	</table>
+	<table border="1">
+	<tr>
+	<form name="viewstop" action="ChemNameDict" method="get">
+	<input type="hidden" name="action" value="viewstop"></input>
+	<th><input type="submit" value="View"></input></th>
+	<th>Stopwords</th>
+	</form>
+	</tr>
+		<tr>
+	<form name="save" action="ChemNameDict" method="get">
+		<th>
+		<input type="hidden" name="action" value="save"></input>
+		<input type="submit" value="Save"></input>
+		</th>
+	<th>ChemNameDict</th>
+	</form>
+	</tr>
+	<tr>
+	<form name="importChEBIFromOBO" action="ChemNameDict" method="get">
+		<td><input type="hidden" name="action" value="importChEBIFromOBO"></input>
+		<input type="submit" value="Import"></input></td>
+		<th>ChEBI from OBO file in Oscar3</th>
+	</form>
+	</tr>
+	<tr>
+	<form name="retrain" action="ChemNameDict" method="get">
+		<td><input type="hidden" name="action" value="retrain"></input>
+		<input type="submit" value="Retrain"></input></td>
+		<th>Chemical name recogniser</th>
+	</form>
+	</tr>
+	</table>
+	<a href="index.html">Back to main server page</a>
+</body>
+</html>

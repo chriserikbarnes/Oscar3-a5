@@ -1,0 +1,44 @@
+<html>
+<head><title>The Data Parser</title></head>
+<body>
+<h1>The Data Parser</h1>
+<p>This modules performs the task of recognising and parsing experimental data
+such as NMR and IR spectra, melting points, elemental analysis and other
+routine methods of characterising newly synthesised organic compounds. 
+It requires a data file that works by defining regular expressions. These 
+regular expressions are defined using the 
+<a href="http://jregex.sourceforge.net/">JRegex</a> regular
+expression language, and not the built-in Java regular expression
+language, for historical reasons.</p>
+<p>The process of data parsing is triggered in a number of different ways. See
+the <a href="processing.html">Processing</a> and <a href="flow.html">OscarFlow</a>
+documentation for more details. The output of data parsing is a document in
+itself, known as "Inline Data XML", and in the modes which can generate
+multiple output files for a given input, the output files are named "data.xml".</p>
+<p>By default, the data parser only looks for data in sections of the document
+with the heading "Experimental". To change this behaviour, you may set
+the <a href="properties.html">property</a> <tt>dataOnlyInExperimental</tt> to
+<tt>no</tt>, which will cause the parser to look for data in the entire document.</p>
+<h2>Data Parser data</h2>
+<p>The data for the Data Parser is kept in the resource file 
+<tt>uk/ac/cam/ch/wwmm/oscar3/dataparse/regexes.xml</tt>. This file is an
+XML file, and contains several types of information:</p>
+<dl>
+<dt><tt>top</tt>, <tt>node</tt></dt>
+<dd>These define a tree of regular expressions. The <tt>top</tt> element
+is used for paragraphs in experimental sections. This element defines
+a number of <tt>child</tt> elements. For each <tt>child</tt>, the <tt>node</tt>
+corresponding to the <tt>child</tt> is found, and the regular expression
+defined in the <tt>regex</tt> is run over the paragraph. If the regular
+expression matches, then the span corresponding to the group defined in
+the <tt>parsegroup</tt> attribute is wrapped up in an XML element, and the
+<tt>node</tt> elements referenced in each <tt>child</tt> are run on that span,
+and so on recursively.</dd>
+<dt><tt>def</tt><dt>
+<dd>These define regular expressions or parts of regular expressions, which
+can be incorporated by reference into
+<tt>regex</tt> sections of <tt>node</tt> elements, or into <tt>def</tt>
+elements.</dd>
+</dl> 
+</body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema/cml2/core">
+<atomArray>
+<atom elementType="O" hydrogenCount="0" id="a1303" x2="9.34636" y2="-18.7899"/>
+<atom elementType="O" hydrogenCount="0" id="a1305" x2="9.34636" y2="-21.3937"/>
+<atom elementType="O" hydrogenCount="0" id="a1307" x2="11.8227" y2="-22.1983"/>
+<atom elementType="O" hydrogenCount="0" id="a1309" x2="13.3532" y2="-20.0918"/>
+<atom elementType="O" hydrogenCount="0" id="a1311" x2="11.8227" y2="-17.9853"/>
+<atom elementType="C" id="a1344" x2="9.34636" y2="-17.2669"/>
+<atom elementType="C" id="a1346" x2="11.0612" y2="-16.6664"/>
+<atom elementType="C" id="a1352" x2="13.2938" y2="-17.5912"/>
+<atom elementType="C" id="a1354" x2="14.1147" y2="-18.7729"/>
+<atom elementType="C" id="a1362" x2="13.2938" y2="-22.5925"/>
+<atom elementType="C" id="a1364" x2="14.3707" y2="-21.5156"/>
+<atom elementType="C" id="a1370" x2="7.87526" y2="-19.1841"/>
+<atom elementType="C" id="a1374" x2="7.87526" y2="-20.9995"/>
+<atom elementType="C" id="a1380" x2="11.0612" y2="-23.5173"/>
+<atom elementType="C" id="a1382" x2="9.34636" y2="-22.9167"/>
+</atomArray>
+<bondArray>
+<bond atomRefs2="a1303 a1344" id="b1345" order="1"/>
+<bond atomRefs2="a1311 a1346" id="b1347" order="1"/>
+<bond atomRefs2="a1344 a1346" id="b1351" order="1"/>
+<bond atomRefs2="a1311 a1352" id="b1353" order="1"/>
+<bond atomRefs2="a1309 a1354" id="b1355" order="1"/>
+<bond atomRefs2="a1352 a1354" id="b1361" order="1"/>
+<bond atomRefs2="a1307 a1362" id="b1363" order="1"/>
+<bond atomRefs2="a1362 a1364" id="b1365" order="1"/>
+<bond atomRefs2="a1364 a1309" id="b1369" order="1"/>
+<bond atomRefs2="a1303 a1370" id="b1371" order="1"/>
+<bond atomRefs2="a1305 a1374" id="b1375" order="1"/>
+<bond atomRefs2="a1374 a1370" id="b1379" order="1"/>
+<bond atomRefs2="a1307 a1380" id="b1381" order="1"/>
+<bond atomRefs2="a1305 a1382" id="b1383" order="1"/>
+<bond atomRefs2="a1382 a1380" id="b1387" order="1"/>
+</bondArray>
+</molecule>

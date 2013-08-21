@@ -1,0 +1,26 @@
+<!ELEMENT suffixRulesList (suffixRules)+>
+
+<!ELEMENT suffixRules     (rule)+>
+<!ATTLIST suffixRules type CDATA #REQUIRED>
+
+<!ELEMENT rule (addgroup|doublebond|triplebond|setOutID|changecharge)*>
+<!ATTLIST rule value CDATA #REQUIRED
+               subType CDATA #IMPLIED>
+
+<!ELEMENT addgroup EMPTY>
+<!ATTLIST addgroup SMILES CDATA #REQUIRED
+                    bondOrder CDATA #IMPLIED
+                    labels CDATA #IMPLIED
+                    setsOutID (yes|no) #IMPLIED
+                    setsDefaultInID (yes|no) #IMPLIED
+                    setsFunctionalID (yes|no) #IMPLIED
+                    outValency CDATA #IMPLIED
+                    ketoneLocant (yes|no) #IMPLIED>
+
+<!ELEMENT fail EMPTY>
+<!ELEMENT doublebond EMPTY>
+<!ELEMENT triplebond EMPTY>
+<!ELEMENT setOutID EMPTY>
+<!ATTLIST setOutID outValency CDATA #IMPLIED>
+<!ELEMENT changecharge EMPTY>
+<!ATTLIST changecharge charge CDATA #REQUIRED>

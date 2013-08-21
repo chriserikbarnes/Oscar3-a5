@@ -1,0 +1,172 @@
+<!DOCTYPE tokenList SYSTEM "tokenList.dtd">
+<!-- See the DTD for more details -->
+<!--This are groups but may be used as substiutents when paired with appropriate suffixes-->
+<tokenList tagname="group" type="ring" subType="arylGroup" symbol="z">
+  <token value="aceanthrylene" valType="dbkey">aceanthrylen</token>
+  <token value="acenaphthylene" valType="dbkey">acenaphthylen</token>
+  <token value="C1Cc2cccc3cccc1c23" labels="1/2/2a/3/4/5/5a/6/7/8/8a/8b" valType="SMILES">acenaphthen</token>
+  <token value="C1Cc2cccc3cccc1c23" labels="1/2/2a/3/4/5/5a/6/7/8/8a/8b" valType="SMILES" addGroup="=O locant1;=O locant2">acenaphthoquinon</token>
+  <token value="acephenanthrylene" valType="dbkey">acephenanthrylen</token>
+  <token value="c1cccc2[as]c3ccccc3cc12" labels="1/2/3/4/4a/10/10a/5/6/7/8/8a/9/9a" valType="SMILES">acridarsin</token>
+  <token value="acridine" valType="dbkey">acridin</token>
+  <token value="aniline" valType="dbkey">anilin</token>
+  <token value="c1(ccccc1)OC" labels="1/2/3/4/5/6//" valType="SMILES">anisol</token>
+  <token value="anthracene" valType="dbkey">anthracen</token>
+  <token value="anthracene" valType="dbkey" addGroup="=O locant9;=O locant10">anthraquinon</token>
+  <token value="c1cccc2[as]cc3ccccc3c12" labels="1/2/3/4/4a/5/6/6a/7/8/9/10/10a/10b" valType="SMILES">arsanthridin</token>
+  <token value="[as]1ccc2ccccc12" labels="1/2/3/3a/4/5/6/7/7a" valType="SMILES">arsindol</token>  
+  <token value="[as]1cccc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">arsindolin</token>  
+  <token value="as-indacene" valType="dbkey">as-indacen</token>
+  <token value="azulene" valType="dbkey">azulen</token>
+  <token value="c1(ccccc1)C(=O)C(=O)c2ccccc2" labels="1/2/3/4/5/6/////1'/2'/3'/4'/5'/6'" valType="SMILES">benzil</token>
+  <token value="biphenylene" valType="dbkey">biphenylen</token>
+  <token value="benzene" valType="dbkey">benzen</token>
+  <token value="c1(ccccc1)C(=O)c2ccccc2" labels="1/2/3/4/5/6///1'/2'/3'/4'/5'/6'" valType="SMILES">benzophenon</token>
+  <token value="benzene" valType="dbkey" addGroup="=O locant1;=O locant4">benzoquinon</token>
+  <token value="c1nccc2c3ccccc3nc12" labels="1/2/3/4/4a/4b/5/6/7/8/8a/9/9a" valType="SMILES">betacarbolin</token>
+  <token value="c1nccc2c3ccccc3nc12" labels="1/2/3/4/4a/4b/5/6/7/8/8a/9/9a" valType="SMILES">beta-carbolin</token>  
+  <token value="carbazole" valType="dbkey">carbazol</token>
+  <token value="c1c(O)c(C)ccc1C(C)C" labels="none" valType="SMILES">carvacrol</token>
+  <token value="c1(O)c(O)cccc1" labels="1//2//3/4/5/6" valType="SMILES">catechol</token>
+  <token value="c1(ccccc1)C=CC(=O)c2ccccc2" labels="1/2/3/4/5/6/////1'/2'/3'/4'/5'/6'" valType="SMILES">chalcon</token>
+  <token value="chromane" valType="dbkey">chroman</token>
+  <token value="S1CCCc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">thiochroman</token>
+  <token value="[Se]1CCCc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">selenochroman</token>
+  <token value="[Te]1CCCc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">tellurochroman</token>
+  <token value="chromene" valType="dbkey">chromen</token>
+  <token value="s1cccc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">thiochromen</token>
+  <token value="[se]1cccc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">selenochromen</token>
+  <token value="[Te]1CC=Cc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">tellurochromen</token>
+  <token value="chrysene" valType="dbkey">chrysen</token>
+  <token value="cinnoline" valType="dbkey">cinnolin</token>
+  <token value="c1cc2ccc3ccc4ccc5ccc6ccc71.c28c3c4c5c6c78" valType="SMILES" labels="1/2/2a/3/4/4a/5/6/6a/7/8/8a/9/10/10a/11/12/12a/12b/12c/12d/12e/12f/12g" >coronen</token>
+  <token value="c1ccccc1O" labels="2/3/4/5/6/1/" valType="SMILES" addGroup="C locant2">cresol</token>
+  <token value="cumene" valType="dbkey">cumen</token>
+  <token value="cumene" valType="dbkey" addGroup="C locant4">cymen</token>
+  <token value="cyclopenta[a]phenanthrene" valType="dbkey">cyclopenta[a]phenanthren</token>
+  <token value="fluoranthene" valType="dbkey">fluoranthen</token>
+  <token value="fluorene" valType="dbkey">fluoren</token>
+  <token value="fulvene" valType="dbkey">fulven</token>
+  <token value="furan" valType="dbkey">furan</token>
+  <token value="furazan" valType="dbkey">furazan</token>
+  <token value="hexacene" valType="dbkey">hexacen</token>
+  <token value="hexaphene" valType="dbkey">hexaphen</token>
+  <token value="heptacene" valType="dbkey">heptacen</token>
+  <token value="heptalene" valType="dbkey">heptalen</token>
+  <token value="heptaphene" valType="dbkey">heptaphen</token>
+  <token value="c1(O)ccc(O)cc1" labels="1//2/3/4//5/6" valType="SMILES">hydroquinon</token>
+  <token value="imidazole" valType="dbkey">imidazol</token>
+  <token value="imidazolidine" valType="dbkey">imidazolidin</token>
+  <token value="N1CNCC1" valType="SMILES" addBond="2 locant2">imidazolin</token>
+  <token value="C1CCc2ccccc12" labels="1/2/3/3a/4/5/6/7/7a" valType="SMILES">indan</token>
+  <token value="indazole" valType="dbkey">indazol</token>
+  <token value="indene" valType="dbkey">inden</token>
+  <token value="indole" valType="dbkey">indol</token>
+  <token value="indoline" valType="dbkey">indolin</token>
+  <token value="indolizine" valType="dbkey">indolizin</token>
+  <token value="c1[as]cc2ccccc12" labels="1/2/3/3a/4/5/6/7/7a" valType="SMILES">isoarsindol</token>
+  <token value="c1[as]ccc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">isoarsinolin</token>
+  <token value="isobenzofuran" valType="dbkey">isobenzofuran</token>
+  <token value="isochromane" valType="dbkey">isochroman</token>
+  <token value="C1SCCc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">thioisochroman</token>
+  <token value="C1[Se]CCc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">selenoisochroman</token>
+  <token value="C1[Te]CCc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">telluroisochroman</token>
+  <token value="c1occc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">isochromen</token>
+  <token value="c1sccc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">thioisochromen</token>
+  <token value="c1[se]ccc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">selenoisochromen</token>
+  <token value="C1[Te]C=Cc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">telluroisochromen</token>
+  <token value="isoindole" valType="dbkey">isoindol</token>
+  <token value="isoindoline" valType="dbkey">isoindolin</token>
+  <token value="isoquinoline" valType="dbkey">isoquinolin</token>
+  <token value="isoquinoline" valType="dbkey" addGroup="=O locant1">isoquinolon</token>
+  <token value="c1pcc2ccccc12" labels="1/2/3/3a/4/5/6/7/7a" valType="SMILES">isophosphindol</token>
+  <token value="c1pccc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">isophosphinolin</token>
+  <token value="isothiazole" valType="dbkey">isothiazol</token>
+  <token value="isoxazole" valType="dbkey">isoxazol</token>
+  <token value="isoxazole" valType="dbkey">isooxazol</token>
+  <token value="O1NCCC1" valType="SMILES">isoxazolidin</token>
+  <token value="O1NCCC1" valType="SMILES">isooxazolidin</token>
+  <token value="mesitylene" valType="dbkey">mesitylen</token>
+  <token value="morpholine" valType="dbkey">morpholin</token>
+  <token value="S1CCNCC1" valType="SMILES">thiomorpholin</token>
+  <token value="[Se]1CCNCC1" valType="SMILES">selenomorpholin</token>
+  <token value="[Te]1CCNCC1" valType="SMILES">telluromorpholin</token>
+  <token value="naphthacene" valType="dbkey">naphthacen</token>
+  <token value="naphthalene" valType="dbkey">naphthalen</token>
+  <token value="naphthalene" valType="dbkey" addGroup="=O locant1;=O locant4">naphthoquinon</token>
+  <token value="naphthalene" valType="dbkey" addHeteroAtom="N locant1;N locant8">naphthyridin</token>
+  <token value="c1cc2ccc3ccc4cc5ccc6ccc7ccc8cc91.c19c2c3c4c9c5c6c7c8c19" labels="1/2/2a/3/4/4a/5/6/6a/7/7a/8/9/9a/10/11/11a/12/13/13a/14/14a/14b/14c/14d/14e/14f/14g/14h/14i/14j/14k" valType="SMILES">ovalen</token>
+  <token value="pentacene" valType="dbkey">pentacen</token>
+  <token value="pentalene" valType="dbkey">pentalen</token>
+  <token value="pentaphene" valType="dbkey">pentaphen</token>
+  <token value="perimidine" valType="dbkey">perimidin</token>
+  <token value="c1ccc2cccc3c4cccc5cccc6c71.c237.c456" labels="1/2/3/3a/4/5/6/6a/6b/7/8/9/9a/10/11/12/12a/12b/12c/12d" valType="SMILES">perylen</token>
+  <token value="phenalene" valType="dbkey">phenalen</token>
+  <token value="phenanthrene" valType="dbkey">phenanthren</token>
+  <token value="c1cccc2ncc3ccccc3c12" labels="1/2/3/4/4a/5/6/6a/7/8/9/10/10a/10b" valType="SMILES">phenanthridin</token>
+  <token value="c1cccc2ccc3ccccc3c12" labels="1/2/3/4/4a/5/6/6a/7/8/9/10/10a/10b" valType="SMILES" addHeteroAtom="N locant1;N locant7">phenanthrolin</token>
+  <token value="phenarsazine" valType="dbkey">phenarsazin</token>
+  <token value="phenazine" valType="dbkey">phenazin</token>
+  <token value="phenothiazine" valType="dbkey">phenothiazin</token>
+  <token value="phenoxathiin" valType="dbkey">phenoxathiin</token>
+  <token value="phenoxazine" valType="dbkey">phenoxazin</token>
+  <token value="p1ccc2ccccc12" labels="1/2/3/3a/4/5/6/7/7a" valType="SMILES">phosphindol</token>
+  <token value="p1cccc2ccccc12" labels="1/2/3/4/4a/5/6/7/8/8a" valType="SMILES">phosphinolin</token>
+  <token value="P1=CC=CC=C1" valType="SMILES">phosphorin</token>
+  <token value="phthalazine" valType="dbkey">phthalazin</token>
+  <token value="piperazine" valType="dbkey">piperazin</token>
+  <token value="piperidine" valType="dbkey">piperidin</token>
+  <token value="c1cccc2ccc3c4ccc5ccccc5c4ccc3c21" labels="1/2/3/4/4a/5/6/6a/6b/7/8/8a/9/10/11/12/12a/12b/13/14/14a/14b" valType="SMILES">picen</token>
+  <token value="c1ccc2cccc3cc4ccccc4cc51.c235" labels="1/2/3/3a/4/5/6/6a/7/7a/8/9/10/11/11a/12/12a/12b" valType="SMILES">pleiaden</token>
+  <token value="pteridine" valType="dbkey">pteridin</token>
+  <token value="purine" valType="dbkey">purin</token>
+  <token value="pyran" valType="dbkey">pyran</token>
+  <token value="s1ccccc1" valType="SMILES">thiopyran</token>
+  <token value="[se]1ccccc1" valType="SMILES">selenopyran</token>
+  <token value="[Te]1CC=CC=C1" valType="SMILES">telluropyran</token>
+  <token value="c1cccc2c3cc4ccc5cc6ccccc6c6cc7ccc8cc12.c38c7c4c56" labels="1/2/3/4/4a/4b/5/5a/6/7/7a/8/8a/9/10/11/12/12a/12b/13/13a/14/15/15a/16/15b/15c/15d/15e" valType="SMILES">pyranthren</token>
+  <token value="pyrazine" valType="dbkey">pyrazin</token>
+  <token value="pyrazole" valType="dbkey">pyrazol</token>
+  <token value="N1NCCC1" valType="SMILES">pyrazolidin</token>
+  <token value="pyrazoline" valType="dbkey" addBond="2 locant3">pyrazolin</token>
+  <token value="pyrene" valType="dbkey">pyren</token>
+  <token value="pyridazine" valType="dbkey">pyridazin</token>
+  <token value="pyridine" valType="dbkey">pyridin</token>
+  <token value="pyrimidine" valType="dbkey">pyrimidin</token>
+  <token value="c1(O)c(O)cccc1" labels="1//2//3/4/5/6" valType="SMILES">pyrocatechol</token>
+  <token value="pyrrole" valType="dbkey">pyrrol</token>
+  <token value="c1ccn2cccc12" labels="1/2/3/4/5/6/7/7a" valType="SMILES">pyrrolizin</token>
+  <token value="pyrrolidine" valType="dbkey">pyrrolidin</token>
+  <token value="pyrrolidine" valType="dbkey" addGroup="=O locant2">pyrrolidon</token>
+  <token value="N1CCCC1" valType="SMILES" addBond="2 locant2">pyrrolin</token>
+  <token value="[O+]1=CC=CC=C1" valType="SMILES">pyrylium</token>
+  <token value="quinazoline" valType="dbkey">quinazolin</token>
+  <token value="quinoline" valType="dbkey">quinolin</token>
+  <token value="quinolizine" valType="dbkey">quinolizin</token>
+  <token value="quinoline" valType="dbkey" addGroup="=O locant2">quinolon</token>
+  <token value="quinoxaline" valType="dbkey">quinoxalin</token>
+  <token value="quinuclidine" valType="dbkey">quinuclidin</token>
+  <token value="c1(O)cc(O)ccc1" labels="1//2/3//4/5/6" valType="SMILES">resorcinol</token>
+  <token value="c1ccc2c3ccccc3c3c4cccc5c6ccccc6c6c71.c237.c456" labels="1/2/3/3a/3b/4/5/6/7/7a/7b/8/9/10/10a/10b/11/12/13/14/14a/14b/14c/14d/14e" valType="SMILES">rubicen</token>
+  <token value="s-indacene" valType="dbkey">s-indacen</token>
+  <token value="stilbene" valType="dbkey">stilben</token>
+  <token value="C=Cc1ccccc1" labels="alpha/beta/1/2/3/4/5/6" valType="SMILES">styren</token>
+  <token value="c1(S(=O)(=O)(O))ccccc1" labels="1/////2/3/4/5/6" valType="SMILES" addGroup="N locant4">sulfanilic</token>
+  <token value="tetraphenylene" valType="dbkey">tetraphenylen</token>
+  <token value="tetracene" valType="dbkey">tetracen</token>
+  <token value="thianthrene" valType="dbkey">thianthren</token>
+  <token value="[se]1cccc1" valType="SMILES">selenophen</token>
+  <token value="[Te]1C=CC=C1" valType="SMILES">tellurophen</token>
+  <token value="thiophene" valType="dbkey">thiophen</token>
+  <token value="c1c(C)ccc(C(C)C)c1O" labels="none" valType="SMILES">thymol</token>
+  <token value="toluene" valType="dbkey">toluen</token>
+  <token value="toluene" valType="dbkey" addGroup="N locant2">toluidin</token>
+  <token value="trinaphthylene" valType="dbkey">trinaphthylen</token>
+  <token value="trindene" valType="dbkey">trinden</token>
+  <token value="triphenylene" valType="dbkey">triphenylen</token>
+  <token value="xanthene" valType="dbkey">xanthen</token>
+  <token value="c1cccc2sc3ccccc3cc12" labels="1/2/3/4/4a/10/10a/5/6/7/8/8a/9/9a" valType="SMILES">thioxanthen</token>
+  <token value="c1cccc2[se]c3ccccc3cc12" labels="1/2/3/4/4a/10/10a/5/6/7/8/8a/9/9a" valType="SMILES">selenoxanthen</token>
+  <token value="C1=CC=CC=2[Te]C=3C=CC=CC3CC12" labels="1/2/3/4/4a/10/10a/5/6/7/8/8a/9/9a" valType="SMILES">telluroxanthen</token>
+  <token value="benzene" valType="dbkey" addGroup="C locant1;C locant2">xylen</token>
+</tokenList>

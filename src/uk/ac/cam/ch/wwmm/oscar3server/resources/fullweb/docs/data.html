@@ -1,0 +1,162 @@
+<html>
+<head><title>Oscar3 data</title></head>
+<body>
+<h1>Oscar3 data</h1>
+<p>Oscar3 needs to use a considerable amount of data in order to analyse text.
+This file explains the various sources of data that Oscar3 uses, and how
+to manipulate those data sources.</p>
+<h2>Overview</h2>
+<p>There are three main sorts of data used by Oscar3.</p>
+<ul>
+<li><b>ChemNameDict</b> - a dictionary of chemical names and structures</li>
+<li><b>Model files</b> - this is taken from documents that have
+been marked up by hand</li>
+<li><b>Resources Files</b> - these cover a wide range of files</li>
+</ul>
+<p>Note that the properties file used for configuring Oscar3 also has an affect
+on the operation of Oscar3</p>
+<h3>ChemNameDict</h3>
+<p>ChemNameDict is a store of chemical names and structures, that may be edited
+by the user. In addition, ChemNameDict contains a mapping between chemical
+structures and ontology identifiers, and a list of stop words.</p>
+<p>The data for ChemNameDict is kept in the Oscar3 workspace, in the 
+<tt>chemnamedict</tt> subdirectory, in a file called <tt>chemnamedict.xml</tt>.
+If Oscar3 is being used without a workspace, then a version of the file held as
+a resource file is used.</p>
+<p>The format of ChemNameDict has been modified for Oscar3 Alpha 5. Alpha 4
+and previous versions used a different format.</p>
+<p>ChemNameDict consists of the following:</p>
+<ul>
+<li>A list of stopwords - words that are not chemical names</li>
+<li>A list of chemical records - these must contain an InChI string, and may
+also have names, ontology identifiers, and a SMILES string. The InChI string
+for each chemical record is unique.</li>
+<li>A list of orphan names - these are chemical names, without structures
+or ontology identifiers.</li>
+</ul>
+<p>Note that this arrangement does not directly allow names to be associated
+with ontology IDs without having an InChI string. If you need to do this,
+list the chemical names in this file, and then list the mappings from
+name to ontology identifier in 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/ontology.txt</tt> - this
+arrangement will keep the name-to-ontology mappings, but also ensure
+that the chemicals appear as named entities of type CM, and not ONT.</p>
+<p>The default contents of ChemNameDict consist of a small set of common solvents
+and regents (known by formulae or acronyms) compiled by the Oscar authors, a
+larger set of names and structures and ontology identifiers (extracted from
+ChEBI), and no stopwords or orphan names.</p>
+<p>ChemNameDict can be modified via the ChemNameDict form, accessible via the
+main server page. There, you can add compounds or stopwords, and also fetch
+and import the latest version of ChEBI. Note that changes made here (except for
+importing ChEBI) need to be saved to disc, using the button on the ChemNameDict
+form.</p>
+<p>Note that not all of the changes made to ChemNameDict will take effect
+immediately; multi-word names that Oscar3 previously did not recognise will
+not be immediately recognised, and the n-Gram-based algorithms that guess
+whether words are chemical names or not will not will not immediately use the
+new data you have added to the ChemNameDict. These changes can be made to
+take effect by reloading all of the modules (from the main server page) or
+by stopping the server (remember to save the ChemNameDict) and restarting
+it.</p>
+<h3>Model Files</h3>
+<p>A good way to prepare data for Oscar3 is to mark up papers by hand, to
+produce an annotation similar to what Oscar3 would have produced if it were
+perfect. This data can then be analysed to make lists of chemical names,
+non-chemical names and other such lists that can be used in document analysis.
+Furthermore, a more detailed analysis of the hand-annotated files is
+used to generate parameters for a Maximum Entropy Markov Model (MEMM), and also
+for the maximum entropy models used for <a href="subtypes.html">subtype 
+classification</a>.
+However, these model files are essential even when the old patterns-based
+name recognition is used instead of the MEMM.</p>
+<p>These collections of data are kept as XML files, in two places: as resource
+files, and as files in the Oscar3 workspace, in the <tt>models</tt>
+subdirectory (this does not exist by default, but is
+created when you compile a model file as described below). 
+As different types of text have different characteristics,
+the system allows multiple model files to be stored. Two are included
+as default: <tt>chempapers</tt> (made from chemistry papers - the default) 
+and <tt>pubmed</tt> (made from PubMed abstracts).</p>
+<p>Additional models can be made by producing hand-annotated papers/abstracts
+using the ScrapBook tool. Having produced these hand-annotated papers,
+you can prepare new model files in two ways. The first is to run
+Oscar3 with the command line option <tt>MakeModel</tt>, and the second is to
+use the appropriate button on the ScrapBook main page. For each option
+you will need to give your new model a name. These new models will be
+placed in the <tt>models</tt> subdirectory in your workspace. In general
+it is not a good idea to attempt to modify model files by hand.</p>
+<p>Your choice of which model file to use can be set via the <tt>model</tt>
+option in the <a href="properties.html">properties file</a>.
+<p>Each model file contains, among other things, a set of word lists,
+contained within the <tt>etd</tt> element of the model file.</p>
+<h3>Resources Files</h3>
+<p>These contain miscellaneous pieces of information that don't fit in anywhere
+else. By default, these are "built into" Oscar3 - these are kept in the 
+<tt>.jar</tt> file, or the directories that contain the Java classes. However,
+it is possible to over-ride these files, by creating files in the Oscar3
+workspace.<p>
+<p>Overriding resource files is done in a hierarchy of subdirectories, 
+found in the
+<tt>resources</tt> subdirectory in the workspace. This subdirectory
+should be considered as a partial mirror of the Oscar3 source tree. If a file
+is present in the <tt>resources</tt> directory hierarchy, in the same 
+subsubsub(etc.)directory as a resource file in the Oscar3 source, Oscar3 will
+use the file in the <tt>resources</tt> subdirectory instead of the default.</p>
+<p>The resource files can be explored using the "View Oscar3 resources" link
+on the main server page. In addition, you can send update the resource
+files online by sending a new version of the file via HTTP PUT to the same
+URL that you view the resource file at. Note that changes will not necessarily
+take effect immediately; you may need to reload the parts of Oscar3, for
+example by using the "Reload all modules" link on the main server page.</p>
+<p>Key resource files include:</p>
+<ul>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/dataparse/resources/regexes.xml</b> - this file
+defines regular expressions used to parse experimental data sections.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/recogniser/resources/tlrs.xml</b> - this file
+defines regular expressions, used in the recognition of chemical formulae (and
+a few other similar things). This is only used when not using the MEMM.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/terms/resources/neTerms.txt</b> - a set
+of patterns used for recognising chemical names. This is only used when
+not using the MEMM.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/terms/resources/ontology.txt</b> - a set
+of ontology terms, or patterns used for recognising ontology terms in the
+same style as neTerms.txt.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/terms/resources/custEnt.txt</b> - a set
+of custom named entities to recognise, in the style of neTerms.txt. 
+By default no custom entities are recognised - some examples have
+been provided in the comments in the file.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/terms/resources/usrDictWords.txt</b> - a 
+standard English word list.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/terms/resources/closedClass.txt</b> - a 
+list of common closed class (articles, prepositions, conjunctions etc. - pretty
+much everything except nouns, verbs, adjectives and adverbs.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/terms/resources/chemAses.txt</b> - a list
+of examples of words of type ASE, extracted from the Gene Ontology.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/terms/resources/nonChemAses.txt</b> - a list
+of enzyme words ending in -ase, which are not of type ASE, extracted from the 
+Gene Ontology.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/terms/resources/elements.txt</b> - a list
+of chemical element names and symbols.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/terms/resources/noSplitPrefixes.txt</b> - a 
+list of short strings of letters that occur to the left of hyphens inside
+chemical names.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/chemnamedict/resources/chemnamedict.xml</b> - the
+default ChemNameDict, which also acts as a starting point for custom
+ChemNameDicts.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/chemnamedict/resources/defaultCompounds.xml</b> - a
+list of common reagents, solvents and other chemicals to be included by
+default in ChemNameDict.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/models/resources/*.xml</b> - default model
+files.</li>
+<li><b>uk/ac/cam/ch/wwmm/oscar3/misc/resources/*.xsl</b> (except typesToSciXML) 
+- XSLT stylesheets that can be used to post-process inline annotation. See the
+<tt>xsl</tt> command in <a href="flow.html">the OscarFlow</a> reference.</li>
+<li><b>uk/ac/cam/ch/wwmm/ptclib/cdk/resource/*.cml</b> templates for the
+2D rendering module. You will also need to update extraTemplates.txt in the
+same directory to make use of additional template that you put in that
+directory.</li>
+</ul>
+<p>A number of other resource files also exist: these are often experimental
+in purpose</p>
+</body>
+</html>

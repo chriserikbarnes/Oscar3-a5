@@ -1,0 +1,42 @@
+<html>
+<head><title>Name Recognition</title></head>
+<body>
+<h1>Name Recognition</h1>
+<p>Name recognition is a complex process, involving a variety of stages and
+modules - and a variety of <a href="properties.html">options</a> and forms of 
+<a href="data.html">data</a>. There are essentially two strategies for this
+that you can choose between: using a <a href="memm.html">MEMM</a>
+(Maximum Entropy Markov Model - new in Oscar3 version alpha3 - the default) or 
+using <a href="pattern.html">pattern matching</a> (the old method). 
+There are a few shared steps in both processes. In overview:
+<ol>
+<li>Finding places for name recognition</li>
+<li>Tokenisation</li>
+<li>Use of the MEMM or pattern matching</li>
+<li>Identification of datasections</li>
+</ol>
+<h2>Finding places for name recognition</h2>
+<p>To do this, the SciXML is examined, and all of the paragraphs, section
+headings, figure/table/etc. captions etc. and the paper title are identified
+as places for name recognition. This simple process is not affected by options
+or data.</p>
+<h2>Tokenisation</h2>
+<p>This takes each paragraph (etc.) in turn, and splits it into tokens (words,
+punctuation characters, etc.). This uses the resource file 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/noSplitPrefixes.txt</tt> and 
+the <tt>afterHyphen</tt> wordset from the model file you are using. A
+<a href="tlr.html">token-level regex</a> is also used.</p>
+<h2>Use of the MEMM or pattern matching</h2>
+<p>See the <a href="memm.html">MEMM</a> or 
+<a href="pattern.html">pattern matching</a> documentation.</p>
+<h2>Identification of datasections</h2>
+<p>Datasections are identified in several manners. If a paragraph consists of
+10% or fewer tokens that match the regex <tt>[a-z]*[aeiou][a-z]*</tt>, then
+the entire paragraph is marked up as a datasection. If a paragraph belongs
+in a DIV with the HEADER of "X-Ray data" or similar then the entire paragraph
+is marked up as a datasection. Otherwise, several heuristics are used to
+guess if the paragraph contains a data section, and where it starts. This
+process generates named entities of type "dataSection", which get converted
+into <tt>dataSection</tt> elements in the inline XML.</p>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<filePlaces>
+  <file name="ChEBIStop.txt" place="uk/ac/cam/ch/wwmm/chemnamedict/resources/"/>
+  <file name="defaultCompounds.txt" place="uk/ac/cam/ch/wwmm/chemnamedict/resources/"/>
+  <file name="chemnamedict.xml" place="uk/ac/cam/ch/wwmm/chemnamedict/resources/" reload="chemnamedict"/>
+  <file name="custEnt.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="GENIAToSciXML.xsl" place="uk/ac/cam/ch/wwmm/experimental/resources/"/>
+  <file name="InlineToSubstituted.xsl" place="uk/ac/cam/ch/wwmm/experimental/resources/"/>
+  <file name="style.xsl" place="uk/ac/cam/ch/wwmm/experimental/resources/"/>
+  <file name="toSciXML.xsl" place="uk/ac/cam/ch/wwmm/experimental/resources/"/>
+  <file name="acids.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="alkanes.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="anions.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="aryls.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="cations.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="enyls.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="fragments.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="fusions.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="heteroAtoms.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="heterocycles.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="hw.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="index.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="inlineSuffixes.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="inorganicGroups.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="inorganicSubstituents.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="irregularAlkanes.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="multipliers.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="organicGroups.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="organicSubstituents.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="regexes.dtd" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="regexes.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="regexTokenList.dtd" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="regexTokens.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="suffixes.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="suffixRules.dtd" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="suffixRules.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="tokenFiles.dtd" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="tokenList.dtd" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="unsaturated.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="wordRules.dtd" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="wordRules.xml" place="uk/ac/cam/ch/wwmm/opsin/resources/" reload="opsin"/>
+  <file name="regexes.dtd" place="uk/ac/cam/ch/wwmm/oscar3/dataparse/resources/" reload="dataparser"/>
+  <file name="regexes.xml" place="uk/ac/cam/ch/wwmm/oscar3/dataparse/resources/" reload="dataparser"/>
+  <file name="cInChI-1.bin" place="uk/ac/cam/ch/wwmm/oscar3/deployment/resources/"/>
+  <file name="cInChI-1.exe" place="uk/ac/cam/ch/wwmm/oscar3/deployment/resources/"/>
+  <file name="neTypes.xml" place="uk/ac/cam/ch/wwmm/oscar3/misc/resources/" reload="netypes"/>
+  <file name="typesToSciXML.xsl" place="uk/ac/cam/ch/wwmm/oscar3/misc/resources/"/>
+  <file name="chempapers.xml" place="uk/ac/cam/ch/wwmm/oscar3/models/resources/"/>
+  <file name="pubmed.xml" place="uk/ac/cam/ch/wwmm/oscar3/models/resources/"/>
+  <file name="lexicon.xml" place="uk/ac/cam/ch/wwmm/oscar3/resolver/resources/" reload="resolver"/>
+  <file name="DefaultProperties.dat" place="uk/ac/cam/ch/wwmm/oscar3/resources/"/>
+  <file name="usage.txt" place="uk/ac/cam/ch/wwmm/oscar3/resources/"/>
+  <file name="chebi.obo" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/"/>
+  <file name="chemAses.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="closedClass.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="elements.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="fix.obo" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="iePatterns.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="neTerms.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="custEnt.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="nonChemAses.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="noSplitPrefixes.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="ontology.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="ptcontology.dso" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="rex.obo" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="stopwords.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="structureTypes.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="usrDictWords.txt" place="uk/ac/cam/ch/wwmm/oscar3/terms/resources/" reload="terms"/>
+  <file name="booleanedit.html" place="uk/ac/cam/ch/wwmm/oscar3server/resources/"/>
+  <file name="filePlaces.xml" place="uk/ac/cam/ch/wwmm/oscar3server/resources/"/>
+  <file name="scrapbookindex.html" place="uk/ac/cam/ch/wwmm/oscar3server/resources/"/>
+  <file name="canonicaliser.xsl" place="uk/ac/cam/ch/wwmm/oscar3server/scrapbook/resources/"/>
+  <file name="htmlToSciXML.xsl" place="uk/ac/cam/ch/wwmm/oscar3server/scrapbook/resources/"/>
+  <file name="relitems.xml" place="uk/ac/cam/ch/wwmm/oscar3server/scrapbook/resources/"/>
+  <file name="extraTemplates.txt" place="uk/ac/cam/ch/wwmm/ptclib/cdk/resources/" reload="structurediagram"/>
+  <file name="pubmed2scixml.xsl" place="uk/ac/cam/ch/wwmm/scixml/resources/"/>
+  <file name="*.cml" place="uk/ac/cam/ch/wwmm/ptclib/cdk/resources/" reload="structurediagram"/>
+  <file name="*.xsl" place="uk/ac/cam/ch/wwmm/oscar3/misc/resources/"/>
+</filePlaces>

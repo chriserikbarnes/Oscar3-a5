@@ -1,0 +1,21 @@
+<html>
+<head><title>ScrapBook Index</title></head>
+<body>
+<h1>ScrapBook Index</h1>
+<ul>
+LINKS GO HERE
+</ul>
+<h2>Make new ScrapBook</h2>
+<form action="ScrapBook" method="get">
+<input type="hidden" name="action" value="show">
+Name: <input type="text" name="name">
+<input type="submit" value="Submit!">
+</form>
+<h2>Make a new model based on the scrapbooks</h2>
+<form action="ScrapBook" method="post">
+<input type="hidden" name="action" value="makemodel">
+<br>Model name: <input type="text" name="modelname">
+<input type="submit" value="Make!">
+</form>
+<a href="index.html">Back to main server page</a>
+</body></html>

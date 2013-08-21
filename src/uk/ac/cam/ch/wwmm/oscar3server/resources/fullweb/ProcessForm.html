@@ -1,0 +1,31 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+<title>Process form</title>
+</head>
+<body>
+<h1>Oscar3 Process Form</h1>
+<p>Type or paste some text in here, and Oscar3 will process it.</p>
+<form name="input" action="Process" method="POST">
+<textarea name="contents" rows=24 cols=80></textarea>
+<!-- This accepts HTML or Text. To feed Oscar3 SciXML, you will want
+to use the field "SciXML" instead. -->
+<br>
+Advanced: Enter an OscarFlow command here (or leave blank):<br>
+<input type="text" size="80" name="flowcommand"></input>
+<br>
+Ouput type:
+<input type="radio" name="output" value="markedup" checked="true"> Inline annotation 
+<input type="radio" name="output" value="source"> Source XML 
+<input type="radio" name="output" value="saf"> SAF XML 
+<input type="radio" name="output" value="genia"> Genia SAF XML 
+<input type="radio" name="output" value="data"> Inline data annotation
+<input type="radio" name="output" value="custom"> Custom<br> 
+Advanced: Custom output name:<br>
+<input type="text" size="80" name="name"></input><br>
+<input type="submit" value="Submit!">
+<input type="reset" value="Reset">
+</form>
+<a href="index.html">Back to main server page</a>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+<head><title>Oscar 3 Alpha 5 Documentation</title></head>
+<body>
+<h1>Oscar3 Alpha 5 Documentation</h1>
+<h2>Index of help pages</h3>
+<ul>
+<li><a href="overview.html">Overview</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="processing.html">Processing documents with Oscar3</a></li>
+<li><a href="crossprocess.html">Cross-Processing</a></li>
+</ul>
+<h3>How Oscar3 Works</h3>
+<ul>
+<li><a href="namerec.html">How name recognition works</a></li>
+<li><a href="memm.html">Name Recognition method 1 - the MEMM</a></li>
+<li><a href="pattern.html">Name Recognition method 2 - pattern matching</a></li>
+<li><a href="dfas.html">The DFA name recognisers</a> used in name recognition</li>
+<li><a href="ngram.html">The n-gram based word classifier</a> used in name recognition</li>
+<li><a href="dataparser.html">The Data Parser module</a> used in data recognition</li>
+<li><a href="subtypes.html">Named Entity Subtypes</a></li>
+</ul>
+<h3>Configuring Oscar3</h3>
+<ul>
+<li><a href="properties.html">Oscar3 Properties</a> (configuration file)</li>
+<li><a href="data.html">The Oscar data model</a> - the data Oscar3 needs in 
+order to process documents, and where it is kept</li>
+<li><a href="newpubchem.html">New: Setting up a New PubChem Mirror</a></li>
+</ul>
+<h3>Advanced topics</h3>
+<ul>
+<li><a href="scrapbook.html">ScrapBook</a> - the hand-annotation editor</li>
+<li><a href="flow.html">OscarFlow</a> - advanced commands for invoking Oscar3
+modules</li>
+<li><a href="extending.html">New: Extending Oscar3</a> - whether as a standalone
+application, or as a component in another application.</li>
+</ul>
+<h2>Important!</h2>
+<p><b>1)</b> Oscar3 is under development. As such, it will produce warnings, and
+print a lot of exceptions. This doesn't necessarily mean there's a big problem - look at the output
+files that are being generated to see if it's performing OK before mailing me bug reports.</p>
+<p><b>2)</b> NO WARRANTY. In particular, it is important to realise that Natural Language Processing is a
+hard problem, and it is very rare to get anything to be 100% accurate. 
+Don't place too much trust in the results at this stage.</p>
+<p><b>3)</b> It takes a long time for certain parts of Oscar3 to start up. This makes it slow to process
+single papers. When acting in server mode, the relevant modules are initialised as and when they are 
+needed - so often there will be a 30-second delay while the modules initialise.</p>
+<p>Bugs, comments, suggestions to: <a href="mailto:ptc24@cam.ac.uk">ptc24@cam.ac.uk</a></p>
+</body>
+</html>

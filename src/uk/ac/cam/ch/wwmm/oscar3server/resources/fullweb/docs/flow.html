@@ -1,0 +1,111 @@
+<html>
+<head><title>OscarFlow</title></head>
+<body>
+<h1>OscarFlow</h1>
+<p>OscarFlow is a simple command language for running various modules over documents. It consists
+of a simple series of commands, some of which may take parameters, that perform various
+operations on the document being processed. There is no scope for flow control or conditional
+execution of statements - it is simply intended as a specification of what you do and
+don't want in your processing pipeline.</p>
+<p>In most cases, the oscarFlow commands to be run are stored in the <tt>oscarFlow</tt> parameter
+in the <a href="properties.html">properties file</a>. In some modes of running, the <tt>data</tt>
+command will be added to the front of the flow - for example, in the modes that produce
+files in your workspace. In others, the <tt>inline</tt> command, if present, will be deleted.
+<h2>Information kept during processing</h2>
+<p>During processing, there are three major - and one minor - documents stored in memory.
+These are:</p>
+<dl>
+<dt>Source XML</dt>
+<dd>The source SciXML. This is kept unchanged during processing.</dd>
+<dt>Inline XML</dt>
+<dd>A modified version of the source XML. This starts of as a copy of the source XML, and may be 
+modified in a number of ways during processing. This includes adding extra elements, adding extra
+attributes to existing elements, breaking up text to wrap up parts of it inside new elements,
+but is not limited to these - there is even the option to transform the XML using 
+XSL stylesheets.</dd>
+<dt>Inline Data XML</dt>
+<dd>Inline XML, containing annotations produced by the <a href="dataparser.html">Data Parser</a>.</dd>
+<dt>SAF XML</dt>
+<dd>The standoff annotation - a list of spans of text found in the source XML, with XPoints for
+the start and end of these spans. This does not exist at the start of processing, but
+may be created at various points.</dd>
+<dt>GENIA SAF XML</dt>
+<dd>An optional minor part of the process, which is not created by default. This is a standoff
+containing information generated using the GENIA tagger. Like the SAF XML, this does not exist
+ at the start of processing, but
+may be created using various modules.</dd>
+</dl>
+<h2>A simple flow</h2>
+<p>A simple flow for standard Oscar3 parsing would go like this:</p>
+<blockquote><tt>recognise data resolve numbersaf inline</tt></blockquote>
+<p>This flow would perform the following steps</p>
+<ol>
+<li>recognise: This examines the source XML for named entities, and creates the SAF XML that
+describes the named entities.</li>
+<li>data: This examines the source XML for experimental data, and produces the inline data
+XML.</li>
+<li>resolve: This examines each named entity in the SAF XML, and attempts to add chemical structures
+and/or ontology IDs to the entities. The inline XML is left unchanged.</li>
+<li>numbersaf: This ensures that each element in the SAF XML has its own unique ID.</li>
+<li>inline: This looks at each named entity in the SAF XML, and attempts to create a corresponding
+element in the inline XML that encloses the span of text of the named entity.</li>
+</ol>
+<h2>Flow commands</h2>
+<p>A flow consists of a space-separated list of commands. For some of these
+commands, parameters may be supplied in brackets, in principle as a comma-separated list (there
+are currently no commands that only take one parameter. OscarFlow is case insensitive.</p>
+<p>The commands are listed in - roughly - the order in which you'd want to run them. A
+few additional experimental commands exist which are not documented here, and will
+be documented when the functionality that they enable is stable and of acceptable quality.</p>
+<dl>
+<dt>recognise</dt>
+<dd>This examines the source XML for named entities, and creates the SAF XML that
+describes the named entities.</dd>
+<dt>discardindata</dt>
+<dd>This removes named entities from the SAF XML that appear to be inside
+expermental data sections (for example assignments of NMR peaks)</dd>
+<dt>data</dt>
+<dd>This examines the source XML for experimental data, and produces the inline data
+XML.</dd>
+<dt>resolve</dt>
+<dd>This examines each named entity in the SAF XML, and attempts to add chemical structures
+and/or ontology IDs to the entities.</dd>
+<dt>subtypes</dt>
+<dd>This examines each named entity in the SAF XML, and assigns a <a href="subtypes.html">subtype</a> to it.</dd>
+<dt>inline</dt>
+<dd>This looks at each named entity in the SAF XML, and attempts to create a corresponding
+element in the inline XML that encloses the span of text of the named entity.</dd>
+<dt>genia</dt>
+<dd>This runs the Genia tagger (if configured) over the source XML, and generates the GENIA SAF XML.
+This (and the commands that use the Genia XML) is still experimental.</dd>
+<dt>tidyelements</dt>
+<dd>Using the Genia XML, and a few heuristics, this attempts to remove potential element that have been 
+mis-annotated as named entities (things like In, As, Be, I etc. that may be element symbols or English
+words) from the SAF XML. (This is now obsolete)</dd>
+<dt>adjusttopos</dt>
+<dd>Using the Genia XML, this looks at words ending in -ate or -ates, finds those that are verbs
+and changes their type from CM to RN.</dd>
+<dt>importne</dt>
+<dd>This looks at the Genia XML, and transforms the biological named entities that the tagger has
+found into the SAF XML.</dd>
+<dt>structuretypes</dt>
+<dd>This looks at the named entities of type CM in the SAF XML, and (where possible) attempts
+to assign these as specific compounds, generic compounds or fragments of compounds.</dd>
+<dt>sciborgpp</dt>
+<dd>Post-Processing for the SciBorg project. This adds possible POS tags to each named entity
+in the SAF XML based on morphology. In addition, for words ending in -ate or -ates previously
+marked up as CM, this produces an additional SAF entry where they are RN.</dd>
+<dt>numbersaf</dt>
+<dd>This assigns unique identifiers to each named entity in the SAF XML. This is only relevant
+if you are intending to directly use the SAF XML, and irrelevant if you are going to <tt>inline</tt>
+and then discard the SAF XML.</dd>
+<dt>xsl</dt>
+<dd>This operates upon the inline XML. This is best run after <tt>inline</tt> (in fact, running this
+before <tt>inline</tt> may cause <tt>inline</tt> to fail or produce strange output. It takes one
+argument: the filename of a stylesheet, stored in uk.ac.cam.ch.wwmm.oscar3.misc.resources. An
+example stylesheet is provided: <tt>exampletransform.xsl</tt>: this removes the annotation
+of named entities of type ONT from the inline XML.</dd>
+<dt>dataxsl</dt>
+<dd>As <tt>xsl</tt>, but operating on the data XML, not the inline XML.</dd>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head><title>Cross-Processing</title></head>
+<body>
+<h1>Cross-Processing</h1>
+<p>Cross-Processing is a way of running Oscar3 in a manner similar to
+cross-validation, where a set of annotated data is divided into folds, and 
+each fold is processed using a model trained on the contents of the other
+folds. This is useful in cases where you have a named-entity annotated corpus,
+and some task that depends upon named-entity annotated papers (such as a parsing
+task). In that task, you want to use hand-annotated papers some of the time,
+and machine-annotated papers at other times. Cross-Processing allows you to
+use a corpus of hand-annotated papers, and to produce a set of machine-annotated
+papers that behave as if they had been annotated using on a model trained on
+a set of similar papers. This is important, as if you build a model on a corpus,
+and then simply use that model to annotate the corpus, the precision and recall
+will be unrealistically high.</p>
+<p>To cross-process, use the following:</p>
+<p><tt>java -Xmx512m -jar oscar3-a5.jar CrossProcess /path/to/input_directory path/to/output_directory</tt></p>
+<p>The input directory should contain at least two subdirectories - one for
+each "fold" of input set. Within each of those subdirectories, there should
+be subsubdirectories containing SciXML (<tt>source.xml</tt>) and ScrapBook
+(<tt>scrapbook.xml</tt>) files. Running the CrossProcess command will create
+the specified output directory, and copy over the directory structure and 
+<tt>source.xml</tt> files. It will also create <tt>saf.xml</tt> and
+<tt>markedup.xml</tt> files, based on a model trained on all of the 
+<tt>scrapbook.xml</tt> in the other folds.</p>
+<p>This processing will take significantly longer than normal processing,
+due to the need to retrain Oscar3 several times.</p>
+</body>
+</html>

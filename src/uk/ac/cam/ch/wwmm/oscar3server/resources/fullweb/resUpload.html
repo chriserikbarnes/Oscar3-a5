@@ -1,0 +1,16 @@
+<html>
+<head><title>ResourcePost</title></head>
+<body>
+<h1>Resource File Upload</h2>
+<p>You can upload resource files using this service. The name of the file
+will be used to work out where it must go.</p>
+<form enctype="multipart/form-data" name="input" action="resources" method="POST">
+File: <input type="file" name="file">
+<input type="hidden" name="action" value="addfile">
+<br>
+<input type="submit" value="Submit!">
+<input type="reset" value="Reset">
+</form>
+<a href="index.html">Back to main server page</a>
+</body>
+</html>

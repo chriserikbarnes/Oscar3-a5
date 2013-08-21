@@ -1,0 +1,295 @@
+1. What is SAPIENT?
+2. How do I install SAPIENT?
+3. How do I run SAPIENT as a standalone process?
+4. Do I need to be on-line to work with SAPIENT?
+5. What input does SAPIENT take and how do I upload a paper?
+6. How do I annotate a paper?
+7. How do I save my annotations?
+8. What is Auto Annotate?
+9. What is Clear Auto Annotations?
+10. How do I remove or change an existing annotation ?
+11. What is Clear Own Annotations?
+12. Where are my annotations stored?
+13. What is the Comments area for?
+14. What is the OSCAR key?
+15. How do I quit SAPIENT?
+16. How do I open a command prompt (windows users)?
+17. How do I navigate to the sapient directory from the command prompt (windows)?
+18. "Warning unresponsive script" : How do I deal with this ?
+19. My PC has 512M or less RAM available. Can I run SAPIENT?
+20. Can I have two browser tabs open at the same time pointing to different papers viewed by SAPIENT?
+21. How can I port SAPIENT to work with other annotation schemas?
+
+If you find SAPIENT useful or if you have comments/need clarifications please  e-mail maria.liakata@seh.oxon.org
+
+**********************************
+
+1. What is SAPIENT?
+
+   SAPIENT stands for "Semantic Annotation of Papers: Interface & ENrichment Tool".
+   It is an annotation interface implemented as a web application, to help you
+   annotate scientific papers in XML, sentence by sentence, with a set of concepts
+   called General Scientific Concepts (GSCs See http://ie-repository.jisc.ac.uk/88/). 
+   GSCs constitute the set of concepts essential for describing a 
+   scientific investigation. However, SAPIENT can also be used in conjunction with other annotation schemas
+   to annotate papers in XML sentence by sentence (See question 21).
+   SAPIENT also incorporates Oscar3 functionality, allowing the automatic annotation of chemical named entities.
+
+2. How do I install SAPIENT?
+
+   a) First you need to make sure you have downloaded and installed the web browser 
+      Firefox 3 from:  
+
+              http://www.mozilla.com/en-US/firefox/
+
+       NOTE: You need Firefox 3 or later  because SAPIENT makes use of some javascript technology that is not yet the default in all 
+                  browsers. SAPIENT is also known to work with Safari 3.2 and may also work fine with other browsers.
+
+  b) Then you have two choices:
+
+      I. Decide to use SAPIENT from within Oscar3. In this case refer to the README.txt file released with Oscar3 for instructions
+         on how to install and run Oscar3.
+         A link to SAPIENT will appear from the index page of Oscar3.
+
+      II. Decide to run SAPIENT as a standalone process. 
+          In this case you can:
+                i)  Download sapient.jar from sourceforge.net or http://www.aber.ac.uk/compsci/Research/bio/art/sapient/ 
+                    Then make sure you have java 1.6 or later. You just need the Java Runtime Environment (JRE). 
+                    To check if you have java, open a command line (or command prompt in windows see 16. ) and
+                     type: "java -version". Then click enter. This should tell you if you have java and which version.
+
+                    If you don't have java, you can download the latest version for your operating system (OS) from:
+       
+                     http://www.java.com/en/
+
+                     SAPIENT is java based and therefore will theoretically run on all operating systems (OS).
+
+                ii) Compile your own sapient.jar from the source code. 
+                     If you choose this option, we assume you know what you are doing. Make sure you have
+                     java 1.6 or later. Then run ant with the ARTbuild.xml file, instead of the build file.
+
+      
+ 3. How do I run SAPIENT as a standalone process?
+
+    If you have Firefox3 installed and java 1.6 or later, you can run SAPIENT.
+    Open a command prompt and navigate to the "sapient" directory you have just created (see 17.).
+    Type:
+
+    "java -Xmx512m -jar sapient.jar Server"
+
+     The first time you run this, it will ask you about whether you want to configure a server.
+     Answer 'yes'. It will then ask you if you want a full web server, answer 'full'. It will then ask you if you would like to specify a working directory.
+     Just press enter. Finally, it will ask if you want to lock the server down so that it can only be accessed from the machine it is running on. Answer 'yes'.
+     If the Server setup is successful, you should see a 4-line message 
+     appearing at the command prompt, one of which should be:  Server ready - go to http://127.0.0.1:8181/.
+
+     In Firefox, navigate to the URL: http://localhost:8181. 
+     You should be able to see the SAPIENT Index now!
+     
+     NOTE: The first time you run sapient.jar as described above, it will create new folders in your sapient directory.
+           Put any files we give you for annotation in the "corpora" folder. Annotations will be stored automatically in 
+           the "scrapbook" folder.
+     
+     You can also run SAPIENT through Oscar3. In this case, refer to the README.txt file released with Oscar3 for instructions
+     on how to install and run Oscar3.
+     
+
+4. Do I need to be on-line to work with SAPIENT?
+
+   Even though SAPIENT is web-based you *don't* have to be on-line to run it.
+   It runs its own, safe, webserver which is locked to the outside world.
+   As long as you have SAPIENT running (see 3), you can access http://localhost:8181
+   and the SAPIENT annotation interface.
+
+5. How do I upload a paper?
+
+   Currently SAPIENT supports SciXML, an XML schema particularly suited to reflect the structure of
+   scientific papers. SAPIENT needs <TITLE>,<ABSTRACT>,<BODY> and <P> elements to operate on, so it should
+   be compatible with other XML schemas as long as they contain these elements.
+
+   On the SAPIENT Index page click on "Browse" to locate the folder containing the paper(s) you want to upload (we re-
+   commend that you store papers in the "corpora" directory).
+   Select a paper and click "Open". You then need to give a name, preferably the name of the paper without the suffix. 
+   Click on "Upload". You should see a link to the paper appearing on the page. 
+   A folder with the same name as the paper you have just uploaded will appear in the "scrapbook" folder.
+   From now onwards, all previously uploaded papers should appear as links when you go to SAPIENT Index.
+
+
+6. How do I annotate a paper?
+
+   It is recommended that you read the paper first in .pdf prior to annotating it sentence by sentence. 
+   When annotating the papers you should also have the annotation guidelines handy.
+   At the SAPIENT Index page, click on the paper you want to annotate.
+   This will re-direct you to a new page, where the paper is displayed sentence by sentence. 
+
+   Annotation involves selecting for each sentence an option from EACH of the three drop-down
+   menus below it. Please do not leave sentences with incomplete annotations.
+
+a) The first drop-down corresponds to the types of GSC one can assign to a sentence.
+    The GSCs are also visible at all times in the top menu bar. 
+     
+
+b) The third drop-down corresponds to concept identifiers (IDs). A concept may span over several sentences,
+    so we cannot rely on using sentence IDs (the numbers to the left of each sentence) to keep track of different 
+    concepts. Concept IDs are contingent upon the type of GSC;
+    Once you have selected the GSC type of a sentence, its concept ID can either correspond to an already annotated 
+    sentence of the same GSC type or  it can be a new ID, for a new instance of this GSC type. 
+    To choose between the two possibilities, decide whether the sentence talks about the same GSC concept
+    as a previous sentence or not.
+
+c) Depending on the type of GSC you have chosen, you may also need to
+   specify properties of the GSC, which corresponds to the second drop-down (subtypes).
+   For most GSC types the only subtype option is  <None>, which means that there are no properties to be chosen.
+   <Object> and <Method> constitute exceptions. <Method> can have the properties <New>/<Old>,
+   specifying whether the <Method> is <Old> or <New> (see the annotation guidelines).
+   Or it can have the properties <Advantage>/Disadvantage>. The latter properties can be chosen when
+   there is already a sentence annotated as <Method> and the current sentence refers to the <Advantages>
+   or <Disadvantages> of the particular method.
+   Similarly, <Object> can have the properties <New> and <Advantage>/<Disadvantage>.
+ 
+
+7. How do I save my annotations?
+   
+    When you annotate a sentence by selecting an option for each of its drop-downs, these changes will last
+    for as long as you keep the browser open and the server running. 
+
+    To save your changes to a file, click on the link "Save" in the
+    top menu bar.  An alert will verify that the changes have been
+    saved. Sometimes you may need to wait for a couple of seconds.
+    The annotations have been translated into SciXML and saved in the
+    file "mode2.xml" of the folder in the scrapbook directory which
+    corresponds to the current paper. The "mode2.xml" for each paper
+    is updated every time you make a change to an annotation and click
+    on "Save". It is also loaded in and translated back into html
+    every time you click on the current paper from SAPIENT Index.
+   
+     You don't have to save after each and every change and you don't have to completely finish a paper in one go. 
+     You can work however you like as long as you remember to save your changes before quitting SAPIENT or closing the 
+     browser. 
+
+     NOTE: To annotate a sentence, you need to choose an option from ALL three drop-downs.
+           If you don't specify a concept ID, the annotation will not be saved, even if you click on "Save".
+
+     If you want to transfer over your work to another machine, copy the contents of your "scrapbook" and "corpora" folders
+     over to another machine.
+
+8. What is Auto Annotate?
+
+    If you click on the link "Auto Annotate" in the top menu bar, SAPIENT will invoke Oscar3, a system for
+    the automatic annotation of noun phrases representing chemical entities. You may or may not find these
+    helpful in your annotation task. These annotations are colour-coded and you can consult the "Oscar key"
+    for their interpretation.
+    You can remove these annotations at any point by clicking on "Clear Auto Annotations".
+
+9. What is Clear Auto Annotations?
+
+    See question 8.
+
+
+10. How do I remove or change an existing annotation ?
+     
+      To remove or change a single sentence annotation, modify the options selected for that particular sentence accordingly and click 
+      on "Save".
+
+11. What is Clear Own Annotations?
+
+     If you don't want to remove just a single sentence annotation
+     from a paper as suggested in 10, but instead you want to remove
+     ALL of your sentence annotations for that paper click on "Clear
+     Own Annotations".  
+     This is an option we would not recommend using
+     very often unless you want to start annotating a paper from
+     scratch.  "Clear Own Annotations" takes effect immediately,
+     removing all annotations from the mode2.xml file without
+     requiring Save, so be careful!
+      
+     
+12. Where are my annotations stored?
+
+      Once you click on "Save" your annotations are stored in "mode2.xml" in the folder in scrapbook which bears 
+      the same name as the current paper. See also question 7.
+
+13. What is the Comments area for?
+
+      If you want to make remarks about particular sentences during the annotation of a paper (e.g. if you had difficulties making a decision, 
+      you may want to keep a note of the alternative GSCs you considered), you can use the comments area. When you click "Save", 
+     any comments you have entered are saved in the "comments.txt" file in the scrapbook folder for that paper.
+     Every time you edit the comments area and save the changes, the "comments.txt" file of the corresponding paper is updated.
+
+14. What is the OSCAR key?
+
+      See question 8.
+
+15. How do I quit SAPIENT?
+
+      To quit SAPIENT, close down the tab in Firefox 3 pointing to the http://localhost:8181 location and stop the sapient.jar running
+      in the command line ( CTRL + C can do this).
+      
+      For windows users, select control prompt window, Ctrl + C, then close the command prompt window).
+      Remember you need to restart the server as in 3. to use SAPIENT again.
+      For your convenience, you may want to bookmark the server address  (http://localhost:8181) in Firefox.
+
+16. How do I open a command prompt (windows users)?
+
+      Go to Start > Programs > Accessories > Command Prompt
+
+
+17. How do I navigate to the SAPIENT directory from the command prompt (windows)?
+
+      In a command prompt window  type: "cd c:\sapient". This will take you to the SAPIENT directory.
+
+
+18. "Warning unresponsive script" : How do I deal with this ?
+
+       This message may come up when you have clicked to view a paper you have already annotated.
+       It happens because the Javascript is probably too memory heavy for your computer. Just click "continue"
+       every time the message pops up, and eventually the paper will display fully.
+      
+       Please DON'T click "Save" before the script has finished loading (or after cancelling the script) as this will
+       only partially save your annotations.
+     
+       Another remedy to stop this problem from occurring is to allocate less RAM to SAPIENT when starting the server.
+       For example, you could try: "java -Xmx249m -jar sapient.jar Server".
+       
+       Finally, the more expensive solution (with long term benefits, though) is a RAM upgrade.
+
+
+19. My PC has 512M or less RAM available. Can I run SAPIENT?
+      
+      Yes, you can run SAPIENT, but you will have to allocate less memory to it. When you run the server, try using
+       "java -Xmx249m -jar sapient.jar Server".
+       
+       You are also more likely to experience warnings about unresponsive Javascript. Please see question 18 for
+       suggested solutions.
+
+
+20. Can I have two browser tabs open at the same time pointing to different papers viewed by SAPIENT?
+
+       Yes, there is no reason why you cannot have two browser tabs open looking at SAPIENT. 
+       However, if you have 512M RAM or less it may cause your browser to crash as this is a memory-heavy process.
+
+
+21. How can I port SAPIENT to work with other XML schemas?
+
+      There are two aspects to this question, namely the following:
+      a) How can SAPIENT recognise papers written in other XML schemas?
+      b) How can SAPIENT annotate papers according to annotation schemas other than CISP?
+     
+     In answer to a) SAPIENT requires the presence of <PAPER>, <TITLE>,<ABSTRACT>, <BODY> and <P> elements.
+     You need to be able to map your XML or txt document to the above elements. Future plans consist in extending SAPIENT
+     to do this mapping for you. The .xsl which converts the .xml to .html so that SAPIENT can display the document
+     also requires the <BODY> to incorporate at least one <DIV> element.  
+     Two documents are provided from <a href="http://www.aber.ac.uk/compsci/Research/bio/art/sapient/">http://www.aber.ac.uk/compsci/Research/bio/art/sapient/</a>
+     to give you an indication of how SAPIENT will work. The first one, test.xml, is a full paper in SciXML and the second, testsmall.xml is
+     a minimal version of a document that will be accepted by SAPIENT.
+     
+    In answer to b), in order to write your own sentence based schemas to use with SAPIENT, you need to obtain the source
+    code for SAPIENT. To this, you need to add a new .xsl file in the uk.ac.aber.art_tool.art_tool_web.xsl package and substitute
+    mode2.xsl for this new file wherever it is referenced in ARTSciXMLDocument.java.
+    The latter class is found in the uk.ac.aber.art_tool package. To give you an example, of an alternative annotation schema
+    we have included the dummy fruit.xsl. Instructions are available as comments in fruit.xsl, mode2.xsl and art-tool.js .
+   
+    Re-compile SAPIENT running ant and you will have a new version of
+    SAPIENT, working for your particular sentence based annotation
+    schema.
+     

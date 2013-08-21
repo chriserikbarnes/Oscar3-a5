@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Oscar3 Server</title>
+<link rel="search" type="application/opensearchdescription+xml" title="OscarSearch" href="opensearch.xml">
+<link rel="search" type="application/opensearchdescription+xml" title="OscarOntoSearch" href="opensearchont.xml">
+<script>
+	function writeLink(href, name, comment) {
+		var a = document.createElement("a");
+		a.appendChild(document.createTextNode(name));
+		href = href.replace(/localhost:8181/, document.location.host);
+		a.setAttribute("href", href);
+		var li = document.createElement("li");
+		li.appendChild(a);
+		if(comment) li.appendChild(document.createTextNode(comment));
+		document.getElementById("bmlist").appendChild(li);
+	}
+</script>
+</head>
+<body>
+<h1>Oscar3 Server</h1>
+<h3>Documentation</h3>
+<ul>
+<li><a href="docs">Documentation</a></li>
+<li><a href="NETypes">Show the entity types recognised by Oscar3</a></li>
+</ul>
+<h3>Processing</h3>
+<ul>
+<li><a href="ProcessForm.html">Process Form</a> - enter text to process</li>
+</ul>
+
+<h3>Your workspace</h3>
+<ul>
+<li><a href="ViewPaper">View papers</a> - look at the papers in your workspace</li>
+<li><a href="PubMedForm.html">PubMed</a> - fetch abstracts from PubMed, process them and
+place the results in your workspace.</li>
+<li><a href="ChemNameDictForm.html">ChemNameDict Form</a> - manage your ChemNameDict - 
+a chemical name dictionary stored in your workspace.</li>
+</ul>
+
+<h3>Searching your workspace</h3>
+<ul>
+<li><a href="Search?selectcorpus">Select corpus for search</a> - to this before
+searching to build an index.</li>
+<li><a href="SearchForm.html">Search</a> for keywords and chemicals</li>
+<li><a href="Search?resultsType=bigCompoundsList">CompoundsList</a> - list all 
+of the compounds in the selected corpus</li>
+<li><a href="javascript:window.external.AddSearchProvider('http://localhost:8181/opensearch.xml','false');">Install
+OpenSearch plugin</a> on Firefox 2.0</li>
+</ul>
+
+<h3>Advanced</h3>
+<ul>
+<li><a href="ScrapBook?action=index">ScrapBook Index</a> - used for collecting snippets from papers, and editing annotations</li>
+<li><a href="ART?action=index">SAPIENT</a> - a new tool for annotating papers with CISP</li>
+<li><a href="AddPaper.html">Add paper to ScrapBook</a> - put a whole paper in your scrapbook</li>
+<li><a href="ViewMolForm.html">View a molecule</a> by SMILES or InChI, getting SMILES, InChI, CML or a PNG image</li>
+<li><a href="AdvancedPNG.html">View a molecule</a> by SMILES or InChI, getting a PNG image with advanced options</li>
+<li><a href="PubChemMirrorForm.html">Query your PubChem Mirror</a> (if present)</li>
+<li>View <a href="resources/">Oscar3 resources</a></li>
+<li>Upload <a href="resUpload.html">Oscar3 resources</a></li>
+<li><a href="Reload/all">Reload all modules</a></li>
+<li><a href="reload.html">Reload some modules</a></li>
+</ul>
+
+<h3>Bookmarklets</h3>
+<p>To use these, place these links in your bookmarks/favourites folder. When
+you're looking at a web page you want to process, then use them like a normal
+bookmark, and they'll take the page you're looking at, and feed it to Oscar3.
+<ul id="bmlist">
+</ul>
+<script>
+	writeLink("javascript:" + 
+		"var currentDocHTML = document.documentElement.innerHTML;" +
+		"if(document.contentType=='text/plain') {currentDocHTML = document.documentElement.textContent;} " +
+		"wD = window.open().document;" +
+		"wD.write(\"<html><body><h2>Oscar3 Servlet</h2>" +
+		"<p>Parsing - please wait...</p>" +
+		"<form id='thisForm' action='http://localhost:8181/Process' method='POST'>" +
+		"<input type='hidden' name='contents' value='Foo Bar'>" +
+		"<input type='hidden' name='enc'      value='UTF-8'></form></body></html>\");" +
+		"wD.getElementById('thisForm').enc.value = wD.characterSet;" +
+		"wD.getElementById('thisForm').contents.value = currentDocHTML;" +
+		"wD.getElementById('thisForm').submit();", "Process With Oscar3");
+</script>
+</body>
+</html>

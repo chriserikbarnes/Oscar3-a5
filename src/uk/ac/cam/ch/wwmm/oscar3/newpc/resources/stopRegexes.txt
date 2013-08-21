@@ -1,0 +1,45 @@
+.+_.+
+.+\d{4,}.*
+.+No\..+
+[A-Z]{2,3}[0-9]{3,12}
+.*[A-Z]{6,}.*
+.*@.*
+ZINC\d+
+[A-Z]?\d+_(FLUKA|SIAL|ALDRICH|REIDEL)
+.+, .+
+.+ \[.+\]
+.+ \(.+\)
+EINECS .*
+\d+-\d+-\d+
+.+ waste no\..+
+.+ Chemical Code .+
+Caswell No\. .+
+AKI-[A-Z][A-Z][A-Z]-\d+
+UPCMLD.*
+MLS-\d+\.\d+
+.+([Mm]ixture|[Ss]olution|[Cc]olloid|[Pp]olymer|[Oo]ligomer|[Ss]tabili[sz]er|[Ff]ungicide|[Ss]pray|Beilstein|Shell|Stauffer|[Bb]rands? |[Nn]umber|[Gg]roup|[Ss]tandard|[Rr]etard|[Cc]ombination|[Dd]eriv\.|[Dd]er\.|DER\.|[Ii]sostere|[Ss]equence|[Dd]erived|[Bb]ased|[Cc]ongener|[Dd]eriv [Oo]f |[Aa]duct| \+ | & | B\.P\.).*| [Cc]onjgates?
+.*([Ss]ubstituted|[Tt]riterpenoid|[Pp]eptides|[Nn]ucleotides|[Ee]sters|[Aa]na\.|[Cc]ontain(s|ing)|[Pp]rotonated|[Cc]ompd\.|[Tt]reated|[Pp]art [Oo]f| [Ff]or | [Oo]n | [Aa]nd |[Rr]esidue|[Ii]solated?|[Ll]ocated|[Pp]rotein|[Ff]ragment|[Tt]runcated|[Ii]mpregnated|[Aa]ssociated|[Cc]oated|[Ff]rom |[Ss]tereoisomer| [Ss]ite| [Ww]ith |[Uu]named|[Ss]achet|[Aa]nalog(ue)?s?|[Dd]eriv[ai]tive|[Pp]rodrug|[Oo]ligonucleotide|[Cc]omponent|[Tt]ablet|[Aa]ccessor(y|ies)| [Aa]gent).*| [Cc]omplex|[Pp]resent|[Rr]emark
+(From ).*
+A[A-Z]-\d+/\d+
+NYU-.*
+JM-.*
+NCI\d+_\d+
+.+ \(\d+(:\d+)+\)
+See Remark.*
+(MLS|SMR|STK|BAS |BRN |SPECTRUM|AIDS-?|STOCK\d[A-Z]|NCGC|Spectrum\d?_|LMFA|TULIP|NSC ?-?|CHEBI:|Tocris-|HSDB ?|CCRIS |SpecPlus|KBio(\d|[A-Z][A-Z])_|DivK1c|SPBio_|NINDS_|AI3-|BBV-|CPD-)\d+
+.+ mixed.*
+InChI=.*
+.+ \(USAN|USP|medium|TN\)
+NCIStruc.*
+Noname|Hem
+C\d\d\d\d\d
+.*\d%.*
+.+ ([Dd]er(iv)?|[Aa]lkaloid|[Ii]nhibitor)
+.+carboxylic
+.*;[^0-9].*
+.*[0-9]+\.[0-9]+ .*
+(.+ )?([Cc]old|[Ff]lu|[Aa]llergy|[Ss]inus|[Hh]eadache|[Dd]rowsiness|[Ff]ormula|[Pp]ain|[Ss]evere|[Mm]enstrual|[Mm]aximum|[Ss]trength|[Mm]edicine|[Cc]aplets|[Pp]ediatric|[Cc]hewable|[Dd]econgestant|[Ll]iquid|[Rr]oots?|[Ll]ea(f|ves))( .+)?
+co-[a-z]+ # Co-drugs...
+compound .*
+compound-.*
+colloidal .*

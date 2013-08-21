@@ -1,0 +1,86 @@
+<project name="Sapient" default="dist" basedir=".">
+  <description>
+    simple build file
+  </description>
+  
+	<!-- edit this -->
+  <property name="classpath" location="jar/"/>  
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="htdoc" location="${src}/uk/ac/aber/art_tool/art_tool_web/"/>
+  <property name="doc" location="doc"/>
+  <property name="bin" location="bin"/>
+  <property name="appjars" location="appjars"/>
+    <tstamp>
+        <format property="TODAY_SVN" pattern="yyyyMMdd" locale="en" />
+    </tstamp>
+  <!-- <property name="version" value="${TODAY_SVN}"/> -->
+  <property name="version" value="a4"/>
+
+	
+  <fileset id="jarfiles" dir="${classpath}">
+  	<include name="*.jar"/>
+  </fileset>
+	
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${bin}"/>
+  	<mkdir dir="${appjars}"/>
+  </target>
+  
+  <target name="pre" depends="init" description="foo">
+    <copy todir="${bin}">
+  		<fileset dir="${src}" includes="**/resources/**/*.*"/>
+  	</copy>	
+  </target>
+	
+  <target name="compile" depends="init,pre"
+	  description="compile the source " >
+    <javac srcdir="${src}" destdir="${bin}">
+      <classpath>
+      	<fileset refid="jarfiles"/>
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="dist" depends="compile,javadoc"
+	  description="generate the distribution" >
+  	
+  	<unjar dest="${appjars}">
+  		<fileset refid="jarfiles"/>
+  	</unjar>
+  	
+  	<jar destfile="sapient.jar">
+  		<manifest>
+  			<attribute name="Main-Class" value="uk.ac.aber.art_tool.Sapient"/>
+  		</manifest>
+		<fileset dir="${appjars}"/>
+  		<fileset dir="${bin}"/>
+  		<fileset dir="${classpath}">
+  			<include name="*.txt"/>
+  			<include name="*.doc"/>
+  			<include name="*.html"/>
+  		</fileset>
+  	</jar>
+  </target>
+  
+  <target name="javadoc">
+	<javadoc destdir="${doc}" useexternalfile="true" overview="${src}/overview.html">
+	      <classpath>
+	      	<fileset refid="jarfiles"/>
+	      </classpath>
+  		<fileset dir="${src}"/>
+	</javadoc>
+  	<copy todir="${doc}/htdoc">
+  		<fileset dir="${htdoc}"/>
+  	</copy>
+  </target>
+	
+  <target name="clean"
+	  description="clean up" >
+    <delete dir="${bin}"/>
+    <delete dir="${appjars}"/>
+  </target>
+</project>

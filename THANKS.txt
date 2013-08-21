@@ -1,0 +1,40 @@
+The following have contributed to the code and systems here (although some of 
+their code may have been partially or wholly refactored out).
+
+Alphabetical order:
+
+Sam Adams
+Nick England
+Jonathan Goodman
+Maria Liakata
+Daniel Lowe
+Peter Murray-Rust
+Fraser Norton
+Claire Q
+C. J. Rupp
+Joe Townsend
+Chris Waudby
+Benjamin Wauldron
+
+The following people and organisations have provided significant assistance 
+in the development of Oscar3, in the form of advice, bug reports, testing, 
+feedback etc.
+
+Colin Batchelor
+Ann Copestake
+Advaith Siddharthan
+Simone Teufel
+Nick Day
+The University of Indiana
+David Jessop
+Jim Downing
+Diane Stewart
+Alan Tonge
+
+Thanks also go to the following publishers for support of the SciBorg and other
+projects under which Oscar3 and predecessors have been developed:
+
+The Royal Society of Chemistry
+The Nature Publishing Group
+The International Union of Crystallography
+

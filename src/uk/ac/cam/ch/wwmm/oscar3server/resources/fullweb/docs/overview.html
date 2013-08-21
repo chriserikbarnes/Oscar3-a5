@@ -1,0 +1,107 @@
+<html>
+<head><title>Oscar 3 Overview</title></head>
+<body>
+<h1>Overview</h1>
+<p>Oscar 3 is a tool/set of tools for the annotation of chemical names and other 
+entities in chemical text. Oscar3 can be run from the command line, to process
+papers singly or in batch; it can also be run as a local web server, providing
+a set of services via a web interface. The server runs on your computer, and
+by default cannot be accessed from anywhere else. During the setup of Oscar3 
+a workspace may be produced, which contains things such as documents that have
+been processed by Oscar3, indices produced by the Oscar3 search engine, and
+an extensible dictionary of chemical names.</p>
+<h2>Oscar3 Publications</h2>
+<p>The following papers are about Oscar3:</p>
+<p>Peter Corbett, Peter Murray-Rust.<br>
+High-throughput identification of chemistry in life science texts.<br>
+Proceedings of Computational Life Sciences 2006, Cambridge, UK.</p>
+<p>Colin Batchelor and Peter Corbett<br>
+<a href="http://acl.ldc.upenn.edu/P/P07/P07-2012.pdf">Semantic Enrichment
+of Journal Articles Using Chemical Named Entity Recognition.</a><br>
+Proceedings of the ACL 2007 Demo and Poster Sessions, Prague, Czech
+Republic.</p>
+<p>The operation of the <a href="memm.html">MEMM</a> is described in:
+<p>Peter Corbett and Ann Copestake.<br>
+<a href="http://aclweb.org/anthology-new/W/W08/W08-0608.pdf">Cascaded
+Classifiers for Confidence-Based Chemical Named Entity Recognition.</a><br>
+Proceedings of the Workshop on Current Trends in Biomedical Natural Language
+Processing (BioNLP 2008).</p>
+<p>The annotation scheme used for named entities is described in:</p>
+<p>
+Peter Corbett, Colin Batchelor and Simone Teufel<br>
+<a href="http://acl.ldc.upenn.edu/W/W07/W07-1008.pdf">Annotation of Chemical
+Named Entities.</a><br>
+BioNLP 2007: Biological, translational, and clinical language processing, 
+Prague, Czech Republic.</p>
+<p>The annotation scheme and classifier used for <a href="subtypes.html">named
+entity subtypes</a> is described in:</p>
+<p>
+Peter Corbett, Colin Batchelor and Ann Copestake.
+<a href="http://www.lrec-conf.org/proceedings/lrec2008/workshops/W4_Proceedings.pdf#page=47">Pyridines,
+Pyridine and Pyridine Rings: Disambiguating Chemical Named Entities.</a><br>
+Proceedings of Building & evaluating resources for biomedical text mining
+ (LREC 2008 workshop).</p>
+<h2>Installation</h2>
+<p>Please see the included README file.</p>
+<h2>Running</h2>
+<p>Run the command <tt>java -Xmx512m -jar oscar3-a5.jar</tt>. Running this 
+without arguments will display a list of options - please read these for more 
+details. In particular, <tt>java -Xmx512m -jar oscar3-a5.jar</tt> will 
+start the Oscar3 server. This can then be accessed on 
+<a href="http://localhost:8181">http://localhost:8181</a>,
+and is secured by default to only be accessible from the host it is running on.
+Further details on processing documents with Oscar3 can be found
+<a href="processing.html">here</a>.</p>
+<h2>Source Texts</h2>
+<p>Oscar3 can be fed texts in a number of forms, from a variety of sources. 
+It works on texts in SciXML, and has (rudimentary) routines for automatically 
+converting plain text and HTML to SciXML. These can be fed to Oscar3 <i>via</i> 
+a number of routes. Importantly, some methods will import documents into your
+workspace. These are kept in a subdirectory called <tt>corpora</tt>, with
+a hierarchy of subsubdirectories, subsubsubdirectories etc. below that.
+Each document in your workspace gets its own directory within one of these
+(sub)subdirectories, and the SciXML that Oscar3 works on is kept in
+a file called <tt>source.xml</tt>.</p>
+<h2>Output</h2>
+<p>Oscar3 produces output in three main forms (a few experimental
+forms also exist: inline annotation, standoff annotation, and 
+inline annotation of experimental data ("data annotation"). 
+In inline annotation (including data annotation), extra tags are added to the 
+SciXML document, highlighting the entities recognised. 
+an XML document is prepared, that is a list of all of the entities found 
+and where they occurred in the source
+document.</p>
+<p>When Oscar3 is run on documents kept in your workspace, additional files
+are added to the directories that the <tt>source.xml</tt> files are kept in.
+SAF XML is kept in a file called <tt>saf.xml</tt>, inline annotation in a
+file called <tt>markedup.xml</tt> and data annotation in a file called
+<tt>data.xml</tt>.</p>
+<h2>Using the workspace</h2>
+<p>Having imported some documents into your workspace, and processed them,
+you can then explore the documents you have processed. On the main server page,
+follow the link "View Papers" to do this. You can also set up a search engine.
+Follow the link "Select corpus for search" to create an index for a set of
+papers. Once this index has been created, you can search it by following the
+link "Search". Be sure to read the <a href="search.html">seach documentation</a>
+to discover how to make use of the advanced searches that the search engine
+can do.</p>
+<h2>Customising</h2>
+<p>Different styles of chemical text have different properties, and different
+users have different needs. Because of this, Oscar3 is highly configurable.
+Tuning of basic parameters can be done via a 
+<a href="properties.html">properties file</a>, and large amounts of the 
+<a href="data.html">data</a> that Oscar3 uses is modifiable. In particular,
+you should familiarise yourself with the following items in the properties
+file, as they can have a large effect on the performance of Oscar3 on
+different types of texts.</p>
+<ul>
+<li><tt>useMEMM</tt> - Oscar3 has two main methods for recognising chemical
+names. This parameter sets which of these should be used.</li>
+<li><tt>model</tt> - Oscar3 uses data extracted from hand-annotated texts as
+examples to learn from. This parameter sets which set of data should be used.</li>
+<li><tt>neThreshold</tt> - when <tt>useMEMM</tt> is set to <tt>yes</tt>, this
+parameter can be used to tune Oscar3 to high precision (few false positives) or
+high recall (few false negatives) - or a good balance of both.</li>
+</ul>
+</body>
+</html>

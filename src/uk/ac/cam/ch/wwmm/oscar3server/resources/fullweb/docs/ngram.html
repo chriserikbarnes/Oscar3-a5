@@ -1,0 +1,109 @@
+<html>
+<head><title>n-gram based word classification</title></head>
+<body>
+<h1>n-gram based word classification</h1>
+<p>This file details how Oscar3 can guess whether unknown words are chemical
+or not. Note that these mechanisms only apply to "words" with two adjacent
+lowercase characters. Also note that these mechanisms work on single tokens.
+This classifier contributes to name recognition by both the 
+<a href="pattern.html">pattern matching</a> and <a href="memm.html">MEMM</a>
+systems.</p>
+<h2>Converting words to 4-grams</h2>
+<p>The string to classify is converted to lowercase. Digits are converted to 
+<tt>0</tt>, and strings of multiple <tt>0</tt>s are converted to single 
+<tt>0</tt>s. A few other conversions are done on hyphens/dashes, quotes/primes
+and curly/square brackets. Finally, any character not in a standard alphabet of
+52 (letters, <tt>0</tt>, some special
+characters) is converted to <tt>S</tt>. The string is padded with 
+<tt>^^^</tt> on the left and <tt>$</tt> on the right, and then split into
+4-letter fragments.</p>
+<p>For example: <tt>13-(&beta;-D-glucosyloxy)docosanoate 
+-> ^^^0-(S-d-glucosyloxy)docosanoate$
+-> ^^^0 ^^0- ^0-( 0-(S -(S- (S-d S-d- -d-g d-gl -glu gluc luco ucos cosy osyl
+sylo ylox loxy oxy) xy)d y)do )doc doco ocos cosa osan sano anoa noat oate ate$
+</tt></p>
+<h2>Training the classifier</h2>
+<p>Two wordlists are compiled: one of chemical words, one of nonchemical words.
+These are done by taking entries from the following sources (if necessary,
+tokenising them), and adding them to the wordlists. Tokens without two
+consecutive lowercase letters are discarded.</p>
+<p>The following are added to the chemical wordlist:</p>
+<ul>
+<li>The chemical names from ChemNameDict</li>
+<li>The <tt>chemicalWords</tt> from the model file</li>
+<li>The list of elements in 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/elements.txt</tt></li>
+<li>The words in 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/chemAses.txt</tt></li>
+</ul>
+<p>The following are added to the nonchemical wordlist:</p>
+<ul>
+<li>The stopwords in ChemNameDict</li>
+<li>The stopwords in 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/stopwords.txt</tt></li>
+<li>The words in 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/nonChemAses.txt</tt></li>
+<li>The <tt>nonChemicalWords</tt> in the extracted training data</li>
+<li>The words in 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/usrDictWords.txt</tt> <i>except</i>
+those that appear as chemical names in ChemNameDict, or in the 
+<tt>chemicalWords</tt> part of the extracted training data.</li>
+</ul>
+<p>From these lists, we tabulate the frequencies of the various 4-grams in
+chemical and nonchemical words. These frequencies are then used to calculate
+the probability of the <i>final character</i> of the 4-gram given the previous
+three. Modified Kneser-Ney smoothing (Chen & Goodman, 1999) is applied so that 
+the probabilities are realistic even for rare or unseen 4-grams.</p>
+<h2>Applying the classifier</h2>
+<p><b>NB</b> From here on in, this only applies to name recognition with
+the pattern matching system. The MEMM uses the information differently.</p>
+<p>The classifier is only applied to a subset of the token encountered. Firstly,
+the token must have two lowercase characters in to qualify. Secondly, the
+following tests are applied, in order (such that tokens that are classified
+by an earlier test aren't subjected to later tests), to see if the token can be 
+automatically classified:</p>
+<ol>
+<li>Tokens starting with a CPR (such as 1,2-), followed by a word in one of 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/closedClass.txt</tt>,
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/stopwords.txt</tt>,
+the ChemNameDict stopwords, or the <tt>nonChemicalWords</tt> or the
+<tt>nonChemicalNonWords</tt> parts of the extracted training data, are
+automatically classified as nonchemical</li>
+<li>Tokens in the <tt>nonChemicalWords</tt> of the extracted training data
+are automatically classified as nonchemical</li>
+<li>Tokens in the ChemNameDict as a one-token chemical name, or in the
+<tt>chemicalWords</tt> part of the extracted training data are automatically
+classified as chemical</li>
+<li>Tokens in <tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/usrDictWords.txt</tt>
+are automatically classified as nonchemical</li>
+</ol>
+<p>If no automatic classification is made, then the word is classified using
+4-grams, by dividing the word up into 4-grams as above. We then calculate
+the conditional probabilities of observing the word, given that it is or isn't
+a chemical, by calculating the cumulative probabilities of each letter in turn.
+These two word-probabilities are reported as (natural) log probabilities, and
+the probability of observing the word given that it is a nonchemical word is
+subtracted from the probability of observing the word, given that it is a
+chemical word, to give a score. The higher the score, the more likely the
+word is to be chemical. This score is compared to a threshold 
+(<tt>nGramThreshold</tt> in the properties file), and if it is higher that the
+threshold, the word is classified as chemical, otherwise it is classified as
+nonchemical.</p>  
+<h2><a name="reps">After classification as a chemical</a></h2>
+<p>Once tokens are classified as chemical, one or more token representations
+may be generated. Full details are in the 
+uk.ac.cam.ch.wwmm.oscar3.recogniser.Token source. The representations are:
+<ul>
+<li>One of <tt>$CM</tt>, <tt>$CMS</tt> (plural CM), <tt>$RN</tt>, <tt>$CJ</tt>, 
+<tt>$ASE</tt>, <tt>$ASES</tt> (plural ASE), <tt>$GP</tt> ("group") - 
+see the getTypeForSuffix method for full details.</li>
+<li><tt>$-ene</tt>, if the token ends in "ene", and the same for other
+suffixes</li>
+<li><tt>$-CM</tt> for tokens of type CM (as in the classification above)
+that start with a hyphen, and the same for CMS, RN, etc.</li>
+<li><tt>$CM-</tt> for tokens of type CM (as in the classification above)
+that end with a hyphen, and the same for CMS, RN, etc.</li>
+<li><tt>$-(-</tt> for tokens that contain an open bracket but not a close
+bracket, such as "poly(ethylene" in "poly(ethylene oxide)"</li>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<html>
+<head><title>Oscar 3 Properties</title>
+<style type="text/css">
+dt,li {
+	font-family: monospace;
+}
+</style>
+</head>
+<body>
+<h1>Oscar3 Properties</h1>
+<p>Oscar3 has a number of options that can be configured. These are kept in
+Properties.dat, which is auto-generated the first time you run Oscar3. These
+properties can be edited by hand, using any text editor (eg. notepad, emacs).
+The format of the file is self-explanatory. Note that property names are
+case-sensitive. 
+</p>
+<p>If want to use a different properties file (i.e. not Properties.dat), then
+you can do so, by placing <tt>-P=&lt;properties file name&gt;</tt> at the start
+of the command line arguments. For example:</p>
+<p><tt>java -Xmx512m -jar oscar3-a5.jar -P="/path/to/propertiesfile/props.txt" Server</tt></p>
+<p>You may also rename Properties.dat to Properties.txt. If you wish to sort a
+properties file (perhaps to compare it to another file, you can do so using the
+SortProps instruction, for example:</p>
+<p><tt>java -Xmx512m -jar oscar3-a5.jar -P="/path/to/propertiesfile/props.txt" SortProps</tt></p>
+<p>If you are using Oscar3 as a library, then it is possible to configure these
+properties from within your code without using a properties file.  For more
+details see the <a href="extending.html">Extending Oscar3</a> documentation.</p>
+<h2>Properties, by category</h2>
+
+<h3>The filesystem</h3>
+<dl>
+<dt>InChI</dt>
+<dd>The location of the InChI executable. Oscar3 will automatically configure
+this for you.</dd>
+
+<dt>stdInChI</dt>
+<dd>Optional - the location of the InChI 1.02 executable, for the generation
+of Standard InChI from ViewMol.</dd>
+
+<dt>workspace</dt>
+<dd>The location of the Oscar3 workspace. This contains all of your processed
+files for searching, your scrapbook, various indices and places to place
+training data, etc. This can also be set to <tt>none</tt>.</dd>
+
+<dt>geniaPath</dt>
+<dd>The path to an install of the Genia tagger, version 3.0. This is optional.</dd>
+
+<dt>pcdir</dt>
+<dd>The location of a directory to put files downloaded from the PubChem FTP
+server. Please see the <a href="newpubchem.html">NewPubChem mirror</a>
+documentation. This property will usually be set automatically.</dd>
+</dl>
+
+<h3>The server</h3>
+<dl>
+<dt>serverType</dt>
+<dd>Whether to use the Oscar3 server or now. Allowable values: <tt>full</tt>,
+<tt>cutdown</tt>
+(under development), <tt>none</tt>. If <tt>none</tt>, then <tt>lockdown</tt>,
+<tt>hostname</tt> and other server-related properties are irrelevant.</dd>
+
+<dt>lockdown</dt>
+<dd>Whether or not to make sure the web server only serves web pages to the
+machine that it is running on. Allowable values = <tt>yes</tt>, <tt>no</tt>.</dd>
+
+<dt>hostname</dt>
+<dd>The host name of the machine you are running on. If <tt>lockdown=yes</tt>,
+then use <tt>localhost</tt> or <tt>127.0.0.1</tt>. If not, then you want a name
+like <tt>golem.ch.cam.ac.uk</tt></dd>
+
+<dt>port</dt>
+<dd>The port the server should run on. Defaults to <tt>8181</tt>.</dd>
+
+<dt>serverRoot</dt>
+<dd>Defaults to <tt>none</tt>. Normally, the services offered by the Oscar3 server
+will occur in the server root. For example,
+<tt>http://localhost:8181/ViewPaper</tt>. Setting this to <tt>/foobar</tt> (note
+the leading slash, and no trailing slash) would cause this service to move to
+<tt>http://localhost:8181/foobar/ViewPaper</tt>.</dd>
+
+<dt>scrapBookIEFix</dt>
+<dd>If you are using ScrapBook under Internet Explorer, and there are no spaces
+between words soitappearslikethis, try setting this to <tt>yes</tt></dd>
+</dl>
+
+
+<h3>Overall Control of Document Processing</h3>
+<dl>
+<dt>oscarFlow</dt>
+<dd>Allows you to specify oscarFlow commands to be run when
+Oscar is asked to process a file, using the Process command. Other commands will
+use modified versions of this parameter. When using the SAF command, if this 
+parameter contains the <tt>inline</tt> command, that command will be deleted.
+When using the ImportAndProcess, ProcessInto and ProcessInWorkspace commands,
+when processing abstracts downloaded via the PubMed form and when reprocessing
+directories from the web interface, the <tt>data</tt> command will be added
+to the flow.</dd>
+
+<dt>verbose</dt>
+<dd><tt>yes</tt> or <tt>no</tt>: whether to print lots of status messages to the
+console or not.</dd>
+
+</dl>
+
+<h3>Name Recognition</h3>
+<dl>
+
+<dt>useMEMM</dt>
+<dd><tt>yes</tt> or <tt>no</tt>, defaults to <tt>yes</tt>. Whether or not to use
+the <a href="memm.html">MEMM</a>. If <tt>no</tt>, 
+<a href="pattern.html">pattern-based name recognition</a> is used.</dd>
+
+<dt>polymerMode</dt>
+<dd>If <tt>yes</tt>, Configures Oscar3 for use in the Polymer Informatics
+project. This over-rides <tt>useMEMM</tt>, setting it to <tt>no</tt>.</dd>
+
+<dt>useONT</dt>
+<dd><tt>yes</tt> or <tt>no</tt>, defaults to <tt>yes</tt>. Whether or not to try
+to recognise entities found in ontologies.</dd>
+
+<dt>splitOnEnDash</dt>
+<dd><tt>yes</tt> or <tt>no</tt>, defaults to <tt>yes</tt>. If set, this will
+cause Oscar to always tokenise on en-dashes.</dd>
+
+<dt>dfaSize</dt>
+<dd>An integer, defaults to 1000. The number of terms to include in a DFA used
+for named-entity recognition. Using a low value for this number will reduce the
+amount of time and memory needed for Oscar3 to get started, but will decrease
+the speed at which Oscar3 handles papers.</dd>
+
+<dt>minimizeDFA</dt>
+<dd>Setting this option may decrease the memory consumption of Oscar3 during
+operation, but may substantially increase the startup time, and possibly
+increase the memory consumption on startup.</dd>
+
+<dt>model</dt>
+<dd>Which model file to use - see <a href="data.html">the Oscar3 data
+documentation</a> for more details.</dd>
+</dl>
+
+<h4>Name Recognition when useMEMM=yes</h4>
+<dl>
+<dt>rescoreMEMM</dt>
+<dd><tt>yes</tt> or <tt>no</tt>, defaults to <tt>yes</tt>. 
+When using the <a href="memm.html">MEMM</a>, whether to rescore the named
+entities that are detected.
+See the <a href="memm.html">MEMM</a> documentation for more details.</dd>
+
+<dt>neThreshold</dt>
+<dd>The minimum confidence score needed in order to recognise a named entity
+when using the MEMM. See the <a href="memm.html">MEMM</a> documentation for 
+more details.</dd>
+
+<dt>ontProb</dt>
+<dd>See the <a href="memm.html">MEMM</a> documentation for more details.</dd>
+
+<dt>cprProb</dt>
+<dd>See the <a href="memm.html">MEMM</a> documentation for more details.</dd>
+
+<dt>custProb</dt>
+<dd>See the <a href="memm.html">MEMM</a> documentation for more details.</dd>
+ 
+</dl>
+
+<h4>Name Recognition when useMEMM=no</h4>
+<dl>
+<dt>useWordShapeHeuristic</dt>
+<dd>An extreme method of recognising chemical formulae and acronyms: mark up
+anything with one or more upper-case letters and no two adjacent lower-case
+letters that isn't a stopword. Defaults to <tt>no</tt>, <tt>yes</tt> is also
+allowable.</dd>
+
+<dt>useFormulaRegex</dt>
+<dd>Whether or not to use the regex-based formula recogniser. Defaults to
+<tt>yes</tt>, <tt>no</tt> is also allowable.</dd>
+
+<dt>ngramThreshold</dt>
+<dd>The real-valued threshold for the recognition of chemical names by nGrams.
+Default is -2.0. Suggested values: 2.0 for high precision, 0.0 for a good
+balance of precision and recall, -2.0 (or even -4.0 or lower) for high
+recall.</dd>
+
+<dt>deprioritiseONT</dt>
+<dd><tt>yes</tt> or <tt>no</tt>, defaults to <tt>yes</tt>. If <tt>yes</tt>, then
+named entities will only be  marked ONT if there is no possible non-ONT named
+entity that could conflict with it. If <tt>no</tt>, ONTs are prioritised the
+same as other NEs - i.e. longest leftmost.</dd>
+</dl>
+
+<h3>Name Resolution</h3>
+<dl>
+<dt>chemNameDict</dt>
+<dd>Defaults to <tt>chemnamedict.xml</tt>. When ChemNameDict is being
+initialised, Oscar3 looks for this file in the <tt>chemnamedict</tt> directory
+in the workspace. By placing several different files in that directory, and
+altering this parameter, you can switch between ChemNameDicts.</dd>
+
+<dt>makeCML</dt>
+<dd>Whether Oscar3 should put CML for the molecules that it has made into the
+results documents. Defaults to <tt>yes</tt>, <tt>no</tt> is also allowable.</dd>
+
+<dt>useJNIInChI</dt>
+<dd>Defaults to <tt>yes</tt> - this tells Oscar3 to use an interface to the
+InChI code that uses the Java Native Interface if possible, and to fall back
+to using the InChI application as a seperate process if not. Setting this to
+<tt>no</tt> means that Oscar3 will always use the InChI application, and never
+the JNI InChI. If Oscar3 is crashing or printing strange error messages,
+this may be a useful property to set to <tt>no</tt>.</dd>
+
+<dt>interpretPoly</dt>
+<dd>Whether to interpret names starting in "poly" by removing the
+"poly" from the front, and parsing or looking up the rest of the name. Defaults
+to <tt>no</tt>.</dd>
+
+<dt>useOPSIN</dt>
+<dd>Defaults to <tt>yes</tt> - whether to allow OPSIN to try to interpret chemical
+names.</dd>
+</dl>
+
+<h3>Extending Oscar3</h3>
+<p>See <a href="extending">the extending Oscar3 help page</a> for more
+details of these options:</p>
+<ul>
+<li>initScript</li>
+<li>resourcePrefix</li>
+<li>extensionNameResolver</li>
+<li>cacheExtensionNameResolver</li>
+</ul>
+
+<h3>Miscellaneous</h3>
+<dl>
+<dt>dataOnlyInExperimental</dt>
+<dd><tt>yes</tt> or <tt>no</tt> (default = <tt>yes</tt>): If <tt>yes</tt>, only
+look for experimental data inside sections of the document with the heading
+"Experimental".</dd>
+</dl>
+
+<h3>Experimental properties</h3>
+<p>These options concern parts of code that are not yet ready for full release,
+or which are only kept for backwards compatibility reasons;
+therefore you should simply avoid these. They are:
+<ul>
+<li>useDSO</li>
+<li>svdlibc</li>
+<li>openBabel</li>
+<li>yahooKey</li>
+<li>dbaddress</li>
+<li>dbname</li>
+<li>dbusername</li>
+<li>dbpasswd</li>
+<li>rdbms</li>
+<li>fulldb</li>
+<li>xmlStrings</li>
+</ul>
+
+<dl>
+</body>
+</html>

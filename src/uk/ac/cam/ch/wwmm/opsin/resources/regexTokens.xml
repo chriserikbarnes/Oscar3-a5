@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE regexTokenList SYSTEM "regexTokenList.dtd">
+<!-- regex == the regular expression to recognise as a token
+	symbol == the one-letter code that goes into the grammar in regexes.xml
+	tagname == the type of XML element to turn the token into.
+ -->
+<regexTokenList>
+  <regexToken name="%elementSymbol%" regex="(He|Li|Be|B|C|N|O|F|Ne|Na|Mg|Al|Al|Si|P|S|S|Cl|Ar|K|Ca|Sc|Ti|V|Cr|Mn|Fe|Co|Ni|Cu|Zn|Ga|Ge|As|Se|Br|Kr|Rb|Sr|Y|Zr|Nb|Mo|Tc|Ru|Rh|Pd|Ag|Cd|In|Sn|Sb|Te|I|Xe|Cs|Cs|Ba|La|Ce|Pr|Nd|Pm|Sm|Eu|Gd|Tb|Dy|Ho|Er|Tm|Yb|Lu|Hf|Ta|W|Re|Os|Ir|Pt|Au|Hg|Tl|Pb|Bi|Po|At|Rn|Fr|Ra|Ac|Th|Pa|U|Np|Pu|Am|Cm|Bk|Cf|Es|Fm|Md|No|Lr|Rf|Db|Sg|Bh|Hs|Mt|Ds)"/>
+
+<!--This regex is about 4 times shorter than it appears.
+It goes optional relative/cis/trans descriptor, numerical locant with optional letter OR element symbol, optional primes, bracketed indicated hydrogen OR compound locant
+This is then repeated with the requirement that an initial comma is required. In this case the terminal hyphen is required.
+The whole of this is then repeated except that letters or element symbols are no longer required after a numerical locant but the terminal hyphen is optional-->
+  <regexToken regex="(([rct]-)?([1-9][0-9]*[a-z]?|%elementSymbol%)'*([\[\(\{][1-9][0-9]*[a-z]?'*H?(,[1-9][0-9]*[a-z]?'*H)*[\]\)\}])?(,([rct]-)?([1-9][0-9]*[a-z]?|%elementSymbol%)'*([\[\(\{][1-9][0-9]*[a-z]?'*H?(,[1-9][0-9]*[a-z]?'*H)*[\]\)\}])?)*-)|(([rct]-)?([1-9][0-9]*)'*([\[\(\{][1-9][0-9]*[a-z]?'*H?(,[1-9][0-9]*[a-z]?'*H)*[\]\)\}])?(,([rct]-)?([1-9][0-9]*)'*([\[\(\{][1-9][0-9]*[a-z]?'*H?(,[1-9][0-9]*[a-z]?'*H)*[\]\)\}])?)*-?)" symbol="l" tagname="locant" />
+  <regexToken regex="-" symbol="h" tagname="hyphen" />
+  <regexToken regex="[\[\(\{]" symbol="o" tagname="openbracket" />
+  <regexToken regex="[\]\)\}]" symbol="c" tagname="closebracket" />
+  <regexToken regex="(?i)cyclo" symbol="C" tagname="cyclo" />
+  <regexToken regex="(?i)spiro\[[0-9]+\.[0-9]+\]" symbol="S" tagname="spiro" />
+  <regexToken regex="(?i)cyclo\[[0-9]+(\.[0-9]+(\^?[\(\{]?[0-9]+,[0-9]+[\)\}]?\^?\^?)?)+\]" symbol="B" tagname="vonBaeyer" />
+  <regexToken regex="(?i)\[[1-9][0-9]*\]annulen" symbol="N" tagname="annulen" />
+  <regexToken regex="\[([1-9][0-9]*[a-z]?(,[1-9][0-9]*[a-z]?)*)?-?[a-z]*\]" symbol="F" tagname="fusion" />
+  <regexToken regex="(?i)hydro" symbol="y" tagname="hydro" />
+  <regexToken regex="[1-9][0-9]*[a-z]?'*H(,[1-9][0-9]*[a-z]?'*H)*-" symbol="e" tagname="hydrogen" />
+  <regexToken regex="n-" symbol="n" tagname="alkanen" />
+  <regexToken regex="((?i:ortho|meta|para)|o|m|p)-" symbol="O" tagname="orthoMetaPara" />
+  <regexToken regex="[eE]" symbol="Z" tagname="e"/>
+  <regexToken regex="[oO]" symbol="Y" tagname="o"/>
+  <regexToken regex="[\[\(\{]" symbol="T" tagname="optionalOpenBracket" />
+  <regexToken regex="[\]\)\}]" symbol="U" tagname="optionalCloseBracket" />
+  <regexToken regex="[\[\(\{]" symbol="q" tagname="structuralOpenBracket" />
+  <regexToken regex="[\]\)\}]" symbol="Q" tagname="structuralCloseBracket" />
+  <regexToken regex="([1-9][0-9]*[a-z]?|%elementSymbol%)(,([1-9][0-9]*[a-z]?|%elementSymbol%)'*)(:([1-9][0-9]*[a-z]?|%elementSymbol%)'*(,([1-9][0-9]*[a-z]?|%elementSymbol%)'*))*-?" symbol="L" tagname="ringAssemblyLocant" />
+
+  <!-- StereoChemistry Terms, currently dropped-->
+  <regexToken regex="(rel-)?[\[\(\{][0-9]*[a-z]?'*([EZ]|[RS]\*?)(,[0-9]*[a-z]?'*([EZ]|[RS]\*?))*[\]\)\}]" symbol="E" type="stereochemistryBracket" tagname="stereoChemistry" />
+  <regexToken regex="(?i)cis|trans" symbol="t" type="cisOrTrans" tagname="stereoChemistry" />
+
+</regexTokenList>

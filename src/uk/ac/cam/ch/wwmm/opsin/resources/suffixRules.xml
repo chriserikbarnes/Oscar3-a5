@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE suffixRulesList SYSTEM "suffixRules.dtd">
+<!-- See the DTD and the OPSIN code (StructureBuilder.resolveSuffixes) to make
+sense of this -->
+<suffixRulesList>
+  <suffixRules type="simpleGroup">
+    <rule value="amido">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="N" setsOutID="yes" />
+    </rule>
+    <rule value="oxy">
+      <addgroup SMILES="O" setsOutID="yes" />
+    </rule>
+    <rule value="oyl">
+      <addgroup SMILES="O" bondOrder="2" />
+      <setOutID />
+    </rule>
+    <rule value="yl">
+      <setOutID />
+    </rule>
+    <rule value="ylidene">
+      <setOutID outValency="2" />
+    </rule>
+    <rule value="ylidyne">
+      <setOutID outValency="3" />
+    </rule>
+  </suffixRules>
+  <suffixRules type="substituent">
+    <rule value="amido">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="N" setsOutID="yes" />
+    </rule>
+    <rule value="oxy">
+      <addgroup SMILES="O" setsOutID="yes" />
+    </rule>
+    <rule value="oyl">
+      <addgroup SMILES="O" bondOrder="2" />
+      <setOutID />
+    </rule>
+    <rule value="yl">
+      <setOutID />
+    </rule>
+    <rule value="ylidene">
+      <setOutID outValency="2" />
+    </rule>
+    <rule value="ylidyne">
+      <setOutID outValency="3" />
+    </rule>
+  </suffixRules>
+  <suffixRules type="chain">
+    <rule value="al">
+      <addgroup SMILES="O" bondOrder="2" />
+    </rule>
+    <rule value="aldehyde">
+      <addgroup SMILES="O" bondOrder="2" />
+    </rule>
+    <rule value="amide">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="N" setsFunctionalID="yes" />
+    </rule>
+    <rule value="amine">
+      <addgroup SMILES="N" />
+    </rule>
+    <rule value="ate">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="[O-]" setsFunctionalID="yes" />
+    </rule>
+    <rule value="carbaldehyde">
+      <addgroup SMILES="C=O" />
+    </rule>
+    <rule value="carbohydrazide">
+      <addgroup SMILES="C(=O)NN"/>
+    </rule>
+    <rule value="carbohydrazonic">
+      <addgroup SMILES="C(=NN)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carbohydrazonoyl">
+      <addgroup SMILES="C(=NN)" setsOutID="yes"/>
+    </rule>
+    <rule value="carbohydroxamic">
+      <addgroup SMILES="C(=O)NO-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carbohydroximic">
+      <addgroup SMILES="C(=NO)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carbohydroximoyl">
+      <addgroup SMILES="C(=NO)" setsOutID="yes"/>
+    </rule>
+    <rule value="carbonitrile">
+      <addgroup SMILES="C#N" />
+    </rule>
+    <rule value="carbonyl">
+      <addgroup SMILES="C(=O)" setsOutID="yes"/>
+    </rule>
+    <rule value="carbothioyl">
+      <addgroup SMILES="C(=S)" setsOutID="yes"/>
+    </rule>
+    <rule value="carboxamide">
+      <addgroup SMILES="C(=O)N-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carboxamido">
+      <addgroup SMILES="C(=O)N-" setsOutID="yes"/>
+    </rule>
+    <rule value="carboximidamide"><!--order of Ns determines primes-->
+      <addgroup SMILES="C(N)=N"/>
+    </rule>
+    <rule value="carboximidic">
+      <addgroup SMILES="C(=N)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carboximidoyl">
+      <addgroup SMILES="C=N" setsOutID="yes"/>
+    </rule>
+    <rule value="diazonium">
+      <addgroup SMILES="[N+]#N" />
+    </rule>
+    <rule value="hydrazide">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="NN"/>
+    </rule>
+    <rule value="hydrazonic">
+      <addgroup SMILES="NN" bondOrder="2" />
+      <addgroup SMILES="O" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="hydrazonoyl">
+      <addgroup SMILES="NN" bondOrder="2"/>
+      <setOutID />
+    </rule>
+    <rule value="hydroxamic">
+      <addgroup SMILES="NO-" setsFunctionalID="yes"/>
+      <addgroup SMILES="O" bondOrder="2" />
+    </rule>
+    <rule value="hydroximic">
+      <addgroup SMILES="NO" bondOrder="2" />
+      <addgroup SMILES="O" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="hydroximoyl">
+      <addgroup SMILES="NO" bondOrder="2"/>
+      <setOutID />
+    </rule>
+    <rule value="ic">
+      <addgroup SMILES="O" setsFunctionalID="yes"/>
+      <addgroup SMILES="O" bondOrder="2" />
+    </rule>
+    <rule value="ide">
+      <changecharge charge="-1" />
+    </rule>
+    <rule value="imidic">
+      <addgroup SMILES="N" bondOrder="2"/>
+      <addgroup SMILES="O" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="imidoyl">
+      <addgroup SMILES="N" bondOrder="2"/>
+      <setOutID />
+    </rule>
+    <rule value="imidamide"><!--order of Ns determines primes-->
+      <addgroup SMILES="N"/>
+      <addgroup SMILES="N" bondOrder="2" />
+    </rule>
+    <rule value="imine">
+      <addgroup SMILES="N" bondOrder="2" />
+    </rule>
+    <rule value="ium">
+      <changecharge charge="1" />
+    </rule>
+    <rule value="nitrile">
+      <addgroup SMILES="N" bondOrder="3" />
+    </rule>
+    <rule value="oate">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="[O-]" setsFunctionalID="yes" />
+    </rule>
+    <rule value="oic">
+      <addgroup SMILES="O" setsFunctionalID="yes"/>
+      <addgroup SMILES="O" bondOrder="2" />
+    </rule>
+    <rule value="ol">
+      <addgroup SMILES="O" />
+    </rule>
+    <rule value="olate">
+      <addgroup SMILES="[O-]" />
+    </rule>
+    <rule value="onaphthone">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="c1cccc2ccccc12" labels="1'/2'/3'/4'/4a'/5'/6'/7'/8'/8a'" />
+    </rule>
+    <rule value="one">
+      <addgroup SMILES="O" bondOrder="2" ketoneLocant="yes" />
+    </rule>
+    <rule value="ophenone">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="c1ccccc1" labels="1'/2'/3'/4'/5'/6'" />
+    </rule>
+    <rule value="ous">
+      <addgroup SMILES="O" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="oxide">
+      <addgroup SMILES="[O-]" />
+    </rule>
+    <rule value="sulfenyl">
+      <addgroup SMILES="S" setsOutID="yes"/>
+    </rule>
+    <rule value="sulfinyl">
+      <addgroup SMILES="S(=O)" setsOutID="yes"/>
+    </rule>
+    <rule value="sulfonate">
+      <addgroup SMILES="S(=O)(=O)[O-]-" setsFunctionalID="yes" />
+    </rule>
+    <rule value="sulfonyl">
+      <addgroup SMILES="S(=O)(=O)" setsOutID="yes"/>
+    </rule>
+    <rule value="thiol">
+      <addgroup SMILES="S" />
+    </rule>
+    <rule value="thioyl">
+      <addgroup SMILES="S" bondOrder="2"/>
+      <setOutID />
+    </rule>
+    <rule value="thiolate">
+      <addgroup SMILES="[S-]" />
+    </rule>
+
+<!-- INCOMPLETE-->
+
+    <rule value="boronic">
+      <addgroup SMILES="B(O)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carboxylic">
+      <addgroup SMILES="C(=O)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carboxylate">
+      <addgroup SMILES="C(=O)[O-]-" setsFunctionalID="yes" />
+    </rule>
+    <rule value="sulfonic">
+      <addgroup SMILES="S(=O)(=O)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="sulfonamide">
+      <addgroup SMILES="S(=O)(=O)N-" setsFunctionalID="yes" />
+    </rule>
+
+<!--inline-->
+    <rule value="amido">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="N" setsOutID="yes" />
+    </rule>
+    <rule value="oxy">
+      <addgroup SMILES="O" setsOutID="yes" />
+    </rule>
+    <rule value="oyl">
+      <addgroup SMILES="O" bondOrder="2" />
+      <setOutID />
+    </rule>
+    <rule value="yl">
+      <setOutID />
+    </rule>
+    <rule value="ylidene">
+      <setOutID outValency="2" />
+    </rule>
+    <rule value="ylidyne">
+      <setOutID outValency="3" />
+    </rule>
+  </suffixRules>
+
+  <suffixRules type="acidStem">
+    <rule value="aldehyde">
+      <addgroup SMILES="O" bondOrder="2" />
+    </rule>
+    <rule value="amide">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="N" setsFunctionalID="yes" />
+    </rule>
+    <rule value="amido">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="N" setsOutID="yes" />
+    </rule>
+    <rule value="ate">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="[O-]" setsFunctionalID="yes" />
+    </rule>
+    <rule value="carbohydrazonic">
+      <addgroup SMILES="C(=NN)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carbohydrazonoyl">
+      <addgroup SMILES="C(=NN)" setsOutID="yes"/>
+    </rule>
+    <rule value="carbohydroxamic">
+      <addgroup SMILES="C(=O)NO-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carbohydroximic">
+      <addgroup SMILES="C(=NO)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carbohydroximoyl">
+      <addgroup SMILES="C(=NO)" setsOutID="yes"/>
+    </rule>
+    <rule value="carbonate">
+      <addgroup SMILES="[O-]" setsFunctionalID="yes" />
+      <addgroup SMILES="[O-]" setsFunctionalID="yes" />
+      <addgroup SMILES="O" bondOrder="2" />
+    </rule>
+    <rule value="carbonyl">
+      <addgroup SMILES="C(=O)" setsOutID="yes"/>
+    </rule>
+    <rule value="carbothioyl">
+      <addgroup SMILES="C(=S)" setsOutID="yes"/>
+    </rule>
+    <rule value="carboximidic">
+      <addgroup SMILES="C(=N)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carboximidoyl">
+      <addgroup SMILES="C=N" setsOutID="yes"/>
+    </rule>
+    <rule value="hydrazonic">
+      <addgroup SMILES="NN" bondOrder="2"/>
+      <addgroup SMILES="O" setsFunctionalID="yes" />
+    </rule>
+    <rule value="hydrazonoyl">
+      <addgroup SMILES="NN" bondOrder="2"/>
+      <setOutID />
+    </rule>
+    <rule value="hydroxamic">
+      <addgroup SMILES="NO-" setsFunctionalID="yes"/>
+      <addgroup SMILES="O" bondOrder="2"/>
+    </rule>
+    <rule value="hydroximic">
+      <addgroup SMILES="NO" bondOrder="2"/>
+      <addgroup SMILES="O" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="hydroximoyl">
+      <addgroup SMILES="NO" bondOrder="2"/>
+      <setOutID />
+    </rule>
+    <rule value="ic">
+      <addgroup SMILES="O" setsFunctionalID="yes" />
+      <addgroup SMILES="O" bondOrder="2" />
+    </rule>
+    <rule value="ide">
+      <changecharge charge="-1" />
+    </rule>
+    <rule value="imidic">
+      <addgroup SMILES="N" bondOrder="2"/>
+      <addgroup SMILES="O" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="imidoyl">
+      <addgroup SMILES="N" bondOrder="2"/>
+      <setOutID />
+    </rule>
+    <rule value="ium">
+      <changecharge charge="1" />
+    </rule>
+    <rule value="nitrile">
+      <addgroup SMILES="N" bondOrder="3" />
+    </rule>
+    <rule value="onaphthone">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="c1cccc2ccccc12" labels="1'/2'/3'/4'/4a'/5'/6'/7'/8'/8a'" />
+    </rule>
+    <!-- one is handled by hard coding common examples of its use -->
+    <rule value="ophenone">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="c1ccccc1" labels="1'/2'/3'/4'/5'/6'" />
+    </rule>
+    <rule value="ous">
+      <addgroup SMILES="O" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="oxy">
+      <addgroup SMILES="O" bondOrder="2" />
+      <addgroup SMILES="O" setsOutID="yes" />
+    </rule>
+    <rule value="oyl">
+      <addgroup SMILES="O" bondOrder="2" />
+      <setOutID />
+    </rule>
+    <rule value="sulfenyl">
+      <addgroup SMILES="S" setsOutID="yes"/>
+    </rule>
+    <rule value="sulfinyl">
+      <addgroup SMILES="S(=O)" setsOutID="yes"/>
+    </rule>
+    <rule value="sulfonyl">
+      <addgroup SMILES="S(=O)(=O)" setsOutID="yes"/>
+    </rule>
+    <rule value="thioyl">
+      <addgroup SMILES="S" bondOrder="2"/>
+      <setOutID />
+    </rule>
+    <rule value="yl" subType="ylForAcyl">
+      <addgroup SMILES="O" bondOrder="2" />
+      <setOutID />
+    </rule>
+    <rule value="yl" subType="oylForAcyl">
+      <setOutID />
+    </rule>
+    <rule value="ylidene" subType="oylForAcyl">
+      <setOutID outValency="2" />
+    </rule>
+    <rule value="ylidyne" subType="oylForAcyl">
+      <setOutID outValency="3" />
+    </rule>
+  </suffixRules>
+
+  <suffixRules type="ring">
+    <rule value="al">
+      <addgroup SMILES="C=O" />
+    </rule>
+    <rule value="aldehyde">
+      <addgroup SMILES="C=O" />
+    </rule>
+    <rule value="amide">
+      <addgroup SMILES="C(=O)N-" setsFunctionalID="yes" />
+    </rule>
+    <rule value="amine">
+      <addgroup SMILES="N" />
+    </rule>
+    <rule value="ate">
+      <addgroup SMILES="C(=O)[O-]-" setsFunctionalID="yes" />
+    </rule>
+    <rule value="carbaldehyde">
+      <addgroup SMILES="C=O" />
+    </rule>
+    <rule value="carbohydrazide">
+      <addgroup SMILES="C(=O)NN" />
+    </rule>
+    <rule value="carbohydrazonic">
+      <addgroup SMILES="C(=NN)O-" setsFunctionalID="yes" />
+    </rule>
+    <rule value="carbohydrazonoyl">
+      <addgroup SMILES="C(=NN)" setsOutID="yes"/>
+    </rule>
+    <rule value="carbohydroxamic">
+      <addgroup SMILES="C(=O)NO" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carbohydroximic">
+      <addgroup SMILES="C(=NO)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carbohydroximoyl">
+      <addgroup SMILES="C(=NO)" setsOutID="yes"/>
+    </rule>
+    <rule value="carbonitrile">
+      <addgroup SMILES="C#N" />
+    </rule>
+    <rule value="carbonyl">
+      <addgroup SMILES="C(=O)" setsOutID="yes"/>
+    </rule>
+    <rule value="carbothioyl">
+      <addgroup SMILES="C(=S)" setsOutID="yes"/>
+    </rule>
+    <rule value="carboxamide">
+      <addgroup SMILES="C(=O)N-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carboxamido">
+      <addgroup SMILES="C(=O)N-" setsOutID="yes"/>
+    </rule>
+    <rule value="carboximidamide"><!--order of Ns determines primes-->
+      <addgroup SMILES="C(N)=N"/>
+    </rule>
+    <rule value="carboximidic">
+      <addgroup SMILES="C(=N)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carboximidoyl">
+      <addgroup SMILES="C=N" setsOutID="yes"/>
+    </rule>
+    <rule value="diazonium">
+      <addgroup SMILES="[N+]#N" />
+    </rule>
+    <rule value="hydrazide">
+      <addgroup SMILES="C(=O)NN"/>
+    </rule>
+    <rule value="hydrazonic">
+      <addgroup SMILES="C(=NN)O-" setsFunctionalID="yes" />
+    </rule>
+    <rule value="hydrazonoyl">
+      <addgroup SMILES="C(=NN)" setsOutID="yes"/>
+    </rule>
+    <rule value="hydroxamic">
+      <addgroup SMILES="C(=O)NO-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="hydroximic">
+      <addgroup SMILES="C(=NO)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="hydroximoyl">
+      <addgroup SMILES="C(=NO)" setsOutID="yes"/>
+    </rule>
+    <rule value="ic">
+      <addgroup SMILES="C(=O)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="ide">
+      <changecharge charge="-1" />
+    </rule>
+    <rule value="imidic">
+      <addgroup SMILES="C(=N)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="imidoyl">
+      <addgroup SMILES="C=N" setsOutID="yes"/>
+    </rule>
+    <rule value="imidamide"><!--order of Ns determines primes-->
+      <addgroup SMILES="C(N)=N"/>
+    </rule>
+    <rule value="imine">
+      <addgroup SMILES="N" bondOrder="2" />
+    </rule>
+    <rule value="ium">
+      <changecharge charge="1" />
+    </rule>
+    <rule value="nitrile">
+      <addgroup SMILES="C#N" />
+    </rule>
+    <rule value="oate">
+      <addgroup SMILES="C(=O)[O-]-" setsFunctionalID="yes" />
+    </rule>
+    <rule value="oic">
+      <addgroup SMILES="C(=O)O-" setsFunctionalID="yes" />
+    </rule>
+    <rule value="ol">
+      <addgroup SMILES="O" />
+    </rule>
+    <rule value="olate">
+      <addgroup SMILES="[O-]" />
+    </rule>
+    <rule value="one">
+     <addgroup SMILES="O" bondOrder="2" />
+    </rule>
+    <rule value="oxide">
+      <addgroup SMILES="[O-]" />
+    </rule>
+    <rule value="sulfenyl">
+      <addgroup SMILES="S" setsOutID="yes"/>
+    </rule>
+    <rule value="sulfinyl">
+      <addgroup SMILES="S(=O)" setsOutID="yes"/>
+    </rule>
+    <rule value="sulfonate">
+      <addgroup SMILES="S(=O)(=O)[O-]-" setsFunctionalID="yes" />
+    </rule>
+    <rule value="sulfonyl">
+      <addgroup SMILES="S(=O)(=O)" setsOutID="yes"/>
+    </rule>
+    <rule value="thiol">
+      <addgroup SMILES="S" />
+    </rule>
+    <rule value="thiolate">
+      <addgroup SMILES="[S-]" />
+    </rule>
+    <rule value="thioyl">
+      <addgroup SMILES="S" bondOrder="2"/>
+      <setOutID />
+    </rule>
+    <rule value="yne">
+      <triplebond />
+    </rule>
+
+<!-- Created by Post Processor -->
+    <rule value="benzyl-yl">
+      <addgroup SMILES="C" setsOutID="yes" />
+    </rule>
+    <rule value="benzyl-ylidene">
+      <addgroup SMILES="C" setsOutID="yes" outValency="2"/>
+    </rule>
+    <rule value="benzyl-ylidyne">
+      <addgroup SMILES="C" setsOutID="yes" outValency="3"/>
+    </rule>
+    <rule value="benzyloxy-yloxy">
+      <addgroup SMILES="CO-" setsOutID="yes" />
+    </rule>
+
+<!--inline-->
+    <rule value="amido">
+      <addgroup SMILES="C(=O)N-" setsOutID="yes" />
+    </rule>
+    <rule value="oxy">
+      <addgroup SMILES="O" setsOutID="yes" />
+    </rule>
+    <rule value="oyl">
+      <addgroup SMILES="C(=O)" setsOutID="yes" />
+    </rule>
+    <rule value="yl">
+      <setOutID />
+    </rule>
+    <rule value="ylidene">
+      <setOutID outValency="2" />
+    </rule>
+    <rule value="ylidyne">
+      <setOutID outValency="3" />
+    </rule>
+
+<!-- INCOMPLETE-->
+
+    <rule value="boronic">
+      <addgroup SMILES="B(O)O-" setsFunctionalID="yes" />
+    </rule>
+    <rule value="carboxylic">
+      <addgroup SMILES="C(=O)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="carboxylate">
+      <addgroup SMILES="C(=O)[O-]-" setsFunctionalID="yes" />
+    </rule>
+    <rule value="sulfonic">
+      <addgroup SMILES="S(=O)(=O)O-" setsFunctionalID="yes"/>
+    </rule>
+    <rule value="sulfonamide">
+      <addgroup SMILES="S(=O)(=O)N-" setsFunctionalID="yes" />
+    </rule>
+  </suffixRules>
+</suffixRulesList>

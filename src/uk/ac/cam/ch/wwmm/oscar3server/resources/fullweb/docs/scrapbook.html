@@ -1,0 +1,57 @@
+<html>
+<head><title>ScrapBook</title></head>
+<body>
+<h1>Using Scrapbook</h1>
+<p><b>NB</b> Scrapbook is known to work with Firefox 1.5 and 2.0. It hasn't been extensively tested with anything else, although
+some effort has been made to get it to work (a bit flakily) with Internet Explorer.</p>
+<p>There are two modes for using scrapbook - either you can annotate a whole paper, or use it to
+collect and annotate example sentences. All of the annotations are kept in the folder you specified
+on installation, so you can look at them by hand / feed them to scripts / whatever. This is kept in
+sync with what you can see - there's no need to 'save'.</p>
+
+<h3>Collecting examples</h3>
+<p><b>1)</b> Go to the Scrapbook index and make a new Scrapbook.</p>
+<p><b>2)</b> Look at the navigation bar under the title of the page you just looked at - this contains
+several links. Drag the rightmost link to your bookmarks folder/toolbar/whatever. This is a bookmarklet that
+contains a bit of Javascript that you'll need.
+<p><b>3)</b> Go looking through some papers that have been rendered using my stylesheet. When you see something
+interesting, highlight it in your browser. Then click on the bookmarklet. This should add it to your file.
+<p><b>4)</b> Go back to the ScrapBook Index, select your
+scrapbook, and you'll now see the various snippets you've collected - just the SciXML, no annotations. </p>
+<p><b>5)</b> Click the 'edit' button on a snippet. This will bring up an editor. You can delete NE annotations or
+edit attributes on the annotations using the buttons provided. You can also make new annotations by selecting
+a bit of the text, and clicking on one of the buttons ("compound", "group" etc.) at the top of the screen.</p>
+<p><b>6)</b> You can adjust the boundaries of an annotation by clicking it's "edit" button, as if to
+edit its attributes.</p>
+<p><b>7)</b> 'Regression Test' will compare the annotations that are in your scrapbook with a set of
+annotations made by re-parsing contents of the scrapbook.</p>
+<p><b>8)</b> 'Edit Types' provides a quick way of adjusting all of the named entity types
+in a scrapbook.</p>
+<p><b>9)</b> 'Edit Subtypes' provides a quick way of adjusting all of the
+<a href="subtypes.html">named entity subtypes</a> in a scrapbook.</p>
+<p><b>10)</b> 'Boolean Attributes' will prompt you for an attribute name. Given an attribute name
+it will put a checkbox next to each named entity. The checkbox controls whether the attribute
+is present (and gives it a value of "yes") or absent.</p>
+<p><b>11)</b> You can get Oscar to annotate the paper using 'Auto Annotate', and remove all of the annotations
+using 'Clear Annotations'.</p>
+
+<h3>On whole papers</h3>
+<p><b>1)</b> Go to the Add Paper To ScrapBook page,
+select a paper in SciXML to read and give it a name. Alternatively, find a paper using 'View Papers' from 
+the server's main menu, and click on one of the 'Add to Scrapbook' links.</p>
+<p><b>2)</b> Go to the Scrapbook index and
+select the paper you've just imported. You'll see the paper as a of annotated snippets.</p>
+<p><b>3)</b> Edit the annotated snippets as above.</p>
+<p><b>4)</b> Clicking 'SciXML paper' will reconstruct the paper as SciXML. This will also put files 
+<code>markedup.xml</code> and <code>saf.xml</code> in the relevant scrapbook subdirectory.</p>
+
+<h3>FAQ</h3>
+<dl>
+<dt>Why aren't the annotations appearing when I click the buttons at the top of the screen?</dt>
+<dd>Try configuring the pop-up blocker on your web browser not to block pop-ups from the server. Although
+it doesn't look like ScrapBook is producing pop-ups, it works by creating pop-ups that close
+themselves as a way of sending messages to the server. At some point this will have to be
+replaced by an XMLHttpRequest.</dd>
+</dl>
+</body>
+</html>

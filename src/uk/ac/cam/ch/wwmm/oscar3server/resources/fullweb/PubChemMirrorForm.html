@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>PubChemMirror</title>
+</head>
+<body>
+	<h2>PubChem Mirror</h2>
+	<p>This form lets you query your local PubChem Mirror, <i>if you've got
+	one set up</i>.</p>
+	<form name="queryName" action="PubChemMirror" method="get">
+		<h3>Get entries for name</h3> Chemical Name:
+		<input name="name" type="text"></input>
+		<p></p>
+		<input type="submit" value="Submit!"></input> </form>
+	<form name="queryInchi" action="PubChemMirror" method="get">
+		<h3>Get entries for InChI</h3> InChI:
+		<input name="inchi" type="text"></input>
+		<p></p>
+		<input type="submit" value="Submit!"></input> </form>
+	<form name="queryCid" action="PubChemMirror" method="get">
+		<h3>Get entries for cid</h3> cid:
+		<input name="cid" type="text"></input>
+		<p></p>
+		<input type="submit" value="Submit!"></input> </form>
+<a href="index.html">Back to main server page</a>
+</body>
+</html>

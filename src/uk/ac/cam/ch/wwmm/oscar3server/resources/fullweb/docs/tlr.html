@@ -1,0 +1,28 @@
+<html>
+<head><title>Token Level Regexes (TLRs)</title></head>
+<body>
+<h1>Token Level Regexes (TLRs)</h1>
+<p>This module assists in the recognition of chemical named entities, when
+the MEMM is not being used.</p>
+<h2>TLR data data</h2>
+<p>The data for the TLRs is kept in the resource file 
+<tt>uk/ac/cam/ch/wwmm/oscar3/recogniser/tlrs.xml</tt>. This file is an
+XML file, with a similar structure to the 
+<a href="dataparser.html">Data Parser's</a> data. Note that these regexes
+are processed using Java's built-in regex capabilities and not JRegex, for
+performance reasons. The file contains the following types of information:</p>
+<dl>
+<dt><tt>tlrs</tt></dt>
+<dd>Token Level Regexes: this element contains top-level definitions
+of regular expressions with which to classify tokens (see the
+<a href="namerec.html">name recognition documentation</a> for details). The 
+<tt>tlr</tt> elements do not directly define the regexes: instead, they
+incorporate them by reference.</dd>
+<dt><tt>def</tt><dt>
+<dd>These define regular expressions or parts of regular expressions, which
+can be used by <tt>tlr</tt> elements, or be incorporated by reference into
+<tt>regex</tt> sections of <tt>node</tt> elements, or into <tt>def</tt>
+elements.</dd>
+</dl> 
+</body>
+</html>

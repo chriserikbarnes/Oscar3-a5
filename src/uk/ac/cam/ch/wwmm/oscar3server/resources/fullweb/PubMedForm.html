@@ -1,0 +1,19 @@
+<html>
+<head><title>Download PubMed Abstracts</title></head>
+<body>
+<h1>Download PubMed Abstracts</h1>
+<p>This queries PubMed, downloads a batch of abstracts, process them and places
+the results in your workspace.</p>
+<form name="input" action="PubMed" method="POST">
+Query (this is what you'd type into pubmed): <input type="text" name="query"><br>
+Name (this is what the results directory will be called): <input type="text" name="name"><br>
+Email (your email address, the download service needs this): <input type="text" name="email"><br>
+Abstracts to get: <input type="text" name="abstracts" value="50" size="4" maxlength="4"><br>
+Abstracts to skip: <input type="text" name="skip" value="0" size="8" maxlength="8"><br>
+Process after download: <input type="checkbox" name="process" checked="true" value="true"> 
+<br>
+<input type="submit" value="Submit!">
+</form>
+<a href="index.html">Back to main server page</a>
+</body>
+</html>

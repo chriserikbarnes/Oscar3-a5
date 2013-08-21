@@ -1,0 +1,38 @@
+<!DOCTYPE
+	html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"
+     xml:lang="en" >
+	<head><title>SAPIENT Index</title>
+		<!-- include Prototype for easy XMLHttpRequests (XHR) and more -->
+		<script type="text/javascript" src="javascript/prototype-1.6.0.2.js"></script>
+    	<script type="text/javascript" src="javascript/art_tool.js"></script>	
+	</head>
+	<!-- fills the link list on first load -->
+	<body onload= "getLinks('sapient')">
+		<h1>SAPIENT Index</h1>
+		<!-- To store the links to show each paper or delete each paper -->
+		<ul id="paperlinks">
+		
+		</ul>
+		<h2>Add a SciXML file</h2>
+		<!-- Allows uploading of papers by name and file -->
+		<form enctype="multipart/form-data" id="paperupload" name="input" onsubmit="alert('please input a name, and then select a file');" method="POST">
+			<label for="name"> Name: </label> <input id="papername" type="text" name="papername" />
+			<!-- can only upload if select name and then file -->
+			<label for="paper"> File: </label> <input id="paperfile" type="file" name="paperfile" />
+			<input type="button" value="Upload" onclick="if ($F('papername').length != 0) uploadFile()"/>
+			<br />
+		</form>
+		<!-- Returns to OSCAR3 main page -->
+		<!-- <a href="index.html">Back to main OSCAR page</a>-->
+		<!-- DEBUG -->
+		<div id="response"></div>
+		<div id="filecheck"></div>
+		<div id="choosemode"></div>
+		<a href="credits.html">Credits</a>
+	</body>
+</html>

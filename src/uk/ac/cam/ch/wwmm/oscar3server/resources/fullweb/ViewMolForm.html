@@ -1,0 +1,30 @@
+<html>
+<head><title>View Molecule</title></head>
+<body>
+<h1>View Molecule</h1>
+<p>Enter a SMILES or an InChI here, and select an output format.</p>
+<p>
+<form name="byInChI" action="ViewMol" method="POST">
+InChI: <input type="text" name="inchi"><br>
+SMILES: <input type="text" name="smiles"><br>
+Output type
+<ul>
+<li><input name="output" type="radio" value="png" checked="checked">PNG image</li>
+<li><input name="output" type="radio" value="cml">CML</li>
+<li><input name="output" type="radio" value="inchi">InChI</li>
+<li><input name="output" type="radio" value="inchikey">InChIKey</li>
+<li><input name="output" type="radio" value="stdinchi">Standard InChI</li>
+<li><input name="output" type="radio" value="stdinchikey">Standard InChI Key</li>
+<li><input name="output" type="radio" value="smiles">SMILES</li>
+<li><input name="output" type="radio" value="fingerprint">CDK fingerprint (as list of bits)</li>
+<li><input name="output" type="radio" value="fingerprintint">CDK fingerprint (as large integer)</li>
+<li><input name="output" type="radio" value="fingerprinthex">CDK fingerprint (as large hexadecimal integer)</li>
+<li><input name="output" type="radio" value="fingerprintbin">CDK fingerprint (as large binary integer)</li>
+</ul>
+<input type="hidden" name="size" value="500">
+<input type="submit" value="Submit!">
+</p>
+</form>
+<a href="index.html">Back to main server page</a>
+</body>
+</html>

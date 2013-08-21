@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema/cml2/core">
+<atomArray>
+<atom elementType="C" id="a51" x2="6.18613" y2="-12.9836"/>
+<atom elementType="C" id="a53" x2="6.18613" y2="-14.5066"/>
+<atom elementType="C" id="a66" x2="11.4696" y2="-14.5416"/>
+<atom elementType="C" id="a68" x2="11.4656" y2="-13.0186"/>
+<atom elementType="C" id="a81" x2="8.00634" y2="-11.0488"/>
+<atom elementType="O" hydrogenCount="0" id="a83" x2="7.5814" y2="-12.5113"/>
+<atom elementType="O" hydrogenCount="0" id="a87" x2="10.0444" y2="-12.434"/>
+<atom elementType="C" id="a89" x2="9.52859" y2="-11.001"/>
+<atom elementType="C" id="a97" x2="9.58378" y2="-16.5101"/>
+<atom elementType="O" hydrogenCount="0" id="a98" x2="10.0547" y2="-15.0618"/>
+<atom elementType="O" hydrogenCount="0" id="a100" x2="7.59042" y2="-15.0613"/>
+<atom elementType="C" id="a101" x2="8.06078" y2="-16.5099"/>
+</atomArray>
+<bondArray>
+<bond atomRefs2="a51 a53" id="b61" order="1"/>
+<bond atomRefs2="a66 a68" id="b76" order="1"/>
+<bond atomRefs2="a81 a83" id="b91" order="1"/>
+<bond atomRefs2="a87 a89" id="b94" order="1"/>
+<bond atomRefs2="a89 a81" id="b95" order="1"/>
+<bond atomRefs2="a97 a98" id="b102" order="1"/>
+<bond atomRefs2="a100 a101" id="b105" order="1"/>
+<bond atomRefs2="a101 a97" id="b106" order="1"/>
+<bond atomRefs2="a51 a83" id="b110" order="1"/>
+<bond atomRefs2="a53 a100" id="b114" order="1"/>
+<bond atomRefs2="a87 a68" id="b118" order="1"/>
+<bond atomRefs2="a98 a66" id="b122" order="1"/>
+</bondArray>
+</molecule>

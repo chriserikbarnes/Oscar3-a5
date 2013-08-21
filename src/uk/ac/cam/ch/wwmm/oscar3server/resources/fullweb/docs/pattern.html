@@ -1,0 +1,126 @@
+<html>
+<head><title>Pattern-based Named Entity Recognition</title></head>
+<body>
+<h1>Pattern-based Named Entity Recognition</h1>
+<p>Named entity recognition by pattern matching is a complex
+process that occurs in several stages, as part of
+a <a href="namerec.html">larger process</a>. It is used to recognise all
+named entities when the MEMM is not in use, or just entities of types ONT,
+CUST and CPR when the MEMM is in use. In overview, the following
+steps are performed in pattern-based name recognition:
+<ol>
+<li>Generation of token representations</li>
+<li>Recognition of potential entities</li>
+<li>Sharing of ontology and custom type identifiers</li>
+<li>Removal of conflicts between entities</li>
+</ol>
+<h2>Generation of token representations</h2>
+<p>For each token, one or more representations are generated. There are
+many possible representations - see the source code of 
+uk.ac.cam.ch.wwmm.oscar3.recogniser.Token for full details. A cut-down set
+of representations are used when the MEMM is being used.
+Key representations
+include:</p>
+<ul>
+<li>The token, unmodified (also in the cut-down set of representations)</li>
+<li>The token, case-normalised  (also in the cut-down set of representations)</li>
+<li>If the <a href="ngram.html">n-gram based token classifier</a> classifies
+the token as chemical, some representations, as detailed in the
+<a href="ngram.html#reps">n-gram classifier help file</a></li>
+<li>Which <a href="tlr.html">token-level regexes</a> the token matches, if any.
+Note that any cases of <tt>$PN</tt> will
+be checked against the <tt>pnStops</tt> in the model file you are using,
+and removed if found there. They will also be discarded if, when they
+are converted to lowercase (and ONLY when they are converted
+to lowercase), they appear in 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/usrDictWords.txt</tt></li>
+<li><tt>${[A-Z]}</tt> - anything matching the regex <tt>[A-Z]</tt>. Other
+representations can also be formed in this way. Note that these regexes
+match a whole single token, and as such should not contain whitespace.
+These regexes also work in the cut-down set of representations.</li>
+<li><tt>$COMPREF</tt> - if the token is a compound ref (i.e. in the SciXML,
+represented as <tt>&lt;XREF TYPE="COMPOUND"&gt;</tt>)</li>
+<li><tt>$MODIFIEDCOMPREF</tt> - if the token contains a compound ref</li>
+<li><tt>$HYPH</tt> - any hyphen/dash  (also in the cut-down set of representations)</li>
+<li><tt>$DOTS</tt> - the character "<tt>&#x22ef;</tt>"  (also in the cut-down set of representations)</li>
+<li><tt>$CPR</tt> - if the whole token (with a trailing hyphen) matches a
+CPR-detecting regex</li>
+<li><tt>$CPR_FORMULA</tt> - if the first part of the token matches the 
+CPR-detecting regex, and the rest of the formula matches the formula-matching
+token-level regex in the <a href="rparser.html">RParser</a> module.</li>
+<li><tt>$CPR_COMPREF</tt> - a token that starts with a CPR, and contains
+a compound ref in it.</li>
+<li><tt>$EM</tt> - if the (case-normalised) token is in an element name or
+symbol, as defined in
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/elements.txt</tt>.</li>
+<li><tt>$ENDSINEM</tt> - if the token ends in the name of a chemical element,
+eg. "dicopper" or "tributyltin"</li>
+<li><tt>$BIOOLIGO</tt> - if the bio-oligomer recognising module 
+(uk.ac.cam.ch.wwmm.oscar3.recogniser.BiooliogomerScorer) scores the token
+as a small bio-oligomer (like a tripeptide or disaccharide)</li>
+<li><tt>$INCND</tt> - if the token occurs in the ChemNameDict as a whole
+chemical name.</li>
+<li><tt>$ONTWORD</tt> - if the token occurs as a single-word term in
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/ontology.txt</tt>.</li>
+<li><tt>$CMNONWORD</tt> - if the token has no two consecutive lowercase letters,
+has an uppercase letter, and either a) the <tt>useWordShapeHeuristic</tt>
+option has been set in the properties file, or b) the token appears in
+the <tt>chemicalNonWords</tt> section of the extracted training data.</li>
+<li><tt>$STOP</tt> - if the token appears in 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/closedClass.txt</tt>, 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/stopwords.txt</tt>, in the 
+ChemNameDict as a stopword, in the <tt>nonChemicalWords</tt> or 
+<tt>nonChemicalNonWords</tt> wordsets in the extracted training data, and if
+it does <i>not</i> occur in a list of chemical element names.</li>
+</ul>
+<p>Furthermore, <tt>$^</tt> is used as a representation for the start
+of the sentence.</p>
+<h2>Recognition of potential entities</h2>
+<p>This process uses the <a href="dfas.html">name recognition DFAs</a> 
+to find potential named entities.
+Essentially, the DFAs take the patterns defined in 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/ontology.txt</tt>, 
+<tt>custEnt.txt</tt> and <tt>neTerms.txt</tt> (the latter only
+if the MEMM is not being used), and detect sequences of tokens 
+whose representations match
+the patterns therein. If the sequence was in <tt>neTerms.txt</tt>, then the
+sequence is given the type defined in that file, whereas patterns found in
+<tt>ontology.txt</tt> result in the type of ONT and those in
+<tt>custEnt.txt</tt> result in the type CUST. Also, if the pattern was
+in <tt>ontology.txt</tt>, then the entity is given the appropriate ontology 
+identifier - similarly, patterns found in CUST will be given the appropriate 
+custom type identifier.</p>
+<p>While this is occurring, each token is examined to see if a CPR entity can
+be split off the front. If it can (and the rest of the token isn't found in
+the <tt>notForPrefix</tt> wordset from the model file), then a
+CPR is added as a potential entity. Note that at this point it is possible
+to recognise potential entities of the type AHA ("ad-hoc abbreviation", used
+for acronym/initialism recognition) and of the type STOP, which
+do not appear (or appear as such) in the final markup.</p>
+<h2>Sharing of ontology and custom identifiers</h2>
+<p>If, at this stage, two potential entities have identical start points and
+identical end points, ontology identifiers for those entities are shared, such
+that each entity is left with the union of the ontology identifiers for all
+of the entities with those start and end points. Custom type identifiers
+are shared in a similar process.</p>
+<h2>Removal of conflicts between entities</h2>
+<p>This process itself contains several stages. Firstly, a backup is make
+of all named entities of the types ONT, CPR and CUST. Secondly, the potential named 
+entities are filtered, by detecting conflicts (places where named entities are
+wholly or partially overlapping), and resolving them by discarding the entity
+with the rightmost start point, or if that does not exist, the shortest entity,
+or if they are both the same length, the entity whose type has the lowest
+priority (STOP > CPR > CJ > RN > CM > ASE > AHA > CUST > ONT). Furthermore, if the 
+<tt>deprioritiseONT</tt> option is used, <i>all</i> conflicts between ONTs and 
+non-ONTs are resolved in favour of the non-ONT. Next, a dictionary of 
+acronym-to-type mappings are made, by finding AHAs that occur inside brackets
+with a plausible non-ASE named entity to the left of them 
+(eg. "trinitrotoluene (TNT)"), and taking a note of the acronym and the type
+of the named entity. Each AHA in turn is then scrutinised; if there is a type
+for that acronym, then the AHA is converted to that type, otherwise it is
+discarded. All of the entities of type STOP are also discarded at this point.
+Finally, the backed-up entities of type ONT, CPR and CUST are added back to the set
+of potential NEs, and another round of conflict resolution (as above) is done,
+to generate the final list of NEs, from which a SAF file is compiled.</p>
+</body>
+</html>

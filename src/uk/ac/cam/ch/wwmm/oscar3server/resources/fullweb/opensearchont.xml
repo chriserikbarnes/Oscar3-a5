@@ -1,0 +1,11 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+<ShortName>OscarOntoSearch</ShortName>
+<Description>OScar3 Search Engine (Ontological)</Description>
+<InputEncoding>UTF-8</InputEncoding>
+<Image width="16" height="16">data:image/x-icon,%00%00%01%00%01%00%10%10%10%00%00%00%00%00(%01%00%00%16%00%00%00(%00%00%00%10%00%00%00%20%00%00%00%01%00%04%00%00%00%00%00%80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%80%00%00%00%00%80%00%00%80%80%00%00%00%00%80%00%80%00%80%00%00%80%80%00%C0%C0%C0%00%80%80%80%00%FF%00%00%00%00%FF%00%00%FF%FF%00%00%00%00%FF%00%FF%00%FF%00%00%FF%FF%00%FF%FF%FF%00%FF%FF%FF%FF%FF%FF%FF%FF%FF%FF%FF%FF%FF%CC%CC%FF%FF%FF%FF%FF%FC%CF%FC%CF%FF%FF%FF%FF%FF%FF%FF%CF%FF%FF%FF%FF%FF%FF%FC%CF%FF%FF%FF%FF%FF%FF%CC%FF%FF%FF%FF%FF%FF%FF%FC%CF%FF%00%00%FF%FF%FF%FF%CF%F0%0F%F0%0F%FC%CF%FC%CF%F0%FF%FF%0F%FF%CC%CC%FF%F0%FF%FF%0F%FF%FF%FF%FF%F0%FF%FF%0F%FF%FF%FF%FF%F0%FF%FF%0F%FF%FF%FF%FF%F0%0F%F0%0F%FF%FF%FF%FF%FF%00%00%FF%FF%FF%FF%FF%FF%FF%FF%FF%FF%FF%FF%FF%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00</Image>
+<Url type="text/html" method="GET" template="http://localhost:8181/Search?resultsType=hitsList&amp;type=word&amp;query={searchTerms}">
+</Url>
+<Url type="application/x-suggestions+json" template="http://localhost:8181/Search?suggest={searchTerms}&amp;ontological=yes"/>
+<moz:SearchForm>searchFormURL</moz:SearchForm>
+</OpenSearchDescription>

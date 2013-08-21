@@ -1,0 +1,58 @@
+<html>
+<head><title>View Molecule</title></head>
+<script>
+function update() {
+	if(document.forms[0].fixed[0].checked) {
+		showFixed();
+	} else {
+		showNotFixed();
+	}
+}
+function showFixed()	{
+	document.getElementById("ifFixed").setAttribute("style", "");
+	document.getElementById("ifNotFixed").setAttribute("style", "display:none");
+}
+function showNotFixed()	{
+	document.getElementById("ifFixed").setAttribute("style", "display:none");
+	document.getElementById("ifNotFixed").setAttribute("style", "");
+}
+</script>
+<body onload="update()">
+<h1>View Molecule</h1>
+<p>Enter a SMILES or an InChI here, for display as a PNG</p>
+<p>
+<form name="byInChI" action="ViewMol" method="POST">
+InChI: <input type="text" name="inchi"><br>
+SMILES: <input type="text" name="smiles"><br>
+<br>
+<input name="output" type="hidden" value="png">
+Fixed Width?
+<input type="radio" name="fixed" value="true" checked="checked" onchange="update()">Yes</input>
+<input type="radio" name="fixed" value="false" onchange="update()">No</input>
+<br>
+<div id="ifFixed">
+<p>
+Height (pixels): <input type="text" name="height" value="300"><br>
+Width (pixels): <input type="text" name="width" value="300"><br>
+Occupation Factor (1.0 = full, 0.5 = half): <input type="text" name="occupationFactor" value="0.8"><br>
+</p>
+</div>
+<div id="ifNotFixed">
+<p>
+Border size (pixels - applied <i>after</i> allowing a sensible margin for text): <input type="text" name="borderWidth" value="20"><br>
+Scale Factor: <input type="text" name="scaleFactor" value="20"><br>
+</p>
+</div>
+Coloured Heteroatoms?
+<input type="radio" name="colourAtoms" value="true" checked="checked">Yes</input>
+<input type="radio" name="colourAtoms" value="false">No</input>
+<br>
+Font size (points): <input type="text" name="fontSize" value="16"><br>
+Font name: <input type="text" name="fontName" value="MonoSpaced"> (<a href="AvailableFonts">View available font names</a>)<br>
+<br>
+<input type="submit" value="Submit!">
+</p>
+</form>
+<a href="index.html">Back to main server page</a>
+</body>
+</html>

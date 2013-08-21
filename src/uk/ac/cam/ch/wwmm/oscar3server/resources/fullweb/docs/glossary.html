@@ -1,0 +1,164 @@
+<html>
+<head><title>Oscar 3 Glossary</title></head>
+<body>
+<h1>Oscar3 Glossary</h1>
+Oscar3, by necessity, contains a lot of terminology from various sources. This
+terminology is listed here.
+<dl>
+<dt>SMILES</dt>
+<dd><a href="http://www.daylight.com/smiles/">Simplified Molecular Input Line Entry System</a>:
+a simple string that represents a chemical compound. Eg. CC(=O)C for acetone.</dd>
+
+<dt>InChI</dt>
+<dd><a href="http://www.iupac.org/inchi/">IUPAC International Chemical Identifier</a>:
+another way of representing a chemical compound with a string. These are better for use
+as unique identifiers than SMILES, but not as easy to write by hand.</dd>
+
+<dt>SciXML</dt>
+<dd>An XML format for scientific papers and related documents, developed at the
+Computer Laboratory in Cambridge. Note that this does not include the annotations
+that Oscar3 produces, nor the additional bits of markup produced by some parts of
+the Oscar3 server. Oscar3, does, however, contain rudimentary facilities for converting
+plain text or HTML into SciXML. For further details, see:<br>
+CJ Rupp, Ann Copestake, Simone Teufel and Ben Waldron.<br>
+<a href="http://www.allhands.org.uk/2006/proceedings/papers/678.pdf">Flexible Interfaces in the Application of Language Technology to an eScience Corpus.</a><br>
+Proceedings of the UK e-Science Programme All Hands Meeting 2006 (AHM2006), Nottingham, UK.</dd>
+
+<dt>Publisher's XML, PubXML</dt>
+<dd>A generic term for the XML schemas used by publishers (RSC, NPG etc.) for their papers.
+You need an XSLT stylesheet to transform these into SciXML.</dd>
+
+<dt>Round Trip</dt>
+<dd>To take a Publisher's XML document, convert it to SciXML, to process the SciXML, and then
+to take the annotations on the SciXML and transfer them back to the PubXML.</dd>
+
+<dt>SciBorg</dt>
+<dd>A four-year project for the development of natural language processing methodologies,
+and their application to chemistry texts, running in Cambridge.</dd>
+
+<dt>OPSIN</dt>
+<dd>Open Parser for Systematic IUPAC Nomenclature. This converts systematic chemical names
+to structures. As well as being a part of Oscar it can function on its own as a Java library.</dd>
+
+<dt>OSCAR</dt>
+<dd>Open Source Chemistry Analysis Routines</dd>
+
+<dt><a href="http://lucene.apache.org/">Lucene</a></dt>
+<dd>A Java library for building search engines, developed by the
+Apache Software Foundation. The <a href="search.html">Oscar3 search system</a>
+makes extensive use of Lucene.</dd>
+
+<dt>CDK</dt>
+<dd>The <a href="http://almost.cubic.uni-koeln.de/cdk/">Chemistry Development Kit</a>,
+a Java library for chemistry hosted by Christoph Steinbeck's group at the Cologne University Bioinformatics Center.</dd
+
+<dt>CML</dt>
+<dd>Chemical Markup Language, a schema for chemical data developed by Peter Murray-Rust and
+his group.</dd>
+
+<dt>Standoff annotation</dt>
+<dd>A form of annotation where the original document is kept unchanged, and an annotation
+document is prepared which contains references to the original.</dd>
+
+<dt>SAF</dt>
+<dd>A format for storing standoff annotation of SciXML documents.</dd>
+
+<dt>Inline annotation</dt>
+<dd>The opposite of standoff annotation, this is where additional information is inserted
+into the document that is being annotated.</dd>
+
+<dt>Inline data annotation</dt>
+<dd>Inline annotation containing a detailed markup of experimental data
+sections, for example NMR spectra, melting points and other routine methods
+of characterising newly synthesised organic compounds.</dd>
+
+<dt>Named Entity, NE</dt>
+<dd>An item in text with a name. The term "named entity" is usually used in natural language
+processing to refer to things like places, people, organisations etc. In Oscar3 the term
+is used to refer to things like chemical compounds.</dd>
+
+<dt>Subtype</dt>
+<dd>A subclassification of a named entity: see <a href="subtypes.html">here</a>
+for more.</dd>
+
+<dt>Name Recognition</dt>
+<dd>The stage of processing where named entities are spotted. See 
+<a href="namerec.html">the name recognition help file</a> for how this is 
+done.</dd>
+
+<dt>Name Resolution</dt>
+<dd>The stage where chemical structures are added to the named entities that
+were recognised in the name recognition stage.</dd>
+
+<dt>XPoint</dt>
+<dd>Something that looks like <tt>/1/2/4/1/6.23</tt>. This points towards a specific
+position in an XML document.</dd>
+
+<dt>ScrapBook</dt>
+<dd>A part of the Oscar server that performs two overlapping tasks: collecting interesting
+"snippets" (phrases, sentences, paragraphs) from SciXML documents, and editing inline
+annotations on SciXML.</dd>
+
+<dt>CompoundsList</dt>
+<dd>A list of chemicals (or things that Oscar believes to be chemicals) found in a set
+of papers found using the search engine</dd>
+
+<dt>Bookmarklet</dt>
+<dd>A Link containing Javascript - you add it to your bookmarks/favourites, and click
+on it when you want to use it. These provide the simplest way to extend the functionality
+of web browsers. See <a href="http://en.wikipedia.org/wiki/Bookmarklets">this Wikipedia entry</a>
+for more details.</dd>
+
+<dt>OscarFlow</dt>
+<dd>A small command language for running Oscar modules over text. See <a href="flow.html">the
+OscarFlow documentation</a> for more details.</dd>
+
+<dt>Case Normalisation</dt>
+<dd>Case normalisation consists of looking at each token in a string, and if
+it contains two lowercase letters in a row, converting the entire token to
+lowercase.</dd>
+
+<dt>ChemNameDict</dt>
+<dd>This is a dictionary of chemical names and structures, most
+useful for recognising and resolving the trivial names in papers. Previously known
+as 'HandBag'. See <a href="data.html">the Oscar3 data model</a> for more details.</dd>
+
+<dt>Extracted training data</dt>
+<dd>This is data extracted from hand-annotated texts, used in named-entity 
+recognition. See <a href="data.html">the Oscar3 data model</a> for more details.</dd>
+
+<dt>Resource file</dt>
+<dd>See <a href="data.html">the Oscar3 data model</a> for details.</dd>
+
+<dt>n-gram based classifier</dt>
+<dd>A module that classifies words into chemical and non-chemical, by
+dividing them up into 4-character fragments. See <a href="ngram.txt">the
+help file</a> for more details.</dd>
+
+<dt>Data Parser</dt>
+<dd>A module that recognises experimental data (such as NMR spectra). 
+See <a href="dataparser.html">the help file</a>
+for more details.</dd>
+
+<dt>DFA Name recogniser</dt>
+<dd>A module that is responsible for the overall recognition of potential named
+entities, that works by recognising a sequence of one or more token
+classifications. See <a href="dfas.html">the help file</a>
+for more details.</dd>
+
+<dt>Maximum Entropy Markov Model (MEMM)</dt>
+<dd>The new method for recognising named entities: see <a href="memm.html">the
+MEMM documentation</a> for examples.</dd>
+
+<dt>Subtype</dt>
+<dd>Currently experimental: a subclassification of named entities. For example,
+CMs may be classified into exact compounds, classes of compounds, parts of
+compounds and a number of other subtypes.</dd>
+
+<dt>Stopword</dt>
+<dd>In Oscar3, a word that the name recogniser should not recognise as a
+chemical name, or other named entity (except for ONT).</dd>
+
+</dl>
+</body>
+</html>

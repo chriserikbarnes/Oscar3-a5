@@ -1,0 +1,142 @@
+<html>
+<head><title>Oscar3 Search</title></head>
+<body>
+<h1>Oscar3 Search</h1>
+<p>The Oscar3 server includes an advanced method for searching chemical
+documents. This functionality is powered by 
+<a href="http://lucene.apache.org/">Apache Lucene</a>, and incorporates
+additional components to enable chemically-aware and ontology-aware search
+as well as standard keyword search.</p>
+<h2>Getting ready to search</h2>
+<p>You will first need to process some documents with Oscar3, and ensure
+that they are stored in your workspace. This is best done using the 
+<tt>ImportAndParse</tt> command from the command line, or by downloading
+abstracts from PubMed via the web interface. You will then need to build an
+index. On the main server page there is a link "Select corpus for search" -
+click it, and then choose the directory containing the documents you want
+to index. Oscar3 will analyse the documents and prepare an index. This index
+will persist on disk even when the Oscar3 server is shut down.</p>
+<h2>Searching</h2>
+<p>You need to provide three pieces of information make a search - sensible
+defaults are given for the latter two of these:</p>
+<ol>
+<li>Your search term(s)</li>
+<li>Your query type - advanced (the default) or text only</li>
+<li>The results format - snippets (the default), a HitsList or a CompoundsList</li>
+</ol>
+<h3>Simple text-only queries</h3>
+<p>The simplest type of query is a text-only query, with the results as snippets.
+Even this technique is very powerful, due to the power of Lucene's query parser.
+Some example queries:</p>
+<ul>
+<li><tt>alkaloids</tt> - find all documents containing the exact word "alkaloids"</li>
+<li><tt>tropane alkaloids</tt> - find all documents that contain both the word 
+"tropane" and the word "alkaloids".</li>
+<li><tt>alkaloids tropane</tt> - exactly as above.</li>
+<li><tt>"tropane alkaloids"</tt> - find all documents that contain the exact phrase
+"tropane alkaloids".</li>
+<li><tt>"tropane AND alkaloids"</tt> - as above.</li>
+<li><tt>steroids OR alkaloids</tt> - find all documents that contain either "steroids",
+"alkaloids" or both.</li>
+<li><tt>steroids NOT alkaloids</tt> - find all documents that contain "steroids"
+that do not contain "alkaloids".</li>
+<li><tt>(new OR different) steroids</tt> - find all documents that both contain 
+"steroids" and also either "new", "different" or both.</li>
+<li><tt>"new steroids"~2</tt> - find all documents containing the words "new" and
+"steroids" in close proximity to each other.</li>
+<li><tt>"new steroids"~4</tt> - find all documents containing the words "new" and
+"steroids" in close to moderate proximity to each other.</li>
+<li><tt>steroid*</tt> - find terms starting in "steroid", for instance "steroid",
+"steroids", "steroidal.</li>
+<li><tt>?-hydroxylation</tt> - find terms like "3-hydroxylation" and
+ "N-hydroxylation" but not "4'-hydroxylation" - that would need 
+ <tt>??-hydroxylation</tt>.</li>
+<li><tt>steroid~</tt> - find terms similar to "steroid", such as "steroids",
+"nonsteroidal", "stearoyl" and "steric". Note that this is a similarity in
+spelling and not necessarily in meaning.</li>
+<li><tt>steroid~0.7</tt> - find terms very similar to "steroid".</li>
+<li><tt>steroid~0.3</tt> - find terms with even a very slight similarity to 
+"steroid".</li>
+<li><tt>steroids^2 OR alkaloids</tt> - as <tt>steroids OR alkaloids</tt>, except
+that documents containing "steroids" come higher up the list of results.</li>
+<li><tt>steroids^0.5 OR alkaloids</tt> - as <tt>steroids OR alkaloids</tt>, except
+that documents containing "steroids" come lower down the list of results.</li>
+</ul>
+<p>You will notice that the order in which the results are presented to you
+represents the system's best guess as to how relevant each result is. This
+relevance is calculated based on many factors. For example, when using
+<tt>steroid~</tt>, documents containing "steroids" will in general 
+be ranked higher than documents containing "steric".</p>
+<h3>Advanced Queries</h3>
+<p>Oscar3 adds in advanced queries, based on its knowledge of chemistry and
+its ontologies. In advanced query mode, all of the above queries should
+work as before - but finding some extra terms too. This is
+best explained via some additional example queries:</p>
+<ul>
+<li><tt>methylbenzene</tt> - methylbenzene is another word for toluene, so documents
+containing "toluene" will also be found.</li>
+<li><tt>InChI=1/C7H8/c1-7-5-3-2-4-6-7/h2-6H,1H3</tt> - this will also find
+toluene.</li>
+<li><tt>smiles:"c1ccccc1C"</tt> - yet another way to find toluene.</li>
+<li><tt>smilessub:"c1ccccc1C"</tt> - finds toluene, and also compounds
+with the toluene substructure such as propylbenzene and benzoic acid (NB:
+the query system only understands simple substructure searches - it does
+not understand SMARTS).</li>
+<li><tt>smiles5like:"c1ccccc1C"</tt> - finds the five compounds in the
+corpus (that Oscar3 was able to find) with the greatest similarity to toluene
+ - probably including toluene itself.</li>
+<li><tt>smiles10like:"c1ccccc1C"</tt> - as above, but gets ten compounds.</li>
+<li><tt>"10 like toluene"</tt> - as above.</li>
+<li><tt>alkaloids</tt> - finds all of the alkaloids that Oscar3 knows about,
+via the <a href="http://www.ebi.ac.uk/chebi/">ChEBI</a> ontology that it 
+contains.</li>
+<li><tt>alkaloids OR steroids</tt> - find all documents containing at least
+one compound that is either a steroid or an alkaloid (or both - for example, 
+solanidine is both an alkaloid and a steroid!).</li> 
+<li><tt>alkaloids^2 OR steroids</tt> - as above, but with documents
+containing alkaloids being ranked higher than documents containing steroids.</li>
+</ul>
+<p>Other combinations of features are possible - experiment with the system
+to see what sort of queries work for you. Note that for multi-word chemical 
+names, it is generally worth putting the
+names in quotes. For example, <tt>"ethyl acetate"</tt> will get "EtOAc" as
+well as "ethyl acetate", whereas <tt>ethyl acetate</tt> won't get "EtOAc", and
+it will get "ethyl" on its own and "acetate" on its own (provided they occur
+in the same document.</p>
+<p>You should also note that all of this power comes with a high price: 
+reliability. Not all of these queries will deliver comprehensive results.
+Oscar3 cannot be expected to know about every single alkaloid in existence,
+for example.</p>
+<h2>Search Results</h2>
+<p>There are three types of search result:</p>
+<h3>snippets</h3>
+<p>This is the default results format. You will see five hits per page - with
+a link to the full document behind each hit, and relevant excepts with terms
+highlighted. Note that only the terms that were found in your search are 
+highlighted - if you see something obviously chemical like "benzene" which
+isn't highlighted, you probably weren't searching for benzene, and if you
+click through to the original document (on the blue title), you should
+see "benzene" highlighted there.</p>
+<h3>compoundsList</h3>
+<p>This is something of a misnomer. This finds all named entities that were
+in the documents you searched for - not just chemical compounds. 
+For example, if you seach for steroids, this will list not only the steroids
+that you found, but other compounds that co-occured in the documents: maybe
+inhibitors of the enzymes that metabolise steroids, or maybe the nonsteroidal
+precursors for steroid synthesis - or maybe they are other steroids
+that the system did not know were steroids. Also listed is the number of times
+each term appears in the corpus.</p>
+<h3>hitsList</h3>
+<p>This like like compoundsList, but it only lists the terms found by your
+query. For example, in a search for steroids, the system will only find
+compounds that it believes (rightly or wrongly) to be steroids. Other
+nonsteroidal compounds - or other steroids that the system does not
+know to be steroids - will not be listed.</p> 
+<h2>Troubleshooting</h2>
+<p>It is possible (but rare) for the system to get into a state such that the entire
+system is locked up, and not even restarting the server will cure the problem.
+In which case, look in your workspace, and find the subdirectories <tt>index</tt>
+and <tt>chemicalindex</tt>. It is likely that these have got into an invalid state.
+Delete these and rebuilt your index from scratch.</p>
+</body>
+</html>

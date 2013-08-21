@@ -1,0 +1,12 @@
+<relitems>
+	<rel>is_a</rel>
+	<rel>reactant_1</rel>
+	<rel>reactant_2</rel>
+	<rel>reactant_3</rel>
+	<rel>product_1</rel>
+	<rel>product_2</rel>
+	<rel>product_3</rel>
+	<rel>solvent</rel>
+	<rel>catalyst</rel>
+	<rel>presence</rel>
+</relitems>

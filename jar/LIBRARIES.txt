@@ -1,0 +1,49 @@
+The following libraries are distributed with Oscar3:
+
+automaton.jar 
+  http://www.brics.dk/~amoeller/automaton/
+  BSD License (http://www.opensource.org/licenses/bsd-license.php)
+lucene-core-2.2.0.jar, lucene-snowball-2.0.0.jar -
+  http://lucene.apache.org/
+  (Apache license, see apache-license.txt) 
+jetty-6.1.6.jar, also jetty-util-6.1.6.jar, servlet-api-2.5-6.1.6.jar 
+  http://jetty.mortbay.org/jetty/
+  (Apache license)
+cdk-1.0.jar
+  http://almost.cubic.uni-koeln.de/cdk/cdk_top
+  (LGPL - see lgpl.txt)
+  This incorporates several libraries, most notably Xom
+jregex1.2_01.jar
+  http://jregex.sourceforge.net/
+  BSD License (http://www.opensource.org/licenses/bsd-license.php)
+junit-4.1.jar
+  http://junit.sourceforge.net/
+  See cpl-v10.html for license
+commons-net-1.4.1.jar
+  http://jakarta.apache.org/commons/net/
+  (Apache license)
+commons-fileupload-1.2.jar
+  http://jakarta.apache.org/commons/fileupload/
+  (Apache license)
+commons-io-1.3.2.jar
+  http://jakarta.apache.org/commons/io/
+  (Apache license)
+commons-math-1.1.jar
+  http://jakarta.apache.org/commons/math/
+  (Apache license)
+pg74.216.jdbc3.jar
+  http://jdbc.postgresql.org/
+  (BSD License)
+maxent-2.4.0.jar
+  http://maxent.sourceforge.net/
+  (LGPL)
+trove.jar
+  bundled with maxent
+  (LGPL)
+Jama-1.0.2.jar
+	http://math.nist.gov/javanumerics/jama/
+	Public Domain
+  
+Also, cInChI-1 and cInChI1.exe (the InChI executables) are contained
+within Oscar3, and are deployed when needed. See Conditions of Use.doc for
+license information.

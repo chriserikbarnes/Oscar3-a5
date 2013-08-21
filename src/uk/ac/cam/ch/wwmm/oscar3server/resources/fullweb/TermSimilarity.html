@@ -1,0 +1,226 @@
+<html>
+<head><title>Term Similarity</title>
+<style type="text/css">
+	  div.sidebar {
+	    height: 99%;
+	    overflow: auto;
+	    text-align: left;
+	    right: 0px;
+	    width: 29%;
+	    position: absolute;
+	  }
+
+	  div.mainpage {
+	    height: 99%;
+	    width: 70%;
+	    position: absolute;
+	    top: 2px;
+	    left: 0px;
+	    bottom: 2px;
+	    padding: 2px;
+	    right: 320px;
+	    overflow: auto;
+	  }
+	  
+	  li.isInTermList {
+	  	color: red;
+	  }
+</style>
+<script>
+function foo() {
+alert("bar");
+}
+var req;
+
+function loadXMLDoc(url, params) 
+{
+    // branch for native XMLHttpRequest object
+    if (window.XMLHttpRequest) {
+        req = new XMLHttpRequest();
+        req.onreadystatechange = processReqChange;
+        req.open("POST", url, true);    
+		req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		req.setRequestHeader("Content-length", params.length);
+		req.setRequestHeader("Connection", "close");
+ 		req.send(params);
+    // branch for IE/Windows ActiveX version
+    } else if (window.ActiveXObject) {
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+        if (req) {
+            req.onreadystatechange = processReqChange;
+            req.open("POST", url, true);
+			req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			req.setRequestHeader("Content-length", params.length);
+			req.setRequestHeader("Connection", "close");
+			req.send(params);
+        }
+    }
+}
+
+function processReqChange() 
+{
+    // only if req shows "complete"
+    if (req.readyState == 4) {
+        // only if "OK"
+        if (req.status == 200) {
+		  response = req.responseXML.documentElement;
+		  funct = response.getElementsByTagName('function')[0].firstChild.data;
+		  result = response.getElementsByTagName('result')[0].firstChild.data;
+	      eval(funct + '(\'\', result)');
+        } else {
+            alert("There was a problem retrieving the XML data:\n" + req.statusText);
+        }
+    }
+}
+
+function getMostCommon(input, response)
+{
+  if (response != ''){ 
+    // Response mode
+	handleSimilar(response);
+  }else{
+    // Input mode
+    url  = 
+      'TermSimilarity';
+    loadXMLDoc(url, "function=getMostCommon&listTerms=100");
+  }
+}
+
+function getSimilar(input, response) {
+  if (response != ''){ 
+    // Response mode
+    handleSimilar(response);
+  }else{
+    // Input mode
+    url  = 
+      'TermSimilarity';
+    params = "function=getSimilar&similarTo=" + encodeURIComponent(input);
+    loadXMLDoc(url, params);
+  }
+}
+
+function getStartsWith(input, response) {
+  if (response != ''){ 
+    // Response mode
+    handleSimilar(response);
+  }else{
+    // Input mode
+    url  = 
+      'TermSimilarity';
+    params = "function=getStartsWith&startsWith=" + encodeURIComponent(input);
+    loadXMLDoc(url, params);
+  }
+}
+
+var terms = new Array();
+var similarTerms = new Array();
+
+function makeTermList() {
+	ul = document.getElementById("termList");
+	innerHTML = "";
+	for(var i=0;i<terms.length;i++) {
+		innerHTML += "<li onclick='removeTerm(\"" + terms[i] + "\")'>" + terms[i] + "</li>\n";
+	}
+	ul.innerHTML = innerHTML;
+}
+
+function makePlainTermList() {
+	termList = "";
+	for(var i=0;i<terms.length;i++) {
+		termList += terms[i] + "\n";
+	}
+	return termList;
+}
+
+function similarToTermList() {
+	l = makePlainTermList();
+	getSimilar(l, '');
+}
+
+function handleSimilar(similar) {
+	similarTerms = similar.split(/\s+/)
+	makeSimilarTermList()
+}
+
+function makeSimilarTermList() {
+	ul = document.getElementById("similarList");
+	innerHTML = "";
+	for(var i=0;i<similarTerms.length;i++) {
+		if(inTermList(similarTerms[i])) {
+			innerHTML += "<li class='isInTermList' onclick='removeTerm(\"" + similarTerms[i] + "\")'>" + similarTerms[i] + "</li>\n";		
+		} else {
+			innerHTML += "<li onclick='addTerm(\"" + similarTerms[i] + "\")'>" + similarTerms[i] + "</li>\n";		
+		}
+	}
+	ul.innerHTML = innerHTML;
+}
+
+function addTerm(term) {
+	if(!inTermList(term)) {
+		terms.push(term);
+		makeTermList();
+		makeSimilarTermList();
+	}
+}
+
+function removeTerm(term) {
+	if(inTermList(term)) {
+		for(var i=0;i<terms.length;i++) {
+			if(terms[i] == term) {
+				terms.splice(i, 1);
+			}
+		}
+		makeTermList();
+		makeSimilarTermList();
+	}
+}
+
+function inTermList(term) {
+	for(var i=0;i<terms.length;i++) {
+		if(terms[i] == term) return true;
+	}
+	return false;
+}
+
+function clearTermList() {
+	terms = new Array();
+	makeTermList();
+	makeSimilarTermList();
+}
+
+function handleEntry() {
+	getStartsWith(document.foo.foobar.value, '');
+}
+
+</script>
+</head>
+<body>
+<div class="sidebar">
+Sidebar
+<ul id="similarList">
+
+</ul>
+</div>
+<div class="mainpage">
+<h1>Term Similarity</h1>
+<form name="bar" action="TermSimilarity" method="POST">
+<input type="hidden" name="selectcorpus">
+<input type="submit" value="Select Corpus"> 
+</form> 
+
+<input type="button" onclick="clearTermList()" value="ClearTermList">
+<input type="button" onclick="similarToTermList()" value="Get Similar">
+<input type="button" onclick="getMostCommon('','')" value="Get Most Common">
+<form name="foo">
+<input name="foobar" type="entry" onkeyup="handleEntry()">
+</form>
+<br>
+<ul id="termList">
+
+</ul>
+</div>
+<script>
+makeTermList();
+</script>
+</body>
+</html>

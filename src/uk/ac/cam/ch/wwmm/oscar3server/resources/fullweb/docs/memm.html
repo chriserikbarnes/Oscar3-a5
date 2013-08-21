@@ -1,0 +1,140 @@
+<html>
+<head><title>The MEMM</title></head>
+<body>
+<h1>The MEMM</h1>
+<p>This document details <a href="namerec.html">name recognition</a> using the
+MEMM (Maximum Entropy Markov Model). Whether or not to use the MEMM is set by
+the <tt>useMEMM</tt> option in the 
+<a href="properties.html">properties file</a>. There are additional options
+that may be configured as detailed below.</p>
+<p>This file covers the following topics:</p>
+<ol>
+<li>Overview</li>
+<li>The rescorer</li>
+<li>CPR, ONT and CUST</li>
+<li>Output from the MEMM</li>
+<li>Configuring the MEMM</li>
+</ol>
+<h2>Overview</h2>
+<p>The MEMM provides a means for detecting named entities of types CM, RN,
+CJ and ASE. A variety of ways of looking at chemical text, and guessing whether
+spans of text represent chemical named entities or not, are combined into a
+single machine-learning framework. In order to use the MEMM, data must be
+extracted from hand annotated texts (the "training data")
+and placed in <a href="data.html">model files</a> - two of these are included
+in the Oscar3 distribution. Your choice of which model file to use is
+set by the <tt>model</tt> option in the <a href="properties.html">properties
+file</a>.
+Additionally, the MEMM makes use of various
+dictionaries and wordlists, such as the ChemNameDict.</p>
+<p>Crucially, the MEMM is able to make
+estimates of the probability of its guesses being correct, giving
+a confidence score in the range of zero to one for each named entity it finds. 
+For example, the word "1,3-dihydroxybenzene" is very obviously a chemical
+name, and so the confidence score is likely to be high - above 0.9. Atypical
+trivial names, such as "tacrolimus", are likely to get lower confidence
+scores, especially if they do not appear in the built-in dictionaries and
+did not occur in the training data. Similarly, words that look like chemical
+names (for example "trimester", and many names of proteins) are likely to
+get moderately high confidence scores, whereas words that look more like
+plain English words - if they get confidence scores at all - are likely to
+get very low confidence scores.</p>
+<p>These confidence scores provide a unified way of tuning the balance
+between precision and recall. A single value in the properties file - 
+<tt>neThreshold</tt> - sets the minimum confidence score for entities to be
+found. Setting this high (for example, around 0.5) results in high
+precision at fair recall. A value of around 0.2 gives roughly balanced
+precision and recall, and a value closer to 0.02 gives high recall at the
+expense of precision.</p>
+<p>These confidence scores depend not only on the words themselves, but on
+the words (or numbers, or punctuation characters) to the left or right. For
+example, compare "We studied tacrolimus." with 
+"We studied tacrolimus concentrations.". In the latter example, the word
+"concentrations" is a hint that the previous word might be a chemical name,
+and so the confidence score in the latter example will be higher than in the
+former.</p>
+<p>Additionally, the MEMM is able to make multiple guesses about a single name.
+For example, the word "carboxylates" could refer to a class
+of chemical compounds, as in "benzoates are carboxylates", and thus give a 
+named entity of class CM. Alternatively, it could be a verb, as in "The new
+reagent carboxylates toluene", and thus be of class RN. The MEMM can make
+guesses at both meanings, and record both guesses, along with confidence scores.
+A similar situation exists for multi-word names. For example, given
+"methyl orange", the system could guess (correctly) that "methyl orange" is
+a chemical name, or it could just say that "methyl" is a single named 
+entity.</p>
+<h2>The rescorer</h2>
+<p>Having detected named entities, there is then a process of rescoring
+that adjusts the confidence scores generated in the previous step. This
+process can be disabled by setting <tt>rescoreMEMM=no</tt> in the properties
+file.</p>
+<p>The rescoring process allows information to be shared throughout the
+whole document. For example, consider "We studied tacrolimus. Later, we studied
+tacrolimus concentrations.". As previously discussed, the word "concentrations"
+is a clue that "tacrolimus" is a chemical name. In the rescoring phase, the
+increased confidence for the latter "tacrolimus" is noted, and used to boost
+the confidence of the first tacrolimus. This is especially important with
+acronyms and abbreviations. For example, having "linoleic acid (LA)" in a text
+will boost the confidence score of all incidences of LA in the document, as
+they all probably stand for "linoleic acid", whereas having 
+"local anesthetic (LA)" will have the reverse effect.</p>
+<p>One problematic side effect of the rescoring procedure is that it destroys
+some of the useful properties of the confidence scores extracted in the previous
+step. Consider the example of "methyl orange". Before rescoring, the confidences
+for "methyl" and "methyl orange" cannot add up to more that 1. After rescoring,
+this is no longer true.</p>
+<h2>CPR, ONT and CUST</h2>
+<p>The MEMM does not provide a method for recognising these entities; these
+are recognised using the old <a href="pattern.html">pattern-matching</a>
+framework. Because of this, entities of type CPR, ONT and CUST never get
+confidence scores.</p>
+<h2>Output from the MEMM</h2>
+<p>When using the MEMM, named entities of the appropriate types will gain
+the attribute <tt>confidence</tt>, detailing the confidence score. A further
+complication occurs in the case of overlapping entities. For example, in
+the case of "methyl orange" versus "methyl", the confidence for one of these
+will be higher. Unless the training data has included some instances of "methyl
+orange" marked up as a single entity, the confidence for "methyl" will
+probably (unfortunately, as it turns out) be higher - and thus
+"methyl orange" will be <i>blocked</i>. Thus, in the SAF
+XML, the following will be included in the entry for "methyl orange": 
+<tt>&lt;slot name="blocked"&gt;true&lt;/slot&gt;</tt>. When the inline XML
+is being made from the SAF XML, all entities that are blocked are not added
+to the inline XML. This is done because otherwise, in the best case adding
+blocked entities would make a mess of the inline XML, and in the worst case 
+the inline XML would end up being ill-formed.</p>
+<p>When entities of type CUST, ONT and CPR are involved, the situation
+is further complicated, as these do not get confidence scores. However,
+for the purpose of working out which entities block which other entities,
+these are treated as having fixed confidences. So entities of type ONT will
+be treated as having the confidence defined by <tt>ontProb</tt> in the
+properties file, CUST as if they had the confidence defined by <tt>custProb</tt>
+and CPR as if they had the confidence defined by <tt>cprProb</tt>.</p>
+<h2>Configuring the MEMM</h2>
+<p>The various options that can be set in the 
+<a href="properties.html">properties file</a> have been outlined above. 
+To summarise:</p>
+<table border=1>
+<tr><th>Option</th><th>Default</th><th>Explanation</th></tr>
+<tr><td><tt>useMEMM</tt></td><td><tt>yes</tt></td>
+<td>Whether or not to use the MEMM (<tt>yes</tt> or <tt>no</tt>)</td></tr>
+<tr><td><tt>model</tt></td><td><tt>chempapers</tt></td>
+<td>Which model file to use (<tt>chempapers</tt>, <tt>pubmed</tt>
+or a custom file)</td></tr>
+<tr><td><tt>rescoreMEMM</tt></td><td><tt>yes</tt></td>
+<td>Whether or not to do rescoring (<tt>yes</tt> or <tt>no</tt>)</td></tr>
+<tr><td><tt>neThreshold</tt></td><td><tt>0.2</tt></td>
+<td>The minimum confidence value for a named entity 
+(<tt>0.0</tt> to <tt>1.0</tt>)</td></tr>
+<tr><td><tt>ontProb</tt></td><td><tt>0.2</tt></td>
+<td>The effective confidence value for entities of type ONT 
+(<tt>0.0</tt> to <tt>1.0</tt>)</td></tr>
+<tr><td><tt>custProb</tt></td><td><tt>0.2</tt></td>
+<td>The effective confidence value for entities of type CUST 
+(<tt>0.0</tt> to <tt>1.0</tt>)</td></tr>
+<tr><td><tt>cprProb</tt></td><td><tt>0.2</tt></td>
+<td>The effective confidence value for entities of type CPR 
+(<tt>0.0</tt> to <tt>1.0</tt>)</td></tr>
+
+</body>
+</html>

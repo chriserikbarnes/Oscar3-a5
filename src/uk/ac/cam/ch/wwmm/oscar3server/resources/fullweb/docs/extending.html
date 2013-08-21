@@ -1,0 +1,111 @@
+<html>
+<head><title>Extending Oscar3</title></head>
+<body>
+<h1>Extending Oscar3</h1>
+<p>This file describes how to extend the capabilities of Oscar3, either
+when using it as a standalone application, or as a library in a larger
+application. All of these methods involve writing additional Java code; this
+document assumes familiarity with things such as the classpath.</p>
+<h2>Configuring Oscar3 properties without a properties file</h2>
+<p>If, when using Oscar3 routines within your Java application, you want to use
+different <a href="properties.html">properties</a>, but don't want to have an
+external properties file, then you can set property values from within your
+code. For example:</p>
+<pre><tt>
+		Properties props = new Properties();
+		props.setProperty("neThreshold", "0.01");
+		Oscar3Props.initialiseWithProperties(props);
+		System.out.println(Oscar3Props.getInstance().neThreshold);
+</pre></tt>
+<h2>Overriding resource files from the classpath</h2>
+<p>If you want to customise a <a href="data.htm">resource file</a>, using
+data stored on the classpath, then use the following method. For example,
+supposing you want to use a modified version of 
+<tt>uk/ac/cam/ch/wwmm/oscar3/terms/resources/neTerms.txt</tt>, and you
+want to use the namespace <tt>ptc.tmp</tt>. I would create the
+directory <tt>ptc/tmp/uk/ac/cam/ch/wwmm/oscar3/terms/resources</tt> on the
+classpath, and place my modified version there. Then you should set
+<tt>resourcePrefix=ptc/tmp/</tt> (note that there must be no leading slash,
+and there must be a trailing one) as an Oscar3 property (probably using the
+method described above).<p>
+<p>Having set this property, whenever a ResourceGetter attempts to get a
+resource from the classpath, it will first attempt to get it from the location
+that includes the resource prefix, and if the resource is not found there,
+it will look for it without the resource prefix. Thus, the resource prefix
+allows you to over-ride the files you wish to over-ride, without needing
+to modify the Oscar3 .jar file, or set up a workspace.</p>
+<h2>Extending name resolution</h2>
+<p>Oscar3 can be modified to use external resources for name resolution. For
+example, it may be useful to send names to an external name-to-structure
+converter, or to look them up in some external database. To do this, you need
+to write a class that implements the interface
+<tt>uk.ac.cam.ch.wwmm.oscar3.resolver.extension.ExtensionNameResolver</tt>. An
+example implementation of this can be seen in
+<tt>uk.ac.cam.ch.wwmm.oscar3.resolver.extension.ExampleResolver</tt>. The code
+should be self-explanatory, even if the example is somewhat contrived.</p>
+<p>Once you have an extension name resolver, you can activate it by setting
+the <tt>extensionNameResolver</tt> property - for example, 
+<tt>extensionNameResolver=uk.ac.cam.ch.wwmm.oscar3.resolver.extension.ExampleResolver</tt>.
+<p>With this property set, the following events take place whenever Oscar3
+attempts to resolve a name:</p>
+<ol>
+<li>Oscar3 looks to see if the name is in its cache, and if so, uses the results
+in the cache. If not:</li>
+<li>Oscar3 looks up the name in a list of element names, and if it is present,
+uses it. If not:</li>
+<li>Oscar3 looks up the name in ChemNameDict, and if it is present, uses it. If
+not:</li>
+<li>Oscar3 looks up the name in a local <a href="newpubchem.html">PubChem
+mirror</a> (if one has been set up), and if the name is present, it puts the
+name, SMILES and InChI in its cache, and uses them. If not:</li>
+<li>Oscar3 uses the extension name resolver. If the extension name resolver
+gives a result, the result is placed in the cache, and use it. If not:</li>
+<li>Oscar3 attempts to interpret the name using OPSIN. If this succeeds, it
+places the result in the cache, and uses it. If not:</li>
+<li>Oscar3 caches the fact that the name cannot be resolved.</li>
+</ol>
+<p>If you do not want to cache the results that are produced by the extension
+name resolver, then set <tt>cacheExtensionNameResolver=no</tt>.</p>
+<h2>Running routines at Oscar3 startup</h2>
+<p>This section describes how to run custom code whilst using the main Oscar3
+class. To do this, produce a class that implements the template 
+<tt>uk.ac.cam.ch.wwmm.oscar3.misc.InitScript</tt> - for an example, see
+<tt>uk.ac.cam.ch.wwmm.oscar3.misc.ExampleInitScript</tt>. Then, set the
+<tt>initScript</tt> property - for example,
+<tt>initScript=uk.ac.cam.ch.wwmm.oscar3.misc.ExampleInitScript</tt>.</p>
+<p>The main use for this is to modify the OscarFlow language, which is 
+explained below.</p>
+<h2>Modifying the OscarFlow language</h2>
+<p>The <a href="flow.html">OscarFlow</a> system provides a way of running
+several different processing tasks over documents. This system can be
+extended in three different ways: by adding extra commands to the language,
+adding extra information that can be carried through the system, and
+adding additional output files.</p>
+<p>To create extra commands, you need to implement the
+<tt>uk.ac.cam.ch.wwmm.oscar3.flow.OscarFlow</tt> interface. For simple tasks,
+this is best done by using a small anonymous inner class - and for larger tasks,
+it may be useful to write a small anonymous inner class as a wrapper for the
+class that does the real processing. An instance of this class should then
+be fed to the FlowRunner singleton. 
+<tt>uk.ac.cam.ch.wwmm.oscar3.misc.ExampleInitScript</tt> gives an example of
+this. Once this is done, the OscarFlow language has been extended.</p>
+<p>To carry additional information from one custom OscarFlow command to another,
+use the <tt>getCustomDict()</tt> method of 
+<tt>uk.ac.cam.ch.wwmm.oscar3.flow.OscarFlow</tt>. This gives you a 
+<tt>Map&lt;String, Object>&gt;</tt> object, in which you can store data.</p>
+<p>To produce custom output, use the <tt>customOutputStream(String name)</tt>
+method - either directly, or via the <tt>customWriter(String name)</tt> or
+<tt>customPrintWriter(String name)</tt> methods. This method gives you
+an <tt>OutputStream</tt> (or <tt>Writer</tt> (writing UTF-8) or
+<tt>PrintWriter</tt>, to which you can write information. You can then retrieve
+that information using the <tt>customInputStream(String name)</tt> methods.</p>
+<p>Furthermore, using these methods allows you to cause files to be written
+to disk, or returned by the web server. When writing a directory full of
+output files, Oscar3 will write an output file for each output stream you
+requested - the filename will be the name of the stream. When you use the
+Process servlet, try passing it an <tt>output</tt> parameter, corresponding
+to the name of your custom output stream. If your stream name ends in
+<tt>.xml</tt>, the data will be sent as <tt>application/xml</tt>, and if it
+ends in <tt>.htm</tt> or <tt>.html</tt> it will be sent as <tt>text/html</tt>.
+Otherwise, it will be sent as <tt>text/plain</tt>.</p>
+</body></html>

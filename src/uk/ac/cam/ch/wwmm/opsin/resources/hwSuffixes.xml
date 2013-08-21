@@ -1,0 +1,46 @@
+<!DOCTYPE tokenList SYSTEM "tokenList.dtd">
+<!-- See the DTD for more details -->
+<!--HW rings; the ane and ine suffix are included seperately as there are limitations as to what heteroatoms they can be used with-->
+<tokenLists>
+  <tokenList tagname="group" type="ring" subType="hantzschWidman" symbol="W">
+      <token value="3" valType="unsatring">iren</token>
+      <token value="3" valType="ring">iran</token>
+      <token value="3" valType="unsatring">irin</token>
+      <token value="3" valType="ring">iridin</token>
+
+      <token value="4" valType="unsatring">et</token>
+      <token value="4" valType="ring">etan</token>
+      <token value="4" valType="ring">etidin</token>
+      <token value="4" valType="partunsatring">etin</token>
+      <token value="4" valType="partunsatring">eten</token>
+
+      <token value="5" valType="unsatring">ol</token>
+      <token value="5" valType="ring">olan</token>
+      <token value="5" valType="ring">olidin</token>
+      <token value="5" valType="partunsatring">olin</token>
+      <token value="5" valType="partunsatring">olen</token>
+
+      <token value="6" valType="ring">inan</token>
+      <token value="6" valType="unsatring">inin</token>
+
+      <token value="7" valType="unsatring">epin</token>
+      <token value="7" valType="ring">epan</token>
+
+      <token value="8" valType="unsatring">ocin</token>
+      <token value="8" valType="ring">ocan</token>
+
+      <token value="9" valType="unsatring">onin</token>
+      <token value="9" valType="ring">onan</token>
+
+      <token value="10" valType="unsatring">ecin</token>
+      <token value="10" valType="ring">ecan</token>
+  </tokenList>
+
+  <tokenList tagname="group" type="ring" subType="hantzschWidman" symbol="K"><!--the ine suffix -->
+    <token value="6" valType="unsatring">in</token>
+  </tokenList>
+
+  <tokenList tagname="group" type="ring" subType="hantzschWidman" symbol="k"><!--the ane suffix -->
+    <token value="6" valType="ring">an</token>
+  </tokenList>
+</tokenLists>

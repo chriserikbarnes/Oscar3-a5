@@ -1,0 +1,67 @@
+<html>
+<head><title>Named Entity Subtypes</title></head>
+<body>
+<h1>Named Entity Subtypes</h1>
+<p>When a chemical name is encountered in text, it is not always the case that
+that name is being used to refer to a single, whole, well-specified chemical
+compound. It is also possible for names to refer to classes of compounds, parts
+of compounds, or other things beside. Similar problems are encountered with
+reaction words, and other named entities detected by Oscar3.</p>
+<p>It is usually possible to distinguish between the different named entity
+types (<tt>CM</tt>, <tt>RN</tt>, <tt>CJ</tt>, <tt>ASE</tt> and <tt>CPR</tt>) on
+the basis of name-internal features, and so the <a href="namerec.html">name
+recognition</a> techniques used by Oscar3, which rely heavily on name-internal
+features, do well at this. However, with these subtype divisions it is often
+necessary to resort to name-external features, as the same word can commonly
+be used in different ways. For example, in "a bottle of pyridine", "the newly
+isolated compound was found to be a pyridine" and "a pyridine covalently linked
+to a naphthalene core", the word <i>pyridine</i> is used in three different
+senses, which can only be disambiguated by referring to context - to
+name-external features.</p>
+<p>The theory behind named entity subtypes is further explained in:</p>
+Peter Corbett, Colin Batchelor and Ann Copestake.
+<a href="http://www.lrec-conf.org/proceedings/lrec2008/workshops/W4_Proceedings.pdf#page=47">Pyridines,
+Pyridine and Pyridine Rings: Disambiguating Chemical Named Entities.</a><br>
+Proceedings of Building & evaluating resources for biomedical text mining
+ (LREC 2008 workshop).</p>
+<h2>Implementation</h2>
+<p>In Oscar3, a named entity may have one subtype, represented as an attribute
+(or slot) in the annotation. Subtypes are not always present; however, typically
+either all of the non-<tt>ONT</tt> named entities in a document will have
+subtypes, or none of them will.<p>
+<h3>Manual Annotation</h3>
+<p>Subtypes may be manually annotated within 
+<a href="scrapbook.html">ScrapBook</a>. There is a mode of operation that allows
+you to assign a subtype to each named entity. The set of available subtypes for
+each named entity type is listed in the <a href="data.html">resource file</a>
+<tt>uk/ac/cam/ch/wwmm/oscar3/misc/resources/neTypes.xml</tt> - this may be
+edited if you wish to define additional subtypes. Once papers have been manually
+annotated with subtypes, the process that generates model files will include
+a subtypes model within the model file.</p>
+<h3>Automatic Annotation</h3>
+<p>The automatic annotation is performed using the <tt>subtypes</tt> task in
+<a href="flow.html">OscarFlow</a> - this is not performed by default. This task
+uses a maximum entropy classifier and a simple feature set to make its choices;
+more details are given in Corbett, Batchelor and Copestake 2008. There are two
+important implementation details here.</p>
+<p>First, the sets of subtypes that are recognised are determined by the model
+file used. If a model file is trained with a non-standard set of subtypes, then
+when that model is used, those subtypes will be recognised. The subtypes task
+does not refer to <tt>uk/ac/cam/ch/wwmm/oscar3/misc/resources/neTypes.xml</tt>
+during processing.</p>
+<p>Secondly, the subtypes classifier makes probablistic decisions. When it
+encounters a named entity with a confidence score, it can transform that named
+entity into a set of named entities with different subtypes and confidence
+scores. For example, consider a named entity with type <tt>CM</tt> and
+confidence 0.8. Suppose the subtypes classifier thinks that the entity has a
+0.75 probability of having subtype <tt>EXACT</tt> and a 0.25 probability of
+having subtype <tt>CLASS</tt>. The subtypes task will take the original 
+subtypeless named entity, and convert it into two named entities: one of
+subtype <tt>EXACT</tt> and confidence 0.6 (0.8 * 0.75), and one of subtype
+<tt>CLASS</tt> and confidence 0.2 (0.8 * 0.25). The most probable subtype will
+always be reported, even if the new confidence score goes below the value of
+<tt>neThreshold</tt> set in the <a href="properties.html">properties file</a>.
+For the less probable subtypes, the subtypes will be reported if the confidence
+is above the threshold, and dropped if below.</p>
+</body>
+</html>
